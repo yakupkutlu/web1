@@ -1,36 +1,36 @@
-define(function () {
+﻿define(function () {
   // Korean
   return {
     errorLoading: function () {
-      return '결과를 불러올 수 없습니다.';
+      return 'ê²°ê³¼ë¥¼ ë¶ˆëŸ¬ì˜¬ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.';
     },
     inputTooLong: function (args) {
       var overChars = args.input.length - args.maximum;
 
-      var message = '너무 깁니다. ' + overChars + ' 글자 지워주세요.';
+      var message = 'ë„ˆë¬´ ê¹ë‹ˆë‹¤. ' + overChars + ' ê¸€ì ì§€ì›Œì£¼ì„¸ìš”.';
 
       return message;
     },
     inputTooShort: function (args) {
       var remainingChars = args.minimum - args.input.length;
 
-      var message = '너무 짧습니다. ' + remainingChars + ' 글자 더 입력해주세요.';
+      var message = 'ë„ˆë¬´ ì§§ìŠµë‹ˆë‹¤. ' + remainingChars + ' ê¸€ì ë” ì…ë ¥í•´ì£¼ì„¸ìš”.';
 
       return message;
     },
     loadingMore: function () {
-      return '불러오는 중…';
+      return 'ë¶ˆëŸ¬ì˜¤ëŠ” ì¤‘â€¦';
     },
     maximumSelected: function (args) {
-      var message = '최대 ' + args.maximum + '개까지만 선택 가능합니다.';
+      var message = 'ìµœëŒ€ ' + args.maximum + 'ê°œê¹Œì§€ë§Œ ì„ íƒ ê°€ëŠ¥í•©ë‹ˆë‹¤.';
 
       return message;
     },
     noResults: function () {
-      return '결과가 없습니다.';
+      return 'ê²°ê³¼ê°€ ì—†ìŠµë‹ˆë‹¤.';
     },
     searching: function () {
-      return '검색 중…';
+      return 'ê²€ìƒ‰ ì¤‘â€¦';
     }
   };
 });

@@ -1,9 +1,9 @@
-/*!
+﻿/*!
  * HTML5 export buttons for Buttons and DataTables.
  * 2016 SpryMedia Ltd - datatables.net/license
  *
  * FileSaver.js (1.1.20160328) - MIT license
- * Copyright © 2016 Eli Grey - http://eligrey.com
+ * Copyright Â© 2016 Eli Grey - http://eligrey.com
  */
 
 (function( factory ){

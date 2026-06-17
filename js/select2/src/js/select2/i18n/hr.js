@@ -1,4 +1,4 @@
-define(function () {
+﻿define(function () {
   // Croatian
   function character (n) {
     var message = ' ' + n + ' znak';
@@ -26,10 +26,10 @@ define(function () {
     inputTooShort: function (args) {
       var remainingChars = args.minimum - args.input.length;
 
-      return 'Unesite još ' + character(remainingChars);
+      return 'Unesite joÅ¡ ' + character(remainingChars);
     },
     loadingMore: function () {
-      return 'Učitavanje rezultata…';
+      return 'UÄitavanje rezultataâ€¦';
     },
     maximumSelected: function (args) {
       return 'Maksimalan broj odabranih stavki je ' + args.maximum;
@@ -38,7 +38,7 @@ define(function () {
       return 'Nema rezultata';
     },
     searching: function () {
-      return 'Pretraga…';
+      return 'Pretragaâ€¦';
     }
   };
 });

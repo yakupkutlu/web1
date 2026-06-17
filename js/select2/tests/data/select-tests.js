@@ -1,4 +1,4 @@
-module('Data adapters - Select - current');
+﻿module('Data adapters - Select - current');
 
 var SelectData = require('select2/data/select');
 var $ = require('jquery');

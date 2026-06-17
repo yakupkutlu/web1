@@ -1,4 +1,4 @@
-/*!
+﻿/*!
  * jQuery UI Widget 1.9.2
  * http://jqueryui.com
  *

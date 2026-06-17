@@ -1,4 +1,4 @@
-/* global jQuery:false, $:false */
+﻿/* global jQuery:false, $:false */
 define(function () {
   var _$ = jQuery || $;
 

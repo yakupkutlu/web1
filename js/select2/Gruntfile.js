@@ -1,4 +1,4 @@
-module.exports = function (grunt) {
+﻿module.exports = function (grunt) {
   // Full list of files that must be included by RequireJS
   includes = [
     'jquery.select2',

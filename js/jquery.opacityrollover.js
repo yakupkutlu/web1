@@ -1,4 +1,4 @@
-/**
+﻿/**
  * jQuery Opacity Rollover plugin
  *
  * Copyright (c) 2009 Trent Foley (http://trentacular.com)

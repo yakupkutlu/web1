@@ -1,4 +1,4 @@
-/*
+﻿/*
  * SmartWizard 3.3.1 plugin
  * jQuery Wizard control Plugin
  * by Dipu
@@ -57,7 +57,7 @@ function SmartWizard(target, options) {
             .append($this.buttons.previous);
         $this.target.append(elmActionBar);
         this.contentWidth = $this.elmStepContainer.width();
-        //Kayıtlar Burada Yapılacak
+        //KayÄ±tlar Burada YapÄ±lacak
         $($this.buttons.next).click(function () {
             $this.goForward();
             var ncp_id = document.getElementById("ncp_id").innerHTML;
@@ -177,10 +177,10 @@ function SmartWizard(target, options) {
                     var message = document.getElementById("message").value;
                     var upload = document.getElementById("my_file").value;
                     if ((manuscript_title == "") || (key_words == "") || (abstract == "")) {
-                        alert("Lütfen zorunlu alanları doldurunuz !!");
+                        alert("LÃ¼tfen zorunlu alanlarÄ± doldurunuz !!");
                     }
                     else if (upload == "") {
-                        alert("Lütfen Dosyanızı Yükleyiniz");
+                        alert("LÃ¼tfen DosyanÄ±zÄ± YÃ¼kleyiniz");
                     }
 
 

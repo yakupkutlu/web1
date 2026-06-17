@@ -1,4 +1,4 @@
-define(function () {
+﻿define(function () {
   // German
   return {
     inputTooLong: function (args) {
@@ -12,26 +12,26 @@ define(function () {
       return 'Bitte ' + remainingChars + ' Zeichen mehr eingeben';
     },
     loadingMore: function () {
-      return 'Lade mehr Ergebnisse…';
+      return 'Lade mehr Ergebnisseâ€¦';
     },
     maximumSelected: function (args) {
-      var message = 'Sie können nur ' + args.maximum + ' Eintr';
+      var message = 'Sie kÃ¶nnen nur ' + args.maximum + ' Eintr';
 
       if (args.maximum === 1) {
         message += 'ag';
       } else {
-        message += 'äge';
+        message += 'Ã¤ge';
       }
 
-      message += ' auswählen';
+      message += ' auswÃ¤hlen';
 
       return message;
     },
     noResults: function () {
-      return 'Keine Übereinstimmungen gefunden';
+      return 'Keine Ãœbereinstimmungen gefunden';
     },
     searching: function () {
-      return 'Suche…';
+      return 'Sucheâ€¦';
     }
   };
 });

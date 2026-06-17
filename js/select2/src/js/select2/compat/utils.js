@@ -1,4 +1,4 @@
-define([
+﻿define([
   'jquery'
 ], function ($) {
   function syncCssClasses ($dest, $src, adapter) {

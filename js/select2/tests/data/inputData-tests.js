@@ -1,4 +1,4 @@
-module('Data adapters - <input> compatibility');
+﻿module('Data adapters - <input> compatibility');
 
 var $ = require('jquery');
 

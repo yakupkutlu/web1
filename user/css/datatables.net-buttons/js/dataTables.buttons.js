@@ -1,5 +1,5 @@
-/*! Buttons for DataTables 1.2.1
- * ©2016 SpryMedia Ltd - datatables.net/license
+﻿/*! Buttons for DataTables 1.2.1
+ * Â©2016 SpryMedia Ltd - datatables.net/license
  */
 
 (function( factory ){

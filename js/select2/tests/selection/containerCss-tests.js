@@ -1,4 +1,4 @@
-module('Dropdown - containerCssClass compatibility');
+﻿module('Dropdown - containerCssClass compatibility');
 
 var $ = require('jquery');
 var Utils = require('select2/utils');

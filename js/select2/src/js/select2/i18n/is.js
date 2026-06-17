@@ -1,10 +1,10 @@
-define(function () {
+﻿define(function () {
   // Icelandic
   return {
     inputTooLong: function (args) {
       var overChars = args.input.length - args.maximum;
 
-      var message = 'Vinsamlegast styttið texta um ' + overChars + ' staf';
+      var message = 'Vinsamlegast styttiÃ° texta um ' + overChars + ' staf';
 
       if (overChars <= 1) {
         return message;
@@ -15,27 +15,27 @@ define(function () {
     inputTooShort: function (args) {
       var remainingChars = args.minimum - args.input.length;
 
-      var message = 'Vinsamlegast skrifið ' + remainingChars + ' staf';
+      var message = 'Vinsamlegast skrifiÃ° ' + remainingChars + ' staf';
 
       if (remainingChars > 1) {
         message += 'i';
       }
 
-      message += ' í viðbót';
+      message += ' Ã­ viÃ°bÃ³t';
 
       return message;
     },
     loadingMore: function () {
-      return 'Sæki fleiri niðurstöður…';
+      return 'SÃ¦ki fleiri niÃ°urstÃ¶Ã°urâ€¦';
     },
     maximumSelected: function (args) {
-      return 'Þú getur aðeins valið ' + args.maximum + ' atriði';
+      return 'ÃÃº getur aÃ°eins valiÃ° ' + args.maximum + ' atriÃ°i';
     },
     noResults: function () {
       return 'Ekkert fannst';
     },
     searching: function () {
-      return 'Leita…';
+      return 'Leitaâ€¦';
     }
   };
 });

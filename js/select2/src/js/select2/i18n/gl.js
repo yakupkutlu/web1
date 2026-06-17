@@ -1,4 +1,4 @@
-define(function () {
+﻿define(function () {
   // Galician
   return {
     inputTooLong: function (args) {
@@ -7,7 +7,7 @@ define(function () {
       var message = 'Elimine ';
 
       if (overChars === 1) {
-        message += 'un carácter';
+        message += 'un carÃ¡cter';
       } else {
         message += overChars + ' caracteres';
       }
@@ -20,7 +20,7 @@ define(function () {
       var message = 'Engada ';
 
       if (remainingChars === 1) {
-        message += 'un carácter';
+        message += 'un carÃ¡cter';
       } else {
         message += remainingChars + ' caracteres';
       }
@@ -28,10 +28,10 @@ define(function () {
       return message;
     },
     loadingMore: function () {
-      return 'Cargando máis resultados…';
+      return 'Cargando mÃ¡is resultadosâ€¦';
     },
     maximumSelected: function (args) {
-      var message = 'Só pode ';
+      var message = 'SÃ³ pode ';
 
       if (args.maximum === 1) {
         message += 'un elemento';
@@ -45,7 +45,7 @@ define(function () {
       return 'Non se atoparon resultados';
     },
     searching: function () {
-      return 'Buscando…';
+      return 'Buscandoâ€¦';
     }
   };
 });

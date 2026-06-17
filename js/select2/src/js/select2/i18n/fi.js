@@ -1,18 +1,18 @@
-define(function () {
+﻿define(function () {
   // Finnish
   return {
     inputTooLong: function (args) {
       var overChars = args.input.length - args.maximum;
 
-      return 'Ole hyvä ja anna ' + overChars + ' merkkiä vähemmän';
+      return 'Ole hyvÃ¤ ja anna ' + overChars + ' merkkiÃ¤ vÃ¤hemmÃ¤n';
     },
     inputTooShort: function (args) {
       var remainingChars = args.minimum - args.input.length;
 
-      return 'Ole hyvä ja anna ' + remainingChars + ' merkkiä lisää';
+      return 'Ole hyvÃ¤ ja anna ' + remainingChars + ' merkkiÃ¤ lisÃ¤Ã¤';
     },
     loadingMore: function () {
-      return 'Ladataan lisää tuloksia…';
+      return 'Ladataan lisÃ¤Ã¤ tuloksiaâ€¦';
     },
     maximumSelected: function (args) {
       return 'Voit valita ainoastaan ' + args.maximum + ' kpl';

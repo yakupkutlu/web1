@@ -1,4 +1,4 @@
-/*!
+﻿/*!
  * QUnit 1.23.1
  * https://qunitjs.com/
  *
@@ -1648,7 +1648,7 @@ function errorString( error ) {
 }
 
 // Test for equality any JavaScript type.
-// Author: Philippe Rathé <prathe@gmail.com>
+// Author: Philippe RathÃ© <prathe@gmail.com>
 QUnit.equiv = ( function() {
 
 	// Stack to decide between skip/abort functions
@@ -2917,7 +2917,7 @@ QUnit.done( function( details ) {
 
 	if ( config.altertitle && document.title ) {
 
-		// Show ✖ for good, ✔ for bad suite result in title
+		// Show âœ– for good, âœ” for bad suite result in title
 		// use escape sequences in case file gets loaded with non-utf-8-charset
 		document.title = [
 			( details.failed ? "\u2716" : "\u2714" ),

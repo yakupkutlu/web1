@@ -1,4 +1,4 @@
-define(function () {
+﻿define(function () {
   // Basque
   return {
     inputTooLong: function (args) {
@@ -32,7 +32,7 @@ define(function () {
       return message;
     },
     loadingMore: function () {
-      return 'Emaitza gehiago kargatzen…';
+      return 'Emaitza gehiago kargatzenâ€¦';
     },
     maximumSelected: function (args) {
       if (args.maximum === 1) {
@@ -45,7 +45,7 @@ define(function () {
       return 'Ez da bat datorrenik aurkitu';
     },
     searching: function () {
-      return 'Bilatzen…';
+      return 'Bilatzenâ€¦';
     }
   };
 });

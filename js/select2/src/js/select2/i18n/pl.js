@@ -1,7 +1,7 @@
-define(function () {
+﻿define(function () {
   // Polish
-  var charsWords = ['znak', 'znaki', 'znaków'];
-  var itemsWords = ['element', 'elementy', 'elementów'];
+  var charsWords = ['znak', 'znaki', 'znakÃ³w'];
+  var itemsWords = ['element', 'elementy', 'elementÃ³w'];
 
   var pluralWord = function pluralWord(numberOfChars, words) {
     if (numberOfChars === 1) {
@@ -15,12 +15,12 @@ define(function () {
   
   return {
     errorLoading: function () {
-      return 'Nie można załadować wyników.';
+      return 'Nie moÅ¼na zaÅ‚adowaÄ‡ wynikÃ³w.';
     },
     inputTooLong: function (args) {
       var overChars = args.input.length - args.maximum;
 
-      return 'Usuń ' + overChars + ' ' + pluralWord(overChars, charsWords);
+      return 'UsuÅ„ ' + overChars + ' ' + pluralWord(overChars, charsWords);
     },
     inputTooShort: function (args) {
       var remainingChars = args.minimum - args.input.length;
@@ -29,17 +29,17 @@ define(function () {
         pluralWord(remainingChars, charsWords);
     },
     loadingMore: function () {
-      return 'Trwa ładowanie…';
+      return 'Trwa Å‚adowanieâ€¦';
     },
     maximumSelected: function (args) {
-      return 'Możesz zaznaczyć tylko ' + args.maximum + ' ' +
+      return 'MoÅ¼esz zaznaczyÄ‡ tylko ' + args.maximum + ' ' +
         pluralWord(args.maximum, itemsWords);
     },
     noResults: function () {
-      return 'Brak wyników';
+      return 'Brak wynikÃ³w';
     },
     searching: function () {
-      return 'Trwa wyszukiwanie…';
+      return 'Trwa wyszukiwanieâ€¦';
     }
   };
 });

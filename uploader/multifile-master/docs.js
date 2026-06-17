@@ -1,4 +1,4 @@
-if(false){
+﻿if(false){
 	$(function(){
 		$('.tabs').addClass('Clear').tabs();
 	});

@@ -1,4 +1,4 @@
-(function(win) {
+﻿(function(win) {
 	var whiteSpaceRe = /^\s*|\s*$/g,
 		undefined;
 

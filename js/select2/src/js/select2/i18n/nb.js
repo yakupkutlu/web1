@@ -1,5 +1,5 @@
-define(function () {
-  // Norwegian (Bokmål)
+﻿define(function () {
+  // Norwegian (BokmÃ¥l)
   return {
     errorLoading: function () {
       return 'Kunne ikke hente resultater.';
@@ -23,7 +23,7 @@ define(function () {
       return message;
     },
     loadingMore: function () {
-      return 'Laster flere resultater…';
+      return 'Laster flere resultaterâ€¦';
     },
     maximumSelected: function (args) {
       return 'Du kan velge maks ' + args.maximum + ' elementer';
@@ -32,7 +32,7 @@ define(function () {
       return 'Ingen treff';
     },
     searching: function () {
-      return 'Søker…';
+      return 'SÃ¸kerâ€¦';
     }
   };
 });

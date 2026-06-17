@@ -1,4 +1,4 @@
-/*!
+﻿/*!
  * jQuery UI Button 1.9.2
  * http://jqueryui.com
  *

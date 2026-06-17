@@ -1,4 +1,4 @@
-;(function()
+﻿;(function()
 {
 	// CommonJS
 	SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined'? require('shCore').SyntaxHighlighter : null);

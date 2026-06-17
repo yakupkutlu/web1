@@ -1,4 +1,4 @@
-define([
+﻿define([
 
 ], function () {
   function MaximumInputLength (decorated, $e, options) {

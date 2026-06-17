@@ -1,36 +1,36 @@
-define(function () {
+﻿define(function () {
   // Arabic
   return {
     errorLoading: function () {
-      return 'لا يمكن تحميل النتائج';
+      return 'Ù„Ø§ ÙŠÙ…ÙƒÙ† ØªØ­Ù…ÙŠÙ„ Ø§Ù„Ù†ØªØ§Ø¦Ø¬';
     },
     inputTooLong: function (args) {
       var overChars = args.input.length - args.maximum;
 
-      var message = 'الرجاء حذف ' + overChars + ' عناصر';
+      var message = 'Ø§Ù„Ø±Ø¬Ø§Ø¡ Ø­Ø°Ù ' + overChars + ' Ø¹Ù†Ø§ØµØ±';
 
       return message;
     },
     inputTooShort: function (args) {
       var remainingChars = args.minimum - args.input.length;
 
-      var message = 'الرجاء إضافة ' + remainingChars + ' عناصر';
+      var message = 'Ø§Ù„Ø±Ø¬Ø§Ø¡ Ø¥Ø¶Ø§ÙØ© ' + remainingChars + ' Ø¹Ù†Ø§ØµØ±';
 
       return message;
     },
     loadingMore: function () {
-      return 'جاري تحميل نتائج إضافية...';
+      return 'Ø¬Ø§Ø±ÙŠ ØªØ­Ù…ÙŠÙ„ Ù†ØªØ§Ø¦Ø¬ Ø¥Ø¶Ø§ÙÙŠØ©...';
     },
     maximumSelected: function (args) {
-      var message = 'تستطيع إختيار ' + args.maximum + ' بنود فقط';
+      var message = 'ØªØ³ØªØ·ÙŠØ¹ Ø¥Ø®ØªÙŠØ§Ø± ' + args.maximum + ' Ø¨Ù†ÙˆØ¯ ÙÙ‚Ø·';
 
       return message;
     },
     noResults: function () {
-      return 'لم يتم العثور على أي نتائج';
+      return 'Ù„Ù… ÙŠØªÙ… Ø§Ù„Ø¹Ø«ÙˆØ± Ø¹Ù„Ù‰ Ø£ÙŠ Ù†ØªØ§Ø¦Ø¬';
     },
     searching: function () {
-      return 'جاري البحث…';
+      return 'Ø¬Ø§Ø±ÙŠ Ø§Ù„Ø¨Ø­Ø«â€¦';
     }
   };
 });

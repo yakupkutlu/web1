@@ -1,4 +1,4 @@
-/*
+﻿/*
  ### jQuery Multiple File Selection Plugin v2.2.1 - 2015-03-23 ###
  * Home: http://www.fyneworks.com/jquery/multifile/
  * Code: http://code.google.com/p/jquery-multifile-plugin/
@@ -380,7 +380,7 @@ if (window.jQuery)(function ($) {
 							// Handle error
 							MultiFile.error(ERROR.join('\n\n'));
 
-							// 2007-06-24: BUG FIX - Thanks to Adrian Wr�bel <adrian [dot] wrobel [at] gmail.com>
+							// 2007-06-24: BUG FIX - Thanks to Adrian Wrï¿½bel <adrian [dot] wrobel [at] gmail.com>
 							// Ditch the trouble maker and add a fresh new element
 							MultiFile.n--;
 							MultiFile.addSlave(newEle[0], slave_count);

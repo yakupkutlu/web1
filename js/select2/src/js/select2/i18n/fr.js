@@ -1,13 +1,13 @@
-define(function () {
+﻿define(function () {
   // French
   return {
     errorLoading: function () {
-      return 'Les résultats ne peuvent pas être chargés.';
+      return 'Les rÃ©sultats ne peuvent pas Ãªtre chargÃ©s.';
     },
     inputTooLong: function (args) {
       var overChars = args.input.length - args.maximum;
 
-      var message = 'Supprimez ' + overChars + ' caractère';
+      var message = 'Supprimez ' + overChars + ' caractÃ¨re';
 
       if (overChars !== 1) {
         message += 's';
@@ -18,7 +18,7 @@ define(function () {
     inputTooShort: function (args) {
       var remainingChars = args.minimum - args.input.length;
 
-      var message = 'Saisissez ' + remainingChars + ' caractère';
+      var message = 'Saisissez ' + remainingChars + ' caractÃ¨re';
 
       if (remainingChars !== 1) {
         message += 's';
@@ -27,11 +27,11 @@ define(function () {
       return message;
     },
     loadingMore: function () {
-      return 'Chargement de résultats supplémentaires…';
+      return 'Chargement de rÃ©sultats supplÃ©mentairesâ€¦';
     },
     maximumSelected: function (args) {
-      var message = 'Vous pouvez seulement sélectionner ' +
-        args.maximum + ' élément';
+      var message = 'Vous pouvez seulement sÃ©lectionner ' +
+        args.maximum + ' Ã©lÃ©ment';
 
       if (args.maximum !== 1) {
         message += 's';
@@ -40,10 +40,10 @@ define(function () {
       return message;
     },
     noResults: function () {
-      return 'Aucun résultat trouvé';
+      return 'Aucun rÃ©sultat trouvÃ©';
     },
     searching: function () {
-      return 'Recherche en cours…';
+      return 'Recherche en coursâ€¦';
     }
   };
 });

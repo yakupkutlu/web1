@@ -1,4 +1,4 @@
-module('Results - highlighting results');
+﻿module('Results - highlighting results');
 
 test('results:all with no data skips results:focus', function (assert) {
   assert.expect(0);

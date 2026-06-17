@@ -1,4 +1,4 @@
-define(function () {
+﻿define(function () {
   // rules from
   // http://www.unicode.org/cldr/charts/latest/supplemental/language_plural_rules.html#lt
   function ending(count, one, few, other) {
@@ -17,36 +17,36 @@ define(function () {
     inputTooLong: function (args) {
       var overChars = args.input.length - args.maximum;
 
-      var message = 'Pašalinkite ' + overChars + ' simbol';
+      var message = 'PaÅ¡alinkite ' + overChars + ' simbol';
 
-      message += ending(overChars, 'į', 'ius', 'ių');
+      message += ending(overChars, 'Ä¯', 'ius', 'iÅ³');
 
       return message;
     },
     inputTooShort: function (args) {
       var remainingChars = args.minimum - args.input.length;
 
-      var message = 'Įrašykite dar ' + remainingChars + ' simbol';
+      var message = 'Ä®raÅ¡ykite dar ' + remainingChars + ' simbol';
 
-      message += ending(remainingChars, 'į', 'ius', 'ių');
+      message += ending(remainingChars, 'Ä¯', 'ius', 'iÅ³');
 
       return message;
     },
     loadingMore: function () {
-      return 'Kraunama daugiau rezultatų…';
+      return 'Kraunama daugiau rezultatÅ³â€¦';
     },
     maximumSelected: function (args) {
-      var message = 'Jūs galite pasirinkti tik ' + args.maximum + ' element';
+      var message = 'JÅ«s galite pasirinkti tik ' + args.maximum + ' element';
 
-      message += ending(args.maximum, 'ą', 'us', 'ų');
+      message += ending(args.maximum, 'Ä…', 'us', 'Å³');
 
       return message;
     },
     noResults: function () {
-      return 'Atitikmenų nerasta';
+      return 'AtitikmenÅ³ nerasta';
     },
     searching: function () {
-      return 'Ieškoma…';
+      return 'IeÅ¡komaâ€¦';
     }
   };
 });

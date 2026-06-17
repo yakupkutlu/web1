@@ -1,4 +1,4 @@
-module('Options - Deprecated - initSelection');
+﻿module('Options - Deprecated - initSelection');
 
 var $ = require('jquery');
 var Options = require('select2/options');

@@ -1,4 +1,4 @@
-define([
+﻿define([
 
 ], function () {
   function AttachContainer (decorated, $element, options) {

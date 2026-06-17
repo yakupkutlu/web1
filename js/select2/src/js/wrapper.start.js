@@ -1,4 +1,4 @@
-/*!
+﻿/*!
  * Select2 <%= package.version %>
  * https://select2.github.io
  *

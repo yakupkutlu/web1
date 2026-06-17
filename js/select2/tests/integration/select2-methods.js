@@ -1,4 +1,4 @@
-module('select2(data)');
+﻿module('select2(data)');
 
 var $ = require('jquery');
 var Select2 = require('select2/core');

@@ -1,4 +1,4 @@
-module('select2(val)');
+﻿module('select2(val)');
 
 test('multiple elements with arguments works', function (assert) {
   var $ = require('jquery');

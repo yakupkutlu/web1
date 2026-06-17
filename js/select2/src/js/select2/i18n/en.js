@@ -1,4 +1,4 @@
-define(function () {
+﻿define(function () {
   // English
   return {
     errorLoading: function () {
@@ -23,7 +23,7 @@ define(function () {
       return message;
     },
     loadingMore: function () {
-      return 'Loading more results…';
+      return 'Loading more resultsâ€¦';
     },
     maximumSelected: function (args) {
       var message = 'You can only select ' + args.maximum + ' item';
@@ -38,7 +38,7 @@ define(function () {
       return 'No results found';
     },
     searching: function () {
-      return 'Searching…';
+      return 'Searchingâ€¦';
     }
   };
 });

@@ -1,4 +1,4 @@
-define(function () {
+﻿define(function () {
   // Azerbaijani
   return {
     inputTooLong: function (args) {
@@ -12,16 +12,16 @@ define(function () {
       return remainingChars + ' simvol daxil edin';
     },
     loadingMore: function () {
-      return 'Daha çox nəticə yüklənir…';
+      return 'Daha Ã§ox nÉ™ticÉ™ yÃ¼klÉ™nirâ€¦';
     },
     maximumSelected: function (args) {
-      return 'Sadəcə ' + args.maximum + ' element seçə bilərsiniz';
+      return 'SadÉ™cÉ™ ' + args.maximum + ' element seÃ§É™ bilÉ™rsiniz';
     },
     noResults: function () {
-      return 'Nəticə tapılmadı';
+      return 'NÉ™ticÉ™ tapÄ±lmadÄ±';
     },
     searching: function () {
-      return 'Axtarılır…';
+      return 'AxtarÄ±lÄ±râ€¦';
     }
   };
 });

@@ -1,4 +1,4 @@
-define([
+﻿define([
   'jquery'
 ], function ($) {
   function InputData (decorated, $element, options) {

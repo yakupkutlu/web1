@@ -1,4 +1,4 @@
-define(function () {
+﻿define(function () {
   // Dutch
   return {
     errorLoading: function () {
@@ -20,7 +20,7 @@ define(function () {
       return message;
     },
     loadingMore: function () {
-      return 'Meer resultaten laden…';
+      return 'Meer resultaten ladenâ€¦';
     },
     maximumSelected: function (args) {
       var verb = args.maximum == 1 ? 'kan' : 'kunnen';
@@ -34,10 +34,10 @@ define(function () {
       return message;
     },
     noResults: function () {
-      return 'Geen resultaten gevonden…';
+      return 'Geen resultaten gevondenâ€¦';
     },
     searching: function () {
-      return 'Zoeken…';
+      return 'Zoekenâ€¦';
     }
   };
 });

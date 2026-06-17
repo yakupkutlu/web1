@@ -1,5 +1,5 @@
-/*! Bootstrap integration for DataTables' Buttons
- * ©2016 SpryMedia Ltd - datatables.net/license
+﻿/*! Bootstrap integration for DataTables' Buttons
+ * Â©2016 SpryMedia Ltd - datatables.net/license
  */
 
 (function( factory ){

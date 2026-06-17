@@ -1,4 +1,4 @@
-module('Data adapters - Minimum input length');
+﻿module('Data adapters - Minimum input length');
 
 var MinimumInputLength = require('select2/data/minimumInputLength');
 var $ = require('jquery');

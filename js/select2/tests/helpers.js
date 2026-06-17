@@ -1,4 +1,4 @@
-// Restore the require/define
+﻿// Restore the require/define
 var require = $.fn.select2.amd.require;
 var define = $.fn.select2.amd.define;
 

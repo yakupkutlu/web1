@@ -1,4 +1,4 @@
-module('Data adapters - Maximum input length');
+﻿module('Data adapters - Maximum input length');
 
 var MaximumInputLength = require('select2/data/maximumInputLength');
 var $ = require('jquery');

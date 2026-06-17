@@ -1,16 +1,16 @@
-define(function () {
+﻿define(function () {
   // Hindi
   return {
     errorLoading: function () {
-      return 'परिणामों को लोड नहीं किया जा सका।';
+      return 'à¤ªà¤°à¤¿à¤£à¤¾à¤®à¥‹à¤‚ à¤•à¥‹ à¤²à¥‹à¤¡ à¤¨à¤¹à¥€à¤‚ à¤•à¤¿à¤¯à¤¾ à¤œà¤¾ à¤¸à¤•à¤¾à¥¤';
     },
     inputTooLong: function (args) {
       var overChars = args.input.length - args.maximum;
 
-      var message =  overChars + ' अक्षर को हटा दें';
+      var message =  overChars + ' à¤…à¤•à¥à¤·à¤° à¤•à¥‹ à¤¹à¤Ÿà¤¾ à¤¦à¥‡à¤‚';
 
       if (overChars > 1) {
-        message = overChars + ' अक्षरों को हटा दें ';
+        message = overChars + ' à¤…à¤•à¥à¤·à¤°à¥‹à¤‚ à¤•à¥‹ à¤¹à¤Ÿà¤¾ à¤¦à¥‡à¤‚ ';
       }
 
       return message;
@@ -18,22 +18,22 @@ define(function () {
     inputTooShort: function (args) {
       var remainingChars = args.minimum - args.input.length;
 
-      var message = 'कृपया ' + remainingChars + ' या अधिक अक्षर दर्ज करें';
+      var message = 'à¤•à¥ƒà¤ªà¤¯à¤¾ ' + remainingChars + ' à¤¯à¤¾ à¤…à¤§à¤¿à¤• à¤…à¤•à¥à¤·à¤° à¤¦à¤°à¥à¤œ à¤•à¤°à¥‡à¤‚';
 
       return message;
     },
     loadingMore: function () {
-      return 'अधिक परिणाम लोड हो रहे है...';
+      return 'à¤…à¤§à¤¿à¤• à¤ªà¤°à¤¿à¤£à¤¾à¤® à¤²à¥‹à¤¡ à¤¹à¥‹ à¤°à¤¹à¥‡ à¤¹à¥ˆ...';
     },
     maximumSelected: function (args) {
-      var message = 'आप केवल ' + args.maximum + ' आइटम का चयन कर सकते हैं';
+      var message = 'à¤†à¤ª à¤•à¥‡à¤µà¤² ' + args.maximum + ' à¤†à¤‡à¤Ÿà¤® à¤•à¤¾ à¤šà¤¯à¤¨ à¤•à¤° à¤¸à¤•à¤¤à¥‡ à¤¹à¥ˆà¤‚';
       return message;
     },
     noResults: function () {
-      return 'कोई परिणाम नहीं मिला';
+      return 'à¤•à¥‹à¤ˆ à¤ªà¤°à¤¿à¤£à¤¾à¤® à¤¨à¤¹à¥€à¤‚ à¤®à¤¿à¤²à¤¾';
     },
     searching: function () {
-      return 'खोज रहा है...';
+      return 'à¤–à¥‹à¤œ à¤°à¤¹à¤¾ à¤¹à¥ˆ...';
     }
   };
 });

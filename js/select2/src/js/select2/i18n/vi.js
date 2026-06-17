@@ -1,10 +1,10 @@
-define(function () {
+﻿define(function () {
   // Vietnamese
   return {
     inputTooLong: function (args) {
       var overChars = args.input.length - args.maximum;
 
-      var message = 'Vui lòng nhập ít hơn ' + overChars + ' ký tự';
+      var message = 'Vui lÃ²ng nháº­p Ã­t hÆ¡n ' + overChars + ' kÃ½ tá»±';
 
       if (overChars != 1) {
         message += 's';
@@ -15,23 +15,23 @@ define(function () {
     inputTooShort: function (args) {
       var remainingChars = args.minimum - args.input.length;
 
-      var message = 'Vui lòng nhập nhiều hơn ' + remainingChars + ' ký tự"';
+      var message = 'Vui lÃ²ng nháº­p nhiá»u hÆ¡n ' + remainingChars + ' kÃ½ tá»±"';
 
       return message;
     },
     loadingMore: function () {
-      return 'Đang lấy thêm kết quả…';
+      return 'Äang láº¥y thÃªm káº¿t quáº£â€¦';
     },
     maximumSelected: function (args) {
-      var message = 'Chỉ có thể chọn được ' + args.maximum + ' lựa chọn';
+      var message = 'Chá»‰ cÃ³ thá»ƒ chá»n Ä‘Æ°á»£c ' + args.maximum + ' lá»±a chá»n';
 
       return message;
     },
     noResults: function () {
-      return 'Không tìm thấy kết quả';
+      return 'KhÃ´ng tÃ¬m tháº¥y káº¿t quáº£';
     },
     searching: function () {
-      return 'Đang tìm…';
+      return 'Äang tÃ¬mâ€¦';
     }
   };
 });

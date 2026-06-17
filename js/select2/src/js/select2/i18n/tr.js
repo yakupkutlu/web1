@@ -1,4 +1,4 @@
-define(function () {
+﻿define(function () {
   // Turkish
   return {
     inputTooLong: function (args) {
@@ -16,18 +16,18 @@ define(function () {
       return message;
     },
     loadingMore: function () {
-      return 'Daha fazla…';
+      return 'Daha fazlaâ€¦';
     },
     maximumSelected: function (args) {
-      var message = 'Sadece ' + args.maximum + ' seçim yapabilirsiniz';
+      var message = 'Sadece ' + args.maximum + ' seÃ§im yapabilirsiniz';
 
       return message;
     },
     noResults: function () {
-      return 'Sonuç bulunamadı';
+      return 'SonuÃ§ bulunamadÄ±';
     },
     searching: function () {
-      return 'Aranıyor…';
+      return 'AranÄ±yorâ€¦';
     }
   };
 });

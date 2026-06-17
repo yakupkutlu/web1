@@ -1,4 +1,4 @@
-module.exports = function(grunt) {
+﻿module.exports = function(grunt) {
   
   var package = grunt.file.readJSON('package.json');
 

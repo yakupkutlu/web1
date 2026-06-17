@@ -1,4 +1,4 @@
-/*!
+﻿/*!
  * bilal iscimen
  */
 $(function() {

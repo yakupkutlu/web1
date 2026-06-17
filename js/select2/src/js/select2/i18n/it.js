@@ -1,4 +1,4 @@
-define(function () {
+﻿define(function () {
   // Italian
   return {
     errorLoading: function () {
@@ -20,12 +20,12 @@ define(function () {
     inputTooShort: function (args) {
       var remainingChars = args.minimum - args.input.length;
 
-      var message = 'Per favore inserisci ' +remainingChars+ ' o più caratteri';
+      var message = 'Per favore inserisci ' +remainingChars+ ' o piÃ¹ caratteri';
 
       return message;
     },
     loadingMore: function () {
-      return 'Caricando più risultati…';
+      return 'Caricando piÃ¹ risultatiâ€¦';
     },
     maximumSelected: function (args) {
       var message = 'Puoi selezionare solo ' + args.maximum + ' element';
@@ -42,7 +42,7 @@ define(function () {
       return 'Nessun risultato trovato';
     },
     searching: function () {
-      return 'Sto cercando…';
+      return 'Sto cercandoâ€¦';
     }
   };
 });

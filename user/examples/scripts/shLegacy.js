@@ -1,4 +1,4 @@
-var dp = {
+﻿var dp = {
 	SyntaxHighlighter : {}
 };
 

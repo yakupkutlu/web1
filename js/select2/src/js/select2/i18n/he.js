@@ -1,18 +1,18 @@
-define(function () {
+﻿define(function () {
   // Hebrew
   return {
     errorLoading: function () {
-      return 'שגיאה בטעינת התוצאות';
+      return '×©×’×™××” ×‘×˜×¢×™× ×ª ×”×ª×•×¦××•×ª';
     },
     inputTooLong: function (args) {
       var overChars = args.input.length - args.maximum;
 
-      var message = 'נא למחוק ';
+      var message = '× × ×œ××—×•×§ ';
 
       if (overChars === 1) {
-        message += 'תו אחד';
+        message += '×ª×• ××—×“';
       } else {
-        message += overChars + ' תווים';
+        message += overChars + ' ×ª×•×•×™×';
       }
 
       return message;
@@ -20,37 +20,37 @@ define(function () {
     inputTooShort: function (args) {
       var remainingChars = args.minimum - args.input.length;
 
-      var message = 'נא להכניס ';
+      var message = '× × ×œ×”×›× ×™×¡ ';
 
       if (remainingChars === 1) {
-        message += 'תו אחד';
+        message += '×ª×• ××—×“';
       } else {
-        message += remainingChars + ' תווים';
+        message += remainingChars + ' ×ª×•×•×™×';
       }
 
-      message += ' או יותר';
+      message += ' ××• ×™×•×ª×¨';
 
       return message;
     },
     loadingMore: function () {
-      return 'טוען תוצאות נוספות…';
+      return '×˜×•×¢×Ÿ ×ª×•×¦××•×ª × ×•×¡×¤×•×ªâ€¦';
     },
     maximumSelected: function (args) {
-      var message = 'באפשרותך לבחור עד ';
+      var message = '×‘××¤×©×¨×•×ª×š ×œ×‘×—×•×¨ ×¢×“ ';
 
       if (args.maximum === 1) {
-        message += 'פריט אחד';
+        message += '×¤×¨×™×˜ ××—×“';
       } else {
-        message += args.maximum + ' פריטים';
+        message += args.maximum + ' ×¤×¨×™×˜×™×';
       }
 
       return message;
     },
     noResults: function () {
-      return 'לא נמצאו תוצאות';
+      return '×œ× × ××¦××• ×ª×•×¦××•×ª';
     },
     searching: function () {
-      return 'מחפש…';
+      return '××—×¤×©â€¦';
     }
   };
 });

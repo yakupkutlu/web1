@@ -1,4 +1,4 @@
-module('Data adapters - Array');
+﻿module('Data adapters - Array');
 
 var ArrayData = require('select2/data/array');
 var $ = require('jquery');

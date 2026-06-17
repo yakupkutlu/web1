@@ -1,15 +1,15 @@
-define(function () {
+﻿define(function () {
   // European Portuguese
   return {
     errorLoading: function () {
-      return 'Os resultados não puderam ser carregados.';
+      return 'Os resultados nÃ£o puderam ser carregados.';
     },
     inputTooLong: function (args) {
       var overChars = args.input.length - args.maximum;
 
       var message = 'Por favor apague ' + overChars + ' ';
 
-      message += overChars != 1 ? 'caracteres' : 'carácter';
+      message += overChars != 1 ? 'caracteres' : 'carÃ¡cter';
 
       return message;
     },
@@ -21,7 +21,7 @@ define(function () {
       return message;
     },
     loadingMore: function () {
-      return 'A carregar mais resultados…';
+      return 'A carregar mais resultadosâ€¦';
     },
     maximumSelected: function (args) {
       var message = 'Apenas pode seleccionar ' + args.maximum + ' ';
@@ -34,7 +34,7 @@ define(function () {
       return 'Sem resultados';
     },
     searching: function () {
-      return 'A procurar…';
+      return 'A procurarâ€¦';
     }
   };
 });

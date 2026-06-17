@@ -1,27 +1,27 @@
-define(function () {
+﻿define(function () {
   // Hungarian
   return {
     inputTooLong: function (args) {
       var overChars = args.input.length - args.maximum;
 
-      return 'Túl hosszú. ' + overChars + ' karakterrel több, mint kellene.';
+      return 'TÃºl hosszÃº. ' + overChars + ' karakterrel tÃ¶bb, mint kellene.';
     },
     inputTooShort: function (args) {
       var remainingChars = args.minimum - args.input.length;
 
-      return 'Túl rövid. Még ' + remainingChars + ' karakter hiányzik.';
+      return 'TÃºl rÃ¶vid. MÃ©g ' + remainingChars + ' karakter hiÃ¡nyzik.';
     },
     loadingMore: function () {
-      return 'Töltés…';
+      return 'TÃ¶ltÃ©sâ€¦';
     },
     maximumSelected: function (args) {
-      return 'Csak ' + args.maximum + ' elemet lehet kiválasztani.';
+      return 'Csak ' + args.maximum + ' elemet lehet kivÃ¡lasztani.';
     },
     noResults: function () {
-      return 'Nincs találat.';
+      return 'Nincs talÃ¡lat.';
     },
     searching: function () {
-      return 'Keresés…';
+      return 'KeresÃ©sâ€¦';
     }
   };
 });

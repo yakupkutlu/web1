@@ -1,4 +1,4 @@
-/*!
+﻿/*!
  * jQuery Form Plugin
  * version: 3.27.0-2013.02.06
  * @requires jQuery v1.5 or later

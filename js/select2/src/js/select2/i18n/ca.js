@@ -1,8 +1,8 @@
-define(function () {
+﻿define(function () {
   // Catalan
   return {
     errorLoading: function () {
-      return 'La càrrega ha fallat';
+      return 'La cÃ rrega ha fallat';
     },
     inputTooLong: function (args) {
       var overChars = args.input.length - args.maximum;
@@ -10,9 +10,9 @@ define(function () {
       var message = 'Si us plau, elimina ' + overChars + ' car';
 
       if (overChars == 1) {
-        message += 'àcter';
+        message += 'Ã cter';
       } else {
-        message += 'àcters';
+        message += 'Ã cters';
       }
 
       return message;
@@ -23,18 +23,18 @@ define(function () {
       var message = 'Si us plau, introdueix ' + remainingChars + ' car';
 
       if (remainingChars == 1) {
-        message += 'àcter';
+        message += 'Ã cter';
       } else {
-        message += 'àcters';
+        message += 'Ã cters';
       }
 
       return message;
     },
     loadingMore: function () {
-      return 'Carregant més resultats…';
+      return 'Carregant mÃ©s resultatsâ€¦';
     },
     maximumSelected: function (args) {
-      var message = 'Només es pot seleccionar ' + args.maximum + ' element';
+      var message = 'NomÃ©s es pot seleccionar ' + args.maximum + ' element';
 
       if (args.maximum != 1) {
         message += 's';
@@ -46,7 +46,7 @@ define(function () {
       return 'No s\'han trobat resultats';
     },
     searching: function () {
-      return 'Cercant…';
+      return 'Cercantâ€¦';
     }
   };
 });

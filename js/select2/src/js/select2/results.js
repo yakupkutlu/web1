@@ -1,4 +1,4 @@
-define([
+﻿define([
   'jquery',
   './utils'
 ], function ($, Utils) {

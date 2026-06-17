@@ -1,38 +1,38 @@
-/* jshint -W100 */
+﻿/* jshint -W100 */
 /* jslint maxlen: 86 */
 define(function () {
   // Farsi (Persian)
   return {
     errorLoading: function () {
-      return 'امکان بارگذاری نتایج وجود ندارد.';
+      return 'Ø§Ù…Ú©Ø§Ù† Ø¨Ø§Ø±Ú¯Ø°Ø§Ø±ÛŒ Ù†ØªØ§ÛŒØ¬ ÙˆØ¬ÙˆØ¯ Ù†Ø¯Ø§Ø±Ø¯.';
     },
     inputTooLong: function (args) {
       var overChars = args.input.length - args.maximum;
 
-      var message = 'لطفاً ' + overChars + ' کاراکتر را حذف نمایید';
+      var message = 'Ù„Ø·ÙØ§Ù‹ ' + overChars + ' Ú©Ø§Ø±Ø§Ú©ØªØ± Ø±Ø§ Ø­Ø°Ù Ù†Ù…Ø§ÛŒÛŒØ¯';
 
       return message;
     },
     inputTooShort: function (args) {
       var remainingChars = args.minimum - args.input.length;
 
-      var message = 'لطفاً تعداد ' + remainingChars + ' کاراکتر یا بیشتر وارد نمایید';
+      var message = 'Ù„Ø·ÙØ§Ù‹ ØªØ¹Ø¯Ø§Ø¯ ' + remainingChars + ' Ú©Ø§Ø±Ø§Ú©ØªØ± ÛŒØ§ Ø¨ÛŒØ´ØªØ± ÙˆØ§Ø±Ø¯ Ù†Ù…Ø§ÛŒÛŒØ¯';
 
       return message;
     },
     loadingMore: function () {
-      return 'در حال بارگذاری نتایج بیشتر...';
+      return 'Ø¯Ø± Ø­Ø§Ù„ Ø¨Ø§Ø±Ú¯Ø°Ø§Ø±ÛŒ Ù†ØªØ§ÛŒØ¬ Ø¨ÛŒØ´ØªØ±...';
     },
     maximumSelected: function (args) {
-      var message = 'شما تنها می‌توانید ' + args.maximum + ' آیتم را انتخاب نمایید';
+      var message = 'Ø´Ù…Ø§ ØªÙ†Ù‡Ø§ Ù…ÛŒâ€ŒØªÙˆØ§Ù†ÛŒØ¯ ' + args.maximum + ' Ø¢ÛŒØªÙ… Ø±Ø§ Ø§Ù†ØªØ®Ø§Ø¨ Ù†Ù…Ø§ÛŒÛŒØ¯';
 
       return message;
     },
     noResults: function () {
-      return 'هیچ نتیجه‌ای یافت نشد';
+      return 'Ù‡ÛŒÚ† Ù†ØªÛŒØ¬Ù‡â€ŒØ§ÛŒ ÛŒØ§ÙØª Ù†Ø´Ø¯';
     },
     searching: function () {
-      return 'در حال جستجو...';
+      return 'Ø¯Ø± Ø­Ø§Ù„ Ø¬Ø³ØªØ¬Ùˆ...';
     }
   };
 });

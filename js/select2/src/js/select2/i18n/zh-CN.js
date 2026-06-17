@@ -1,36 +1,36 @@
-define(function () {
+﻿define(function () {
   // Chinese (Simplified)
   return {
     errorLoading: function () {
-      return '无法载入结果。';
+      return 'æ— æ³•è½½å…¥ç»“æœã€‚';
     },
     inputTooLong: function (args) {
       var overChars = args.input.length - args.maximum;
 
-      var message = '请删除' + overChars + '个字符';
+      var message = 'è¯·åˆ é™¤' + overChars + 'ä¸ªå­—ç¬¦';
 
       return message;
     },
     inputTooShort: function (args) {
       var remainingChars = args.minimum - args.input.length;
 
-      var message = '请再输入至少' + remainingChars + '个字符';
+      var message = 'è¯·å†è¾“å…¥è‡³å°‘' + remainingChars + 'ä¸ªå­—ç¬¦';
 
       return message;
     },
     loadingMore: function () {
-      return '载入更多结果…';
+      return 'è½½å…¥æ›´å¤šç»“æœâ€¦';
     },
     maximumSelected: function (args) {
-      var message = '最多只能选择' + args.maximum + '个项目';
+      var message = 'æœ€å¤šåªèƒ½é€‰æ‹©' + args.maximum + 'ä¸ªé¡¹ç›®';
 
       return message;
     },
     noResults: function () {
-      return '未找到结果';
+      return 'æœªæ‰¾åˆ°ç»“æœ';
     },
     searching: function () {
-      return '搜索中…';
+      return 'æœç´¢ä¸­â€¦';
     }
   };
 });

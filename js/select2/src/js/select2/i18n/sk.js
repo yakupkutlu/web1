@@ -1,11 +1,11 @@
-define(function () {
+﻿define(function () {
   // Slovak
 
   // use text for the numbers 2 through 4
   var smallNumbers = {
     2: function (masc) { return (masc ? 'dva' : 'dve'); },
     3: function () { return 'tri'; },
-    4: function () { return 'štyri'; }
+    4: function () { return 'Å¡tyri'; }
   };
 
   return {
@@ -13,44 +13,44 @@ define(function () {
       var overChars = args.input.length - args.maximum;
 
       if (overChars == 1) {
-        return 'Prosím, zadajte o jeden znak menej';
+        return 'ProsÃ­m, zadajte o jeden znak menej';
       } else if (overChars >= 2 && overChars <= 4) {
-        return 'Prosím, zadajte o ' + smallNumbers[overChars](true) +
+        return 'ProsÃ­m, zadajte o ' + smallNumbers[overChars](true) +
           ' znaky menej';
       } else {
-        return 'Prosím, zadajte o ' + overChars + ' znakov menej';
+        return 'ProsÃ­m, zadajte o ' + overChars + ' znakov menej';
       }
     },
     inputTooShort: function (args) {
       var remainingChars = args.minimum - args.input.length;
 
       if (remainingChars == 1) {
-        return 'Prosím, zadajte ešte jeden znak';
+        return 'ProsÃ­m, zadajte eÅ¡te jeden znak';
       } else if (remainingChars <= 4) {
-        return 'Prosím, zadajte ešte ďalšie ' +
+        return 'ProsÃ­m, zadajte eÅ¡te ÄalÅ¡ie ' +
           smallNumbers[remainingChars](true) + ' znaky';
       } else {
-        return 'Prosím, zadajte ešte ďalších ' + remainingChars + ' znakov';
+        return 'ProsÃ­m, zadajte eÅ¡te ÄalÅ¡Ã­ch ' + remainingChars + ' znakov';
       }
     },
     loadingMore: function () {
-      return 'Loading more results…';
+      return 'Loading more resultsâ€¦';
     },
     maximumSelected: function (args) {
       if (args.maximum == 1) {
-        return 'Môžete zvoliť len jednu položku';
+        return 'MÃ´Å¾ete zvoliÅ¥ len jednu poloÅ¾ku';
       } else if (args.maximum >= 2 && args.maximum <= 4) {
-        return 'Môžete zvoliť najviac ' + smallNumbers[args.maximum](false) +
-          ' položky';
+        return 'MÃ´Å¾ete zvoliÅ¥ najviac ' + smallNumbers[args.maximum](false) +
+          ' poloÅ¾ky';
       } else {
-        return 'Môžete zvoliť najviac ' + args.maximum + ' položiek';
+        return 'MÃ´Å¾ete zvoliÅ¥ najviac ' + args.maximum + ' poloÅ¾iek';
       }
     },
     noResults: function () {
-      return 'Nenašli sa žiadne položky';
+      return 'NenaÅ¡li sa Å¾iadne poloÅ¾ky';
     },
     searching: function () {
-      return 'Vyhľadávanie…';
+      return 'VyhÄ¾adÃ¡vanieâ€¦';
     }
   };
 });

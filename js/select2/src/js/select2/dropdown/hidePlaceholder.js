@@ -1,4 +1,4 @@
-define([
+﻿define([
 
 ], function () {
   function HidePlaceholder (decorated, $element, options, dataAdapter) {

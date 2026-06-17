@@ -1,4 +1,4 @@
-define([
+﻿define([
   '../utils'
 ], function (Utils) {
   function BaseAdapter ($element, options) {

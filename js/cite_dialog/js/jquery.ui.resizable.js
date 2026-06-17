@@ -1,4 +1,4 @@
-/*!
+﻿/*!
  * jQuery UI Resizable 1.9.2
  * http://jqueryui.com
  *

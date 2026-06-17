@@ -1,4 +1,4 @@
-/**
+﻿/**
  * jQuery Galleriffic plugin
  *
  * Copyright (c) 2008 Trent Foley (http://trentacular.com)

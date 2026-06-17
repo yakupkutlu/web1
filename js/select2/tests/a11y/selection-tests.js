@@ -1,4 +1,4 @@
-module('Accessibility - All');
+﻿module('Accessibility - All');
 
 var BaseSelection = require('select2/selection/base');
 var SingleSelection = require('select2/selection/single');

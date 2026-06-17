@@ -1,4 +1,4 @@
-define(function () {
+﻿define(function () {
   // Malay
   return {
     errorLoading: function () {
@@ -15,7 +15,7 @@ define(function () {
       return 'Sila masukkan ' + remainingChars + ' atau lebih aksara';
     },
     loadingMore: function () {
-      return 'Sedang memuatkan keputusan…';
+      return 'Sedang memuatkan keputusanâ€¦';
     },
     maximumSelected: function (args) {
       return 'Anda hanya boleh memilih ' + args.maximum + ' pilihan';
@@ -24,7 +24,7 @@ define(function () {
       return 'Tiada padanan yang ditemui';
     },
     searching: function () {
-      return 'Mencari…';
+      return 'Mencariâ€¦';
     }
   };
 });

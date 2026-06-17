@@ -1,4 +1,4 @@
-define([
+﻿define([
   'jquery',
   './options',
   './utils',

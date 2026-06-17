@@ -1,4 +1,4 @@
-define(function () {
+﻿define(function () {
   // Swedish
   return {
     errorLoading: function () {
@@ -7,31 +7,31 @@ define(function () {
     inputTooLong: function (args) {
       var overChars = args.input.length - args.maximum;
 
-      var message = 'Vänligen sudda ut ' + overChars + ' tecken';
+      var message = 'VÃ¤nligen sudda ut ' + overChars + ' tecken';
 
       return message;
     },
     inputTooShort: function (args) {
       var remainingChars = args.minimum - args.input.length;
 
-      var message = 'Vänligen skriv in ' + remainingChars +
+      var message = 'VÃ¤nligen skriv in ' + remainingChars +
                     ' eller fler tecken';
 
       return message;
     },
     loadingMore: function () {
-      return 'Laddar fler resultat…';
+      return 'Laddar fler resultatâ€¦';
     },
     maximumSelected: function (args) {
-      var message = 'Du kan max välja ' + args.maximum + ' element';
+      var message = 'Du kan max vÃ¤lja ' + args.maximum + ' element';
 
       return message;
     },
     noResults: function () {
-      return 'Inga träffar';
+      return 'Inga trÃ¤ffar';
     },
     searching: function () {
-      return 'Söker…';
+      return 'SÃ¶kerâ€¦';
     }
   };
 });

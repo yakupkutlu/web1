@@ -1,4 +1,4 @@
-/*!
+﻿/*!
  * jQuery UI Position 1.9.2
  * http://jqueryui.com
  *

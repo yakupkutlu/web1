@@ -1,23 +1,23 @@
-define(function () {
+﻿define(function () {
   // Estonian
   return {
     inputTooLong: function (args) {
       var overChars = args.input.length - args.maximum;
 
-      var message = 'Sisesta ' + overChars + ' täht';
+      var message = 'Sisesta ' + overChars + ' tÃ¤ht';
 
       if (overChars != 1) {
         message += 'e';
       }
 
-      message += ' vähem';
+      message += ' vÃ¤hem';
 
       return message;
     },
     inputTooShort: function (args) {
       var remainingChars = args.minimum - args.input.length;
 
-      var message = 'Sisesta ' + remainingChars + ' täht';
+      var message = 'Sisesta ' + remainingChars + ' tÃ¤ht';
 
       if (remainingChars != 1) {
         message += 'e';
@@ -28,7 +28,7 @@ define(function () {
       return message;
     },
     loadingMore: function () {
-      return 'Laen tulemusi…';
+      return 'Laen tulemusiâ€¦';
     },
     maximumSelected: function (args) {
       var message = 'Saad vaid ' + args.maximum + ' tulemus';
@@ -47,7 +47,7 @@ define(function () {
       return 'Tulemused puuduvad';
     },
     searching: function () {
-      return 'Otsin…';
+      return 'Otsinâ€¦';
     }
   };
 });

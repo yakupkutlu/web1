@@ -1,4 +1,4 @@
-/*�örn Zaefferer, Paul McLanahan
+﻿/*ï¿½Ã¶rn Zaefferer, Paul McLanahan
  *
 	* Licensed under http://en.wikipedia.org/wiki/MIT_License
  *

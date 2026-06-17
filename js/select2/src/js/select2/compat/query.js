@@ -1,4 +1,4 @@
-define([
+﻿define([
 
 ], function () {
   function Query (decorated, $element, options) {
