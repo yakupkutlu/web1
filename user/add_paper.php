@@ -352,7 +352,7 @@ pattern=".{3,1000}" title="Please enter valid Title"  required>
                                                 ?>
                                                 <td id="td_name_author" class="name" colspan="3"
                                                     style="padding-left: 20%"><input type="text" id="correspond_author"
-                                                                                     name="name_author"
+                                                                                     name="correspond_author_display"
                                                                                      class="author_name"
                                                                                      value="<?php echo $name_surname; ?>"
                                                                                      readonly>
@@ -877,20 +877,19 @@ function myFunction4(){
     for (var i = 0, f; f = files[i]; i++) {
       output.push( 'file size:   ',
                   f.size, ' bytes   ');
-           var boyut=f.size;       
-    } 
+           var boyut=f.size;
+    }
     if(boyut>5000000){
     	boyut=Math.round(boyut/1000000);
     	 alert('File size '+boyut + ' MB. The size is over requirement (max 5MB) ' );
    
- 		} 
+ 		}
   }
 
-  document.getElementById('my_file').addEventListener('change', 'Uploding File Name : '+handleFileSelect, false);
-  
-  
-  
-  
+  var myFileInput = document.getElementById('myFile');
+  if (myFileInput) {
+      myFileInput.addEventListener('change', handleFileSelect, false);
+  }
 </script>
 
 

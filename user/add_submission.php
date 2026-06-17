@@ -65,12 +65,24 @@ $message=tirnak_replace($message);
 /// yazarları getir  
 $name_author = $_POST["all_authors"];
 
-$all_authors_email = $_POST["all_authors_email"];  //tes
-$all_authors_namesurname = implode(",", $_POST["name_author"]);  //test
-$all_authors_orcid= $_POST["all_authors_orcid"]; //text 
-$all_authors_institution= $_POST["all_authors_institution"];  //text 
+$all_authors_email = $_POST["all_authors_email"] ?? '';
+$all_authors_institution = $_POST["all_authors_institution"] ?? '';
+$all_authors_orcid = $_POST["all_authors_orcid"] ?? '';
+$all_authors_country = $_POST["all_authors_country"] ?? '';
 
-$all_authors_country= $_POST["all_authors_country"];  //text 
+$corname = $_POST["cur_author"] ?? '';
+
+$name1 = $_POST["name_author"] ?? [];
+if (!is_array($name1)) {
+    $name1 = $name1 === '' ? [] : [$name1];
+}
+$mail2 = $_POST["author_email_tmp"] ?? [];
+if (!is_array($mail2)) {
+    $mail2 = $mail2 === '' ? [] : [$mail2];
+}
+
+$all_authors_namesurname = implode(",", $name1);
+$all_authors_arcid2 = $all_authors_orcid; 
 
 /*
 echo $all_authors_institution;
@@ -156,8 +168,8 @@ for($i=0;$i<=count($yazarlar);$i++){
 
 
 $name_author=implode(", ", $yazarlar);       
-$all_authors_email= implode(",", $all_email); 
-$all_authors_arcid2= implode(",", $all_authors_orcid); 
+$all_authors_email = implode(",", array_filter(array_map('trim', $all_email)));
+$all_authors_arcid2 = $all_authors_orcid;
 
 /*
 echo $name_author;
