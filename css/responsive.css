@@ -1,0 +1,608 @@
+.image_full{
+    display:block;
+}
+
+.image_940{
+    display:none;
+}
+.image_799{
+    display:none;
+}
+.image_639{
+    display:none;
+}
+.image_479{
+    display:none;
+}
+.image_350{
+    display:none;
+}
+
+.announcment_vertical{
+    display: block;
+}
+
+.announcment_horizontal{
+    display: none;
+}
+
+@media screen and (max-width: 1320px) {
+
+
+}
+
+@media screen and (max-width: 1120px) {
+
+}
+
+
+@media screen and (max-width: 1023px) {
+
+
+}
+
+@media screen and (max-width: 940px) {
+
+    #header {
+        width: 798px;
+    }
+
+    #banner {
+        width: 798px;
+    }
+
+    #slideshow {
+        width: 798px;
+    }
+    /* Header image */
+    .image_full{
+        display:none;
+    }
+
+    .image_940{
+        display:block;
+    }
+
+    .image_799{
+        display:none;
+    }
+
+    .image_639{
+        display:none;
+    }
+
+    .image_479{
+        display:none;
+    }
+
+    .image_350{
+        display:none;
+    }
+    /* Header image */
+
+    ul.slideshow {
+        width: 798px;
+    }
+    #welcome {
+        width: 798px;
+    }
+
+    #site_content {
+        width: 798px;
+        padding: 0;
+     }
+
+    #content {
+        width: 500px;
+    }
+
+    .content_container_midle{
+        width: 520px;
+        padding: 5px;
+        margin-right: 0px;
+        float: left;
+    }
+
+    .content_item {
+        width: 500px;
+    }
+
+    .content_container {
+        width: 225px;
+    }
+
+    #content_grey{
+        width: 798px;
+    }
+
+    .content_grey_container_box {
+        width: 200px;
+        margin: 10px 10px 10px 10px;
+
+    }
+
+    .istatistik{
+        width: 70%;
+    }
+
+    .button_archive {
+        margin-left: 156px;
+    }
+
+    .mail-input-name {
+        width: 120px;
+        float: left;
+    }
+
+    .mail-input-name-input {
+        width: 350px;
+        float: right;
+    }
+
+}
+/*    940   */
+
+
+@media screen and (max-width: 799px) {
+
+    #header {
+        width: 638px;
+    }
+
+    #banner {
+        width: 638px;
+    }
+
+    #slideshow {
+        width: 638px;
+        height: 200px;
+
+    }
+
+    /* Header image */
+    .image_full{
+        display:none;
+    }
+
+    .image_940{
+        display:none;
+    }
+
+    .image_799{
+        display:block;
+    }
+
+    .image_639{
+        display:none;
+    }
+
+    .image_479{
+        display:none;
+    }
+
+    .image_350{
+        display:none;
+    }
+    /* Header image */
+
+    ul.slideshow {
+        width: 638px;
+        height: 200px;
+    }
+
+    #welcome {
+        width: 638px;
+    }
+
+    #site_content {
+        width: 638px;
+        padding: 0;
+    }
+
+    #content {
+        width: 350px;
+    }
+
+    .content_container_midle{
+        width: 350px;
+        padding: 5px;
+        margin-right: 0px;
+        float: left;
+    }
+
+    .content_item {
+        width: 350px;
+    }
+
+    .content_container {
+        width: 150px;
+    }
+
+    #content_grey{
+        width: 638px;
+    }
+
+    .content_grey_container_box {
+        width: 150px;
+        margin: 10px 10px 10px 10px;
+
+    }
+
+    .button_dynamic {
+        width: 150px;
+
+    }
+
+    .rsform-name-surname{
+        width: 168px;
+    }
+
+    .rsform-text-box{
+        width: 168px;
+    }
+    .formCaption {
+        width: 100px;
+    }
+
+    .mail-input-name{
+        width:120px;
+    }
+
+    .mail-input-name-input{
+        width:200px;
+    }
+
+    .istatistik{
+        width: 100%;
+    }
+
+    .button_archive {
+        margin-left: 70px;
+    }
+
+
+}
+/*    799   */
+@media screen and (max-width: 639px) {
+
+    #header {
+        width: 478px;
+        height: 55px;
+    }
+
+    #banner {
+        width: 478px;
+        height: 35px;
+    }
+
+    .sidebar_container_menu {
+        width: 50px;
+    }
+
+    #menu{
+        display: none;
+    }
+
+    #mobile-menu{
+        display: block;
+    }
+
+    #slideshow {
+        width: 478px;
+        height: 180px;
+    }
+
+    /* Header image */
+    .image_full{
+        display:none;
+    }
+
+    .image_940{
+        display:none;
+    }
+
+    .image_799{
+        display:none;
+    }
+
+    .image_639{
+        display:block;
+    }
+
+    .image_479{
+        display:none;
+    }
+
+    .image_350{
+        display:none;
+    }
+    /* Header image */
+
+    /* Announcment */
+    .announcment_vertical{
+        display: none;
+    }
+
+    .announcment_horizontal{
+        display: block;
+    }
+    /* Announcment */
+
+    ul.slideshow {
+        width: 478px;
+        height: 180px;
+    }
+
+    .slideshow img {
+        width: 60%;
+    }
+
+    #welcome {
+        width: 478px;
+    }
+
+    #site_content {
+        width: 478px;
+        padding: 0;
+    }
+
+    #content {
+        width: 350px;
+    }
+
+    .content_container_midle{
+        width: 450px;
+        padding: 5px;
+        margin-right: 0px;
+        float: left;
+    }
+
+    .content_item {
+        width: 350px;
+    }
+
+    .content_container {
+        width: 150px;
+    }
+
+    #content_grey{
+        width: 478px;
+    }
+
+    .content_grey_container_box {
+        width: 150px;
+        margin: 10px 10px 10px 10px;
+
+    }
+
+    .button_dynamic {
+        width: 150px;
+
+    }
+
+    .istatistik{
+        width: 80%;
+    }
+
+    .button_archive {
+        margin-left: 120px;
+    }
+
+    .mail-input-name{
+        width:120px;
+    }
+
+    .mail-input-name-input{
+        width:200px;
+    }
+
+
+
+}
+
+
+
+
+@media screen and (max-width: 479px) {
+
+    #header {
+        width: 349px;
+        height: 45px;
+    }
+
+    #banner {
+        width: 349px;
+        height: 25px;
+    }
+
+    #slideshow {
+        width: 349px;
+        height: 140px;
+    }
+
+    /* Header image */
+    .image_full{
+        display:none;
+    }
+
+    .image_940{
+        display:none;
+    }
+
+    .image_799{
+        display:none;
+    }
+
+    .image_639{
+        display:none;
+    }
+
+    .image_479{
+        display:block;
+    }
+
+    .image_350{
+        display:none;
+    }
+    /* Header image */
+
+    ul.slideshow {
+        width: 349px;
+        height: 140px;
+    }
+
+    .announcment_horizontal {
+        text-align: center;
+        width: 229px;
+        height: 200px;
+        margin-left: 80px;
+        margin-top: 30px;
+        background-color: #fff;
+        font-size: 14px;
+        font-weight: bold;
+        text-decoration: none;
+        color: #000;
+        border-radius: 2px;
+        border: 2px solid #006A68;
+    }
+
+    .slideshow img {
+        width: 50%;
+    }
+
+    #welcome {
+        width: 349px;
+        height: 25px;
+    }
+
+    #welcome H1 {
+        font-size: 20px;
+    }
+
+    #site_content {
+        width: 349px;
+        padding: 0;
+    }
+
+    #content {
+        width: 250px;
+    }
+
+    .content_container_midle{
+        width: 320px;
+        padding: 5px;
+        margin-right: 0px;
+        float: left;
+    }
+
+    .content_item {
+        width: 250px;
+    }
+
+    .content_container {
+        width: 150px;
+    }
+
+    #content_grey{
+        width: 478px;
+    }
+
+    .content_grey_container_box {
+        width: 150px;
+        margin: 10px 10px 10px 10px;
+
+    }
+
+    .button_dynamic {
+        width: 150px;
+
+    }
+
+    .istatistik{
+        width: 100%;
+    }
+
+    .formBody-revised {
+        padding: 10px 1px 10px 1px;
+        width: 338px;
+        margin-left: -2px;
+    }
+
+    .button_archive {
+        margin-left: 55px;
+    }
+
+    .mail-input-name{
+        width:90px;
+    }
+
+    .mail-input-name-input{
+        width:160px;
+    }
+
+}
+@media screen and (max-width: 350px) {
+    #header {
+        width: 300px;
+        height: 40px;
+    }
+
+    #banner {
+        width: 300px;
+        height: 20px;
+    }
+
+    #slideshow {
+        width: 300px;
+        height: 120px;
+    }
+
+    /* Header image */
+    .image_full{
+        display:none;
+    }
+
+    .image_940{
+        display:none;
+    }
+
+    .image_799{
+        display:none;
+    }
+
+    .image_639{
+        display:none;
+    }
+
+    .image_479{
+        display:none;
+    }
+
+    .image_350{
+        display:block;
+    }
+    /* Header image */
+
+    ul.slideshow {
+        width: 300px;
+        height: 120px
+    }
+
+    .slideshow img {
+        width: 50%;
+    }
+
+    #welcome {
+        width: 300px;
+        height: 20px;
+    }
+
+    #welcome H1 {
+        font-size: 15px;
+    }
+
+    .formBody-revised {
+        width: 300px;
+    }
+
+}
