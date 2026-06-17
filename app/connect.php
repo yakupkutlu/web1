@@ -8,11 +8,11 @@ $db = "yakupkut_nesciences22";
 include("defination.php");
  
 
-$sunucu =getenv("DB_NAME") ;
+$sunucu = getenv("DB_HOST");
 $kullanici = getenv("DB_USER");
 $sifre = getenv("DB_PASSWORD");
 
-$db = getenv("DB_HOST");
+$db = getenv("DB_NAME");
 
 //$baglanti = @mysql_connect($sunucu,$kullanici,$sifre);
 //mysql_set_charset('utf8',$baglanti);
