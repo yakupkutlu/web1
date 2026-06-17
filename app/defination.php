@@ -1,8 +1,4 @@
-
-
-<?php  
-
-
+<?php
 
 // journal bilgileri 
 $journalISSN ="3108-6438";
