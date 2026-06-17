@@ -6,12 +6,13 @@ $sifre = "";
 $db = "yakupkut_nesciences22";
 */
 include("defination.php");
+ 
 
-$sunucu = "localhost";
-$kullanici = "tethysjournal_jner";
-$sifre = "journal1ner*";
+$sunucu =getenv("DB_NAME") ;
+$kullanici = getenv("DB_USER");
+$sifre = getenv("DB_PASSWORD");
 
-$db = "tethysjournal_jner";
+$db = getenv("DB_HOST");
 
 //$baglanti = @mysql_connect($sunucu,$kullanici,$sifre);
 //mysql_set_charset('utf8',$baglanti);
