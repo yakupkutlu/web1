@@ -16,20 +16,8 @@ echo "Database Host: $sunucu\n";
 echo "Database User: $kullanici\n";
 echo "Database Name: $db\n";
 echo "Database Password: $sifre\n";
-die("Debugging: Database connection parameters printed. Exiting for debugging purposes.");
 
-if (!$sunucu || !$kullanici || !$db) {
-    // Fall back to local settings if environment variables are not configured.
-    $sunucu = "127.0.0.1";
-    $kullanici = "root";
-    $sifre = "";
-    $db = "yakupkut_nesciences22";
-} else {
-    // If environment vars are set, prefer TCP rather than socket when possible.
-    if ($sunucu === 'localhost') {
-        $sunucu = '127.0.0.1';
-    }
-}
+ 
 
 $baglanti = @mysqli_connect($sunucu, $kullanici, $sifre, $db);
 if (!$baglanti) {
