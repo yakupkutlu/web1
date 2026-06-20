@@ -12,10 +12,14 @@ $kullanici = getenv("DB_USER");
 $sifre = getenv("DB_PASSWORD");
 $db = getenv("DB_NAME");
 
-echo "Database Host: $sunucu\n";
-echo "Database User: $kullanici\n";
-echo "Database Name: $db\n";
-echo "Database Password: $sifre\n";
+if (!$sunucu || !$kullanici || !$db) {
+    $sunucu = "127.0.0.1";
+    $kullanici = "root";
+    $sifre = "";
+    $db = "yakupkut_nesciences22";
+}
+
+ 
 
  
 

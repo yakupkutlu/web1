@@ -1,14 +1,11 @@
 
-
 <?php
-include("./app/connect.php");
-include('./system.php');
+include(__DIR__ . "/app/connect.php");
+include(__DIR__ . '/system.php');
 
 $page = @$_GET["page"];
 //error_reporting(0);
-
 ?>
-
 
 <html lang="en">
 
