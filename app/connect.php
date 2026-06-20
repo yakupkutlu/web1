@@ -16,6 +16,7 @@ echo "Database Host: $sunucu\n";
 echo "Database User: $kullanici\n";
 echo "Database Name: $db\n";
 echo "Database Password: $sifre\n";
+die("Debugging: Database connection parameters printed. Exiting for debugging purposes.");
 
 if (!$sunucu || !$kullanici || !$db) {
     // Fall back to local settings if environment variables are not configured.
