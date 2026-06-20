@@ -12,6 +12,11 @@ $kullanici = getenv("DB_USER");
 $sifre = getenv("DB_PASSWORD");
 $db = getenv("DB_NAME");
 
+echo "Database Host: $sunucu\n";
+echo "Database User: $kullanici\n";
+echo "Database Name: $db\n";
+echo "Database Password: $sifre\n";
+
 if (!$sunucu || !$kullanici || !$db) {
     // Fall back to local settings if environment variables are not configured.
     $sunucu = "127.0.0.1";
