@@ -1,8 +1,5 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
+ 
 
 function Yonlendirme2($URL)
 {
@@ -527,7 +524,7 @@ function UploadProfile()
         if (mysqli_query($baglanti,$sql)) {
 
             MesajGoster("Bilgileriniz Güncellendi");
-           // session_start();
+            
             ob_start();
             $_SESSION["user"] = $user_name;
             $_SESSION["pass"] = $pass;
@@ -568,7 +565,7 @@ function UpdatePassword()
         if (mysqli_query($baglanti,$sql)) {
 
             MesajGoster("Bilgileriniz Güncellendi");
-          //  session_start();
+          
             ob_start();
             $_SESSION["user"] = $user_name_form;
             $_SESSION["pass"] = $pass;
@@ -610,7 +607,7 @@ function son_kayit_ID_getir()
 
 
 
-//session_start();
+ 
 if (!isset($_GET['user_name'])) $user_name = "";
 else $user_name = $_GET['user_name'];
 
