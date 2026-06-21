@@ -268,21 +268,21 @@ pattern=".{3,1000}" title="Please enter valid Title"  required>
 
                                     <input type="text" placeholder="Reviewer's Name Surname" name="reviewName1" pattern=".{3, 40}" title="Please enter valid name"
                                            id="reviewName1" class="form-control"  style="width: 27%!important; display: inline-block!important;" required>
-                                    <input type="text" placeholder="Reviewer's E-Mail" name="reviewMail1" pattern="[A-z0-9\-_\.]+@[A-z0-9\-]+\.[A-z0-9\-\.]+"
+                                    <input type="email" placeholder="Reviewer's E-Mail" name="reviewMail1" pattern="[A-z0-9\-_\.]+@[A-z0-9\-]+\.[A-z0-9\-\.]+"
                                            id="reviewMail1" class="form-control " style="width: 27%!important;display: inline-block!important;" required>
                                     <input type="text" placeholder="Affiliation (University/Enstitu)" name="affiliation1" pattern=".{3, 40}" title="Please enter valid name"
                                            id="affiliation1"  class="form-control "  style="width: 27%!important;display: inline-block!important;" required>
                                     <br>
                                     <input type="text" placeholder="Reviewer's Name Surname" name="reviewName2" pattern=".{3, 40}" title="Please enter valid name"
                                            id="reviewName2"  class="form-control "  style="width: 27%!important; display: inline-block!important;" required>
-                                    <input type="text" placeholder="Reviewer's E-Mail" name="reviewMail2" pattern="[A-z0-9\-_\.]+@[A-z0-9\-]+\.[A-z0-9\-\.]+" title="Please enter valid mail adress"
+                                    <input type="email" placeholder="Reviewer's E-Mail" name="reviewMail2" pattern="[A-z0-9\-_\.]+@[A-z0-9\-]+\.[A-z0-9\-\.]+" title="Please enter valid mail adress"
                                            id="reviewMail2"  class="form-control "  style="width: 27%!important;display: inline-block!important;" required>
                                     <input type="text" placeholder="Affiliation (University/Enstitu)" name="affiliation2"
                                            id="affiliation2"  class="form-control "  style="width: 27%!important;display: inline-block!important;" required>
                                     <br>
                                     <input type="text" placeholder="Reviewer's Name Surname" name="reviewName3" pattern=".{3, 40}" title="Please enter valid name"
                                            id="reviewName3"  class="form-control "  style="width: 27%!important; display: inline-block!important;" required>
-                                    <input type="text" placeholder="Reviewer's E-Mail" name="reviewMail3" pattern="[A-z0-9\-_\.]+@[A-z0-9\-]+\.[A-z0-9\-\.]+"
+                                    <input type="email" placeholder="Reviewer's E-Mail" name="reviewMail3" pattern="[A-z0-9\-_\.]+@[A-z0-9\-]+\.[A-z0-9\-\.]+"
                                            id="reviewMail3"  class="form-control "  style="width: 27%!important;display: inline-block!important;" required>
                                     <input type="text" placeholder="Affiliation (University/Enstitu)" name="affiliation3" pattern=".{3, 40}" title="Please enter valid name"
                                            id="affiliation3" class="form-control "   style="width: 27%!important;display: inline-block!important;" required>
@@ -304,7 +304,7 @@ pattern=".{3,1000}" title="Please enter valid Title"  required>
 
 
                                     <input type="text" name="all_authors" id="all_authors" style="display:none ">
-                                    <input type="text" name="all_authors_email" id="all_authors_email" style="display:none ">
+                                    <input type="email" name="all_authors_email" id="all_authors_email" style="display:none ">
                                     <input type="text" name="all_authors_institution" id="all_authors_institution" style="display:none ">
                                     <input type="text" name="all_authors_orcid" id="all_authors_orcid" style="display:none ">
                                     
@@ -328,7 +328,7 @@ pattern=".{3,1000}" title="Please enter valid Title"  required>
                                                 <td class="name" id="td_name_author" onclick="showLine(this)">
                                                     <input type="text" id="name_author" name="name_author[]"
                                                            class="author_name" readonly>
-                                                    <input type="text" id="author_email_tmp" name="author_email_tmp[]"
+                                                    <input type="email" id="author_email_tmp" name="author_email_tmp[]"
                                                            class="author_name" readonly>
 													<input type="text" id="all_authors_orcid_tmp" name="all_authors_orcid_tmp[]"
                                                            class="author_name" readonly>	 
@@ -952,7 +952,7 @@ function myFunction3(){
                     <input type="text" placeholder="Enter Last Name" id="last_name" required>
 
                     <label><b>Email Address</b></label>
-                    <input type="text" placeholder="Enter Email Address" id="authors_email" required>
+                    <input type="email" placeholder="Enter Email Address" id="authors_email" required>
 
                     <label><b>ORCID Number</b></label>
                     <input type="text" placeholder="Enter ORCID Number" id="authors_orcid" required>
@@ -1014,7 +1014,7 @@ function myFunction3(){
                     <input type="text" placeholder="Enter Last Name" id="last_name_2" required>
 
                     <label><b>Email Address</b></label>
-                    <input type="text" placeholder="Enter Email Address" id="authors_email_2" required>
+                    <input type="email" placeholder="Enter Email Address" id="authors_email_2" required>
 
                     <label><b>ORCID Number</b></label>
                     <input type="text" placeholder="Enter ORCID Number" id="authors_orcid_2" required>
