@@ -1,23 +1,24 @@
-<?php
+<?php  
+
 
 // journal bilgileri 
-$journalISSN ="3108-6438";
-$journalName="Journal of Natural and Engineering Research";
-$journalShortName="jner ";
-$journalDomain="www.journalner.com";
+$journalISSN ="3108-608X";
+$journalName="Journal of Environmental Research and Engineering";
+$journalShortName="JERE ";
+$journalDomain="www.journalere.com";
 
-$journalMail="info@journalner.com";
+$journalMail="info@journalere.com";
 
 // logo resim maillerde gidecek
-$journalLogo="../img/journalner.png";
+$journalLogo="../img/journalere.png";
 
-$journalEditorChef="Dr. Cemal Turan";
+$journalEditorChef="Editor ";
 
-$jEditorChefMail="cemal.turan@yahoo.com";
+$jEditorChefMail="editor@journalere.com";
 
-$jEditorManagerMail="yakupkutlu@gmail.com";
+$jEditorManagerMail="managereditor@journalere.com";
 
-$paperIDstart="jner";
+$paperIDstart="jere";
 
 
 

@@ -1,0 +1,9 @@
+.git
+.gitignore
+Dockerfile
+docker-compose.yml
+docker-compose.override.yml
+*.md
+*.log
+node_modules
+npm-debug.log
