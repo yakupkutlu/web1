@@ -4,26 +4,16 @@
 	 background:#ffff;
   position:absolute;
   color:#fff;
+	/*
+	 * Old fragile loops removed. They assumed specific numeric offsets
+	 * and caused undefined index / strlen() warnings when arrays were
+	 * empty or differently indexed. Normalization logic below handles
+	 * building `$yazarlar` and `$all_email` safely.
+	 */
   top:50%;
-  left:50%;
-  padding:15px;
-  -ms-transform: translateX(-50%) translateY(-50%);
-  -webkit-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-}
-</style>
-<!--
-<div class ="loading"> <img  src="loading.gif" alt="processing"/> </div>
--->
-
-<?php
-
-
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-//include("../app/connect.php");
 //include("../system.php");
+	$yazarlar[0] = $name_surname; // original first author preserved
+
 //include("function.php");
 $s_user = $_SESSION["user"];
 if(!isset($s_user)){
@@ -79,7 +69,24 @@ if (!is_array($name1)) {
 $mail2 = $_POST["author_email_tmp"] ?? [];
 if (!is_array($mail2)) {
     $mail2 = $mail2 === '' ? [] : [$mail2];
-}
+
+	$yazarlar = [$name_surname];
+	$all_email = [];
+
+	for ($i = 0; $i < count($name1); $i++) {
+		$author = trim($name1[$i] ?? '');
+		if ($author !== '' && strlen($author) > 2) {
+			$yazarlar[] = $author;
+			$all_email[] = isset($mail2[$i]) ? trim($mail2[$i]) : '';
+		}
+	}
+
+	foreach ($yazarlar as $i => $author) {
+		if ($corname !== '' && trim($corname) === $author) {
+			$yazarlar[$i] = $author . "*";
+			$correspond_yazar_indis = $i;
+		}
+	}
 
 $all_authors_namesurname = implode(",", $name1);
 $all_authors_arcid2 = $all_authors_orcid; 
@@ -98,14 +105,21 @@ echo $all_authors_email;
 
 
 
-$corname = $_POST["cur_author"]; 
+$corname = $_POST["cur_author"] ?? '';
 
+$name1 = $_POST["name_author"] ?? [];
+$mail2 = $_POST["author_email_tmp"] ?? [];
+$all_authors_orcid_tmp = $_POST["all_authors_orcid_tmp"] ?? [];
 
-
-$name1 = $_POST["name_author"];
-$mail2 = $_POST["author_email_tmp"];
-
-$all_authors_orcid_tmp= $_POST["all_authors_orcid_tmp"]; //array
+if (!is_array($name1)) {
+    $name1 = $name1 === '' ? [] : [$name1];
+}
+if (!is_array($mail2)) {
+    $mail2 = $mail2 === '' ? [] : [$mail2];
+}
+if (!is_array($all_authors_orcid_tmp)) {
+    $all_authors_orcid_tmp = $all_authors_orcid_tmp === '' ? [] : [$all_authors_orcid_tmp];
+}
 
 
 
@@ -139,6 +153,8 @@ Yakup Kutlu
 
 $yazarlar[0]=$name_surname;
 
+if (0) {
+
 
 
 
@@ -167,8 +183,37 @@ for($i=0;$i<=count($yazarlar);$i++){
  
 
 
-$name_author=implode(", ", $yazarlar);       
+$closing_for_block = true;
+}
+
 $all_authors_email = implode(",", array_filter(array_map('trim', $all_email)));
+
+// Normalize and rebuild author list safely (handles missing indexes/nulls)
+$yazarlar = isset($yazarlar) && is_array($yazarlar) ? $yazarlar : [$name_surname];
+$all_email = isset($all_email) && is_array($all_email) ? $all_email : [];
+
+// If name1/mail2 arrays exist, merge them into yazarlar/all_email preserving order
+if (!empty($name1) && is_array($name1)) {
+	foreach ($name1 as $idx => $nm) {
+		$nm = trim($nm);
+		if ($nm !== '' && strlen($nm) > 2) {
+			// avoid duplicating the surname at index 0
+			if (!in_array($nm, $yazarlar, true)) {
+				$yazarlar[] = $nm;
+			}
+			$all_email[] = isset($mail2[$idx]) ? trim($mail2[$idx]) : '';
+		}
+	}
+}
+
+foreach ($yazarlar as $i => $authorName) {
+	if ($corname !== '' && trim($corname) === $authorName) {
+		$yazarlar[$i] = $authorName . "*";
+		$correspond_yazar_indis = $i;
+	}
+}
+
+$name_author = implode(", ", $yazarlar);
 $all_authors_arcid2 = $all_authors_orcid;
 
 /*
