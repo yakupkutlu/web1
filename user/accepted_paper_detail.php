@@ -1,13 +1,10 @@
 <?php
 
- 
-
-
 function isim_parcalama($gelen)
 {
     $isim = explode(" ", trim($gelen));
     $ad = substr($isim[0], 0, 1);
-    $soyad =end($isim);;
+    $soyad = end($isim);
     $soyad_ad = $soyad . ", " . $ad . ".";
     return $soyad_ad;
 }
@@ -22,31 +19,31 @@ function isim_parcalama_jgate($gelen)
     return $tmp;
 }
 
-$p_id = $_GET["p_id"];
-if (isset($_GET["process"])) $process = $_GET["process"];
-else $process = "";
+$p_id = $_GET["p_id"] ?? "";
+$process = $_GET["process"] ?? "";
+
 $pQuery = "Select * from submission_list where id='$p_id'";
 $paperProp = mysqli_fetch_object(mysqli_query($baglanti,$pQuery));
-$paperTitle = $paperProp->title;
-$authors = $paperProp->authors;
-$keywords1 = $paperProp->keyword;
-$pub_abstract = $paperProp->abstract;
-$references = $paperProp->references;
-$volume = $paperProp->volume;
 
- 
-$coverImage=$paperProp->coverImage;             
-$submission_date=$paperProp->submission_date;  
-$accept_date=$paperProp->accept_date;
-$publish_date=$paperProp->publish_date;
-$available_date=$paperProp->available_date;
-$doi = $paperProp->doi;
-$no = $paperProp->no;
-$pp = $paperProp->pp;
-$start_page = $paperProp->start_page;
-$year = $paperProp->year;
-$earlyview = $paperProp->earlyview;
-$yturu= $paperProp-> yayin_turu;
+// PHP 8 Uyumluluk: Nesnelerin boş gelme ihtimaline karşı ?? operatörü eklendi
+$paperTitle = $paperProp->title ?? "";
+$authors = $paperProp->authors ?? "";
+$keywords1 = $paperProp->keyword ?? "";
+$pub_abstract = $paperProp->abstract ?? "";
+$references = $paperProp->references ?? "";
+$volume = $paperProp->volume ?? "";
+$coverImage = $paperProp->coverImage ?? "";             
+$submission_date = $paperProp->submission_date ?? "";  
+$accept_date = $paperProp->accept_date ?? "";
+$publish_date = $paperProp->publish_date ?? "";
+$available_date = $paperProp->available_date ?? "";
+$doi = $paperProp->doi ?? "";
+$no = $paperProp->no ?? "";
+$pp = $paperProp->pp ?? "";
+$start_page = $paperProp->start_page ?? "";
+$year = $paperProp->year ?? "";
+$earlyview = $paperProp->earlyview ?? "";
+$yturu = $paperProp->yayin_turu ?? "";
 
 if ($process == "publish") {
     $gelen_yazarlar_jgate = "";
@@ -60,39 +57,37 @@ if ($process == "publish") {
         $download_str = "SELECT * FROM submission_list WHERE id = '$p_id'";
         $download_sorgu = @mysqli_query($baglanti,$download_str);
 
-
         $k = mysqli_fetch_object($download_sorgu);
-        $title = $k->title;
-        $yazar1 = $k->name_surname;
-        $yazar = explode(",", $k->authors);
-        $keywords1 = $k->keyword;
+        // PHP 8 Uyumluluk
+        $title = $k->title ?? "";
+        $yazar1 = $k->name_surname ?? "";
+        $yazar_str = $k->authors ?? "";
+        $yazar = explode(",", $yazar_str);
+        $keywords1 = $k->keyword ?? "";
         $anahtar_kelime = explode(",", $keywords1);
-        $abstract = $k->abstract;
-        $abstract =tirnak_replace($abstract);
-        $volume=$k->volume;
-        $no=$k->no;
-        $download_link = $k->paperfile1;  
-        $journalDomain="https://".$journalDomain;
+        $abstract = $k->abstract ?? "";
+        $abstract = tirnak_replace($abstract);
+        $volume = $k->volume ?? "";
+        $no = $k->no ?? "";
+        $download_link = $k->paperfile1 ?? "";  
+        $journalDomain = "https://" . ($journalDomain ?? "");
         $download_link = str_replace("..", $journalDomain, $download_link);
-        $doi = $k->doi;
-        $paperID = $k->paperID;
-        $yturu= $k-> yayin_turu;
-        $publish_date=$k->publish_date;
-        $year = $k->year;
-        $pp = $k->pp;$endpage=  explode("-", $pp);
-        $end_page=$endpage[1];
+        $doi = $k->doi ?? "";
+        $paperID = $k->paperID ?? "";
+        $yturu = $k->yayin_turu ?? "";
+        $publish_date = $k->publish_date ?? "";
+        $year = $k->year ?? "";
+        $pp = $k->pp ?? ""; 
+        $endpage = explode("-", $pp);
+        $end_page = $endpage[1] ?? "";
         
-         $references =$k-> references;
-         $references = str_replace("'", "", $references);
-         $references = str_replace('"', '', $references);
-         
-         
-      
+        $references = $k->references ?? "";
+        $references = str_replace("'", "", $references);
+        $references = str_replace('"', '', $references);
 
-        //XMLFİLES için
+        // XMLFİLES için
         $gelen_yazarlar = "<ags:creatorpersonal>" . isim_parcalama($yazar1) . "</ags:creatorpersonal>" . "\n";
         for ($i = 0; $i < count($yazar); $i++) {
-
             $yazarlar[$i] = "<ags:creatorpersonal>" . isim_parcalama($yazar[$i]) . "</ags:creatorpersonal>" . "\n";
             $gelen_yazarlar = $gelen_yazarlar . $yazarlar[$i];
         }
@@ -104,12 +99,11 @@ if ($process == "publish") {
 
         create_XML($title, $gelen_yazarlar, $year, $keywords, $references, $abstract, $download_link, $pp, $volume, $no, $paperID);
 
-// end : XMLFİLES için
-
-// JGATE için
+        // JGATE için
         for ($i = 0; $i < count($yazar); $i++) {
             $yazar_ad_soyad = isim_parcalama_jgate($yazar[$i]);
-            $yazar_email = mysqli_fetch_object(mysqli_query($baglanti,"select * from users where name_surname='$yazar[$i]'"))->email;
+            $yazar_email_sorgu = mysqli_fetch_object(mysqli_query($baglanti,"select email from users where name_surname='$yazar[$i]'"));
+            $yazar_email = $yazar_email_sorgu->email ?? ""; // PHP 8 Uyumluluk
 
             $yazarlar_jgate[$i] = "\t" . "<Author>" . "\n" .
                 "\t\t" . "<FirstName>" . $yazar_ad_soyad[0] . " </FirstName>" . "\n" .
@@ -121,26 +115,19 @@ if ($process == "publish") {
 
             $gelen_yazarlar_jgate = $gelen_yazarlar_jgate . $yazarlar_jgate[$i];
         }
-// end : JGATE için
         create_jgate($title, $volume, $year, $gelen_yazarlar_jgate, $abstract, $keywords, $download_link, $paperID);
 
-// OA için
+        // OA için
         for ($i = 0; $i < count($yazar); $i++) {
             $yazar_ad_soyad = isim_parcalama_jgate($yazar[$i]);
             $yazarlar_oa[$i] = "\t\t\t" . "<dc:creator>" . $yazar_ad_soyad[1] . "," . $yazar_ad_soyad[0] . "</dc:creator>\n";
-
             $gelen_yazarlar_OA = $gelen_yazarlar_OA . $yazarlar_oa[$i];
         }
-// end : OA için
-
         create_OA($title, $year, $gelen_yazarlar_OA, $abstract, $paperID);
         
-// ICI coperniqus index
-
- 
+        // ICI coperniqus index
         for ($i = 0; $i < count($yazar); $i++) {
             $yazar_ad_soyad = isim_parcalama_jgate($yazar[$i]);
-          
             $yazarlar_ICI[$i] = "\t" . "<author>" . "\n" .
                 "\t\t" . "<name>" . $yazar_ad_soyad[0] . "</name>" . "\n" .
                 "\t\t" . "<polishAffiliation>false</polishAffiliation>" . "\n" .
@@ -149,50 +136,35 @@ if ($process == "publish") {
                 "\t\t" . "<order> " . ($i+1) . "</order>" . "\n" .
                 "\t\t" . "<role>AUTHOR</role>" . "\n" .
                 "\t" . "</author>" . "\n";
-           
-
             $gelen_yazarlar_ICI = $gelen_yazarlar_ICI . $yazarlar_ICI[$i];
         }
         
-    
-      $keywords="";
-       for ($i = 0; $i < count($anahtar_kelime); $i++) {
+        $keywords="";
+        for ($i = 0; $i < count($anahtar_kelime); $i++) {
             $gelen_anahtar[$i] = "<keyword> " . trim($anahtar_kelime[$i]) . "</keyword>" . "\n";
             $keywords = $keywords . $gelen_anahtar[$i];
         }
-        
-      	
        
         $ref = explode("<br>", $references);
-        
-       
         $j=1;
-		for ($i = 0; $i < count($ref); $i++) {
-		    if($ref[$i]!=""){
-		      
+        for ($i = 0; $i < count($ref); $i++) {
+            if($ref[$i]!=""){
             $gelen_ref[$i] =  "\t" . "<reference>" . "\n" .
                 "\t\t" . "<unparsedContent>" . trim($ref[$i]) . "</unparsedContent>" . "\n" . 
                 "\t\t" . "<order>" . ($j++) . "</order>" . "\n" .
                 "\t" . "</reference>" . "\n"; 
                 $references_ICI = $references_ICI . $gelen_ref[$i];
-		    }
+            }
         }
+        $references_ICI = str_replace("&","",$references_ICI);
 
- 			   $references_ICI = str_replace("&","",$references_ICI);
-
-       
-         create_XML_ICI($title, $volume, $no, $year, $gelen_yazarlar_ICI, $abstract, $keywords, $download_link, $paperID, $doi, $start_page, $end_page, $references_ICI,$publish_date );
-      
-        
-        
-        
-        
-        
+        create_XML_ICI($title, $volume, $no, $year, $gelen_yazarlar_ICI, $abstract, $keywords, $download_link, $paperID, $doi, $start_page, $end_page, $references_ICI,$publish_date );
 
         header("Refresh:1 URL=index.php?page=publishing_papers&m_id=12&rnb=2");
 
     } else echo "veritabanı hatası";
 }
+
 if ($process == "publishing") { ?>
     <form class="form-horizontal form-label-left" method="post" action="publish_paper_page.php?id=<?php echo $p_id; ?>">
         <div class="form-group">
@@ -279,21 +251,8 @@ if ($process == "publishing") { ?>
                        value="<?php echo $start_page; ?>">
             </div>
         </div>
-<!--
-   	 <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Type of Paper<span
-                        class="required">*</span>
-            </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-                <input type="text" name="yturu" required="required" class="form-control col-md-7 col-xs-12"
-                       value="<?php //echo $yturu; ?>">
-            </div>
-        </div>
         
-        -->
   <div class="form-group">
-      
-      
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Type of Paper<span class="required">*</span></label>
     <div class="col-md-6 col-sm-6 col-xs-12">
         <select name="yturu" required="required" class="form-control col-md-7 col-xs-12">
@@ -306,9 +265,7 @@ if ($process == "publishing") { ?>
     </div>
 </div>
 
-
-        
- 	 <div class="form-group">
+     <div class="form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name"><span
                         class="required"></span>
             </label>
@@ -316,7 +273,6 @@ if ($process == "publishing") { ?>
                  1 (for article)<br> 2 (for Symposium Article) <br> 3 (for Abstract) <br> 4 (for Book)
             </div>
         </div>
-
 
        <div class="form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">DOI <span
@@ -336,9 +292,6 @@ if ($process == "publishing") { ?>
                        value="<?php echo $year; ?>">
             </div>
         </div>
-
-
-
 
     <!-- DATES -->
      <div class="form-group">
@@ -379,9 +332,6 @@ if ($process == "publishing") { ?>
             </div>
         </div>
         
-        
-        
-        
          <div class="form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Graphical Abstract<span
                         class="required">*</span>
@@ -390,15 +340,6 @@ if ($process == "publishing") { ?>
                <img width='300px' src='<?php echo $coverImage; ?>' alt ="<?php echo $coverImage; ?>" >
             </div>
         </div>
-        
-         
-                
-
-
-
-
-
-
 
   <br><br>
   
@@ -407,10 +348,6 @@ if ($process == "publishing") { ?>
                         class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-                 
-                       
-                  
-                  
                    <input type="radio" id="yes" name="earlyview" value="1"  <?php if($earlyview==1){ echo "checked";} ?> >
                                     <label for="yes">Show in Early View Page</label><br>
                                     <input type="radio" id="no" name="earlyview" value="0"  <?php if($earlyview==0){ echo "checked";} ?>>
@@ -420,10 +357,6 @@ if ($process == "publishing") { ?>
             </div>
         </div>
  
-
-                                     
-
-
                                        <br><br>
 
         <div class="form-group">
@@ -451,20 +384,16 @@ if ($process == "proof_message") {
 <?php
     $sql_proff = mysqli_query($baglanti,"Select * from mailTable WHERE label ='proof_correction_mail'");
     $sql_proff_text  = mysqli_fetch_object($sql_proff);
-    $text = $sql_proff_text->text;
+    $text = $sql_proff_text->text ?? ""; // PHP 8 Uyumluluk
     
     $text=replace_mail_content($text);
     echo $text;
- 
-  
  ?>  
                 </textarea>
             </div>
         </div>
 
-
         <div class="form-group">
-
             <div style="text-align: center">
                 <br>
                 <button type="submit" class="btn btn-primary">Send</button>
@@ -481,39 +410,43 @@ if ($process == "proof") {
     include("function.php");
     include("../app/connect.php");
     
-    $p_id = $_GET["id"];
-    $message = tirnak_replace($_POST["message"]);
+    $p_id = $_GET["id"] ?? ""; // PHP 8 Uyumluluk
+    $message = tirnak_replace($_POST["message"] ?? "");
     
     $sql_proff = mysqli_query($baglanti,"Select * from submission_list WHERE id ='$p_id'");
     $paperfile_info = mysqli_fetch_object($sql_proff);
-    $paperfile = $paperfile_info->paperfile1;
-    $to = $paperfile_info->email;
+    
+    // PHP 8 Uyumluluk
+    $paperfile = $paperfile_info->paperfile1 ?? "";
+    $to = $paperfile_info->email ?? "";
+
     if (preg_match_all("/\.pdf/", $paperfile)) {
         $sql = "update submission_list set publish_status=1,msg_proof_author='$message' WHERE id ='$p_id'";
         if (mysqli_query($baglanti,$sql)) {
             $log_state = $p_id . " id li makale PROOF A GÖNDERİLDİ";
             log_all($_SESSION["user"], $log_state);
-            $subject="Proof Correction";
+            
+            // Mail şablonunu dinamik yapıya bağladık
+            $subject = mail_sablonu("proof_correction_baslik");
             mail_gonder($to, $subject, $message);
+            
             MesajGoster("Paper Submitted Successfully .... [OK]");
             header("Refresh:1 URL=index.php?page=publishing_papers&m_id=12&rnb=2");
 
         } else {
-            $log_state = "HATA ->" . $p_id . " id li makale PROOF A HATASI ->" . mysqli_error();
+            $log_state = "HATA ->" . $p_id . " id li makale PROOF A HATASI ->" . mysqli_error($baglanti);
             log_all($_SESSION["user"], $log_state);
         }
     } else {
         MesajGoster("Please upload the paper pdf file");
         header("Refresh:1 URL=index.php?page=publishing_papers&m_id=12&rnb=2");
     }
-
 }
 
 if ($process == "") { ?>
     <center><h3><?php echo $paperTitle; ?></h3></center>
     <center><h5><?php echo $authors; ?></h5></center><br>
     <form class="form-horizontal form-label-left" method="post" action="publish_paper_page.php?id=<?php echo $p_id; ?>">
-    
     
      <div class="form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Title<span
@@ -553,11 +486,6 @@ if ($process == "") { ?>
             </div>
         </div>
 
-    
-    
-    
-    
-    
         <div class="form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">References:<span
                         class="required">*</span>
@@ -610,10 +538,7 @@ if ($process == "") { ?>
             </div>
         </div>
         
-        
   <div class="form-group">
-      
-      
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Type of Paper<span class="required">*</span></label>
     <div class="col-md-6 col-sm-6 col-xs-12">
         <select name="yturu" required="required" class="form-control col-md-7 col-xs-12">
@@ -688,9 +613,6 @@ if ($process == "") { ?>
             </div>
         </div>
         
-        
-        
-        
          <div class="form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Graphical Abstract<span
                         class="required">*</span>
@@ -699,15 +621,6 @@ if ($process == "") { ?>
                <img width='300px' src='<?php echo $coverImage; ?>' alt ="<?php echo $coverImage; ?>" >
             </div>
         </div>
-        
-         
-                
-
-
-
-
-
-
 
   <br><br>
   
@@ -716,10 +629,6 @@ if ($process == "") { ?>
                         class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-                 
-                       
-                  
-                  
                    <input type="radio" id="yes" name="earlyview" value="1"  <?php if($earlyview==1){ echo "checked";} ?> >
                                     <label for="yes">Show in Early View Page</label><br>
                                     <input type="radio" id="no" name="earlyview" value="0"  <?php if($earlyview==0){ echo "checked";} ?>>
@@ -728,9 +637,6 @@ if ($process == "") { ?>
 <hr><span class="anahtar">*required</span>      
             </div>
         </div>
- 
-
-
 
                                        <br><br>
 
@@ -745,7 +651,3 @@ if ($process == "") { ?>
     <?php
 }
 ?>
-
-
-
-

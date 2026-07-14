@@ -294,7 +294,10 @@ function ResetPass(){
         log_all($email,$log_state);
         $sql_tmp="update users set pass='$pass_md5' WHERE email='$email'";
         if (mysqli_query($baglanti,$sql_tmp)){
-            mail_gonder($email,"Password Reset Request",$message);
+            $mail_baslik = mail_sablonu("sifre_sifirlama_baslik");
+            $mail_icerik = mail_sablonu("sifre_sifirlama_icerik", $pass);
+            mail_gonder($email, $mail_baslik, $mail_icerik);
+            
             $log_state="Sifre sıfırlama";
             log_all($email,$log_state);
             sistem_mesaji("sifre_sifirlama_basarili");
