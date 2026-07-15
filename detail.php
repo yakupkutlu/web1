@@ -1,7 +1,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <?php    
-	$page= $_GET["page"];
-    $id = $_GET["paperID"];
+	$page= $_GET["page"] ?? "";
+    $id = $_GET["paperID"] ?? 0;
 
 
 
@@ -22,7 +22,7 @@ $sorgu = @mysqli_query($baglanti,$accept_str);
         $count = @mysqli_num_rows($sorgu);
         if($count>0){
             $bilgi = @mysqli_fetch_array($sorgu);
-            $title = $bilgi["title"];
+            $title = $bilgi["title"] ?? "";
 			/*
             if($bilgi["authors"] == ""){ // EGER DIGER YAZARLAR YOK ISE
                 $authors = $bilgi["name_surname"];
@@ -30,37 +30,37 @@ $sorgu = @mysqli_query($baglanti,$accept_str);
                 $authors = $bilgi["name_surname"]."*, ".$bilgi["authors"];
             }
 			*/
-			$authors = $bilgi["authors"];
-            $abstract = $bilgi["abstract"];
+			$authors = $bilgi["authors"] ?? "";
+            $abstract = $bilgi["abstract"] ?? "";
     
-            $keywords = $bilgi["keyword"];
-            $volume = $bilgi["volume"];
-            $no = $bilgi["no"];
-            $pp = $bilgi["pp"];
-            $year = $bilgi["year"];
-            $yayin_turu = $bilgi["yayin_turu"];
-            $references1 = $bilgi["references"];
+            $keywords = $bilgi["keyword"] ?? "";
+            $volume = $bilgi["volume"] ?? "";
+            $no = $bilgi["no"] ?? "";
+            $pp = $bilgi["pp"] ?? "";
+            $year = $bilgi["year"] ?? "";
+            $yayin_turu = $bilgi["yayin_turu"] ?? "";
+            $references1 = $bilgi["references"] ?? "";
 
             $references2 = str_replace("'", "", $references1);
             $references = str_replace('"', '', $references2);
 
-            $accept_date = $bilgi["accept_date"];
-            $publish_date = $bilgi["publish_date"];
-            $downloadlink = $bilgi["paperfile1"];
-            $submission_date = $bilgi["submission_date"];
-            $available_date = $bilgi["available_date"];
+            $accept_date = $bilgi["accept_date"] ?? "";
+            $publish_date = $bilgi["publish_date"] ?? "";
+            $downloadlink = $bilgi["paperfile1"] ?? "";
+            $submission_date = $bilgi["submission_date"] ?? "";
+            $available_date = $bilgi["available_date"] ?? "";
             
 
-            $view = $bilgi["view"];
-            $download = $bilgi["download"];
+            $view = $bilgi["view"] ?? "";
+            $download = $bilgi["download"] ?? "";
 
             //$cited=$bilgi["cited"];
             $sorgu_cited = mysqli_query($baglanti,"SELECT * FROM `cited_table` WHERE `sub_id`=$id");
             $cited = @mysqli_num_rows($sorgu_cited);
-            $paperID=$bilgi["paperID"];
-			$doi = $bilgi["doi"];
+            $paperID=$bilgi["paperID"] ?? "";
+			$doi = $bilgi["doi"] ?? "";
 
-            $id = $bilgi["id"];
+            $id = $bilgi["id"] ?? $id;
 
             $journal = $journalName;
             

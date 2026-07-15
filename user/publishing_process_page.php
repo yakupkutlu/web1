@@ -1,12 +1,13 @@
 <?php
-$p_id = $_GET["p_id"];
-$s_user=$_SESSION["user"];
-$s_user_name=mysqli_fetch_object(mysqli_query($baglanti,"select name_surname from users where user_name='$s_user'"))->name_surname;
-$p_info_sql=mysqli_query($baglanti,"select * from submission_list where id='$p_id'");
-$p_info=mysqli_fetch_object($p_info_sql);
-$p_author=$p_info->name_surname;
-$p_author_mail=$p_info->email;
-$p_paper_id=$p_info->paperID;
+$p_id = $_GET["p_id"] ?? "";
+$s_user = $_SESSION["user"] ?? "";
+$s_user_obj = mysqli_fetch_object(mysqli_query($baglanti,"select name_surname from users where user_name='$s_user'"));
+$s_user_name = $s_user_obj ? $s_user_obj->name_surname : "";
+$p_info_sql = mysqli_query($baglanti,"select * from submission_list where id='$p_id'");
+$p_info = mysqli_fetch_object($p_info_sql);
+$p_author = $p_info ? $p_info->name_surname : "";
+$p_author_mail = $p_info ? $p_info->email : "";
+$p_paper_id = $p_info ? $p_info->paperID : "";
 
 
 $p_sql="update submission_list set publish_status=1 where id='$p_id'";

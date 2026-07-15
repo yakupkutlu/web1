@@ -5,13 +5,14 @@ include("../system.php");
 session_start();
 ob_start();
 
-$s_user = $_SESSION["user"];
+$s_user = $_SESSION["user"] ?? "";
 
-$reviewer = $_GET['r_name'];
-$editor = mysqli_fetch_object(mysqli_query($baglanti,"Select * from users where user_name='$s_user'"))->name_surname;
-$sub_id = $_GET["id"];
-$url_back = $_GET["url_back"];
-$request_id=$_GET['request_id'];
+$reviewer = $_GET['r_name'] ?? "";
+$editor_obj = mysqli_fetch_object(mysqli_query($baglanti,"Select * from users where user_name='$s_user'"));
+$editor = $editor_obj ? $editor_obj->name_surname : "";
+$sub_id = $_GET["id"] ?? "";
+$url_back = $_GET["url_back"] ?? "";
+$request_id = $_GET['request_id'] ?? "";
 
 $url_back_link=str_replace('-','&',$url_back);
 
@@ -19,29 +20,22 @@ $date = date("Y-m-d");
 $revizion_query="update review_requests set revizion_status=1 where id='$request_id'";
 mysqli_query($baglanti,$revizion_query);
 
-$paper = mysqli_fetch_array(mysqli_query($baglanti,"SELECT * FROM submission_list WHERE id=$sub_id"));
-$msno = "MS No: " . strtoupper($paper["paperID"]) . "<br>";
-$subject = $journalShortName." your Requested Revision " . strtoupper($paper["paperID"]);
-$title = "Title: " . $paper["title"] . "<br><br>";
+$paper = mysqli_fetch_array(mysqli_query($baglanti,"SELECT * FROM submission_list WHERE id='$sub_id'"));
+$msno = "MS No: " . strtoupper($paper["paperID"] ?? "") . "<br>";
+$subject = ($journalShortName ?? "")." your Requested Revision " . strtoupper($paper["paperID"] ?? "");
+$title = "Title: " . ($paper["title"] ?? "") . "<br><br>";
 
 
 $rQuery = mysqli_query($baglanti,"Select * from users where user_name='$reviewer'");
 $reviewer_Query = mysqli_fetch_object($rQuery);
-$reviewer_id = $reviewer_Query->id;
-$reviewer_user_name = $reviewer_Query->user_name;
-$reviewer_mail = $reviewer_Query->email;
-$rName = $reviewer_Query->name_surname;
-$rNewUser = $reviewer_Query->new_user;
+$reviewer_id = $reviewer_Query ? $reviewer_Query->id : "";
+$reviewer_user_name = $reviewer_Query ? $reviewer_Query->user_name : "";
+$reviewer_mail = $reviewer_Query ? $reviewer_Query->email : "";
+$rName = $reviewer_Query ? $reviewer_Query->name_surname : "";
+$rNewUser = $reviewer_Query ? $reviewer_Query->new_user : "";
 // request_state hakemlik isteği 0 beklemede 1 kabul
 
-$message='Dear '.$rName.' ,<br>
-Since you have requested to see the revision of the MS titled as '.$title.' for a possible publication in '.$journalName.' ('.$journalShortName.'), we are sending you the revised MS by author and author’s correction list and file.<br> 
-Please send us your decision within 4 days,<br>
-
-Please go to '.$journalShortName.' Editorial System :<a href="'.$journalDomain.'"> '.$journalShortName.'</a> and login as Reviewer to check the MS and send us your decision within 4 days,<br>
-Sincerely,<br>
-'.$editor.'<br>
-Editor ';
+$message = mail_sablonu("hakem_revizyon_talebi", $rName . "||" . $title . "||" . ($journalName ?? "") . "||" . ($journalShortName ?? "") . "||" . ($journalDomain ?? "") . "||" . $editor);
 
 $sendQuery = "insert into review_requests (paperid,reviewerid,request_date,editor_name,review_status)
                         values ('$sub_id','$reviewer_id','$date','$editor',1)";

@@ -4,23 +4,23 @@ include("function.php");
 include("../system.php");
 session_start();
 ob_start();
-$role_number=$_GET["rnb"];
+$role_number=$_GET["rnb"] ?? "";
 if (yetki_kontrol($role_number, "sentBackToAuthor")) {
-    $s_user = $_SESSION["user"];
+    $s_user = $_SESSION["user"] ?? "";
 
-    $editor = $_POST["editor"];
-    $editor_message=$_POST["editor_message"]."</br></br>".$editor."</br>Editor";
-    $editor_message=tirnak_replace($editor_message);
-    $sub_id = $_POST["id"];
+    $editor = $_POST["editor"] ?? "";
+    $editor_message = ($_POST["editor_message"] ?? "") . mail_sablonu("editor_imza", ($journalName ?? "") . "||" . ($journalDomain ?? ""));
+    $editor_message = tirnak_replace($editor_message);
+    $sub_id = $_POST["id"] ?? "";
     $date = date("Y-m-d");
 
-    $m_id = $_GET["m_id"];//menu id
+    $m_id = $_GET["m_id"] ?? "";//menu id
 
     $sql = "select * from submission_list where id='$sub_id'";
     $paper = mysqli_fetch_array(mysqli_query($baglanti,$sql));
 
-    $author_mail = $paper["email"];
-    $title = "Title: " . $paper["title"];
+    $author_mail = $paper["email"] ?? "";
+    $title = "Title: " . ($paper["title"] ?? "");
     $subject = $journalShortName." M&S-Editor Decision";
 
 if (mail_gonder($author_mail, $subject, $editor_message)){

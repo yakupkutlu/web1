@@ -7,7 +7,7 @@ if(isset($_POST['aranacak'])){
 header("Location: index.php?page=archive&genel_aranan=$gelen");
 }else{
 
-$gelen=$_POST['aranacak'];
+$gelen=$_POST['aranacak'] ?? "";
 /*
 $gelen=$_POST['aranan'];
 $page=$_GET["page"];

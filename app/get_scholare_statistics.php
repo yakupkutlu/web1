@@ -62,21 +62,22 @@ function ara($bas, $son, $yazi)
 
 function checkupdate($year,$baglanti)
 {
-   
+   $updatedata = null;
+   $updateday = null;
    
    $sql0="select * from statisticsTable WHERE year='".$year."'";
    
    if($sql_announcement=mysqli_query($baglanti,$sql0)){
             while ($data=mysqli_fetch_array($sql_announcement)){
-                $updatedata= $data["updated"];
-					 $updateday= $data["updateDay"];
+                $updatedata= $data["updated"] ?? null;
+					 $updateday= $data["updateDay"] ?? null;
             }
             
 	} 
 	    
 	
    //	echo $updateday."--".$updatedata;
-    if($updateday!=date("d")) { 
+    if(($updateday ?? "") != date("d")) { 
         	if(!isset($updatedata)) {
         		 //	echo $updateday."***".$updatedata;
         		//$sql0="UPDATE statisticsTable SET totalCite='$totalcites[0]' hIndexScore='$hindex[0]' i10IndexScore='$i10index[0]' updated='1' WHERE year='$year'";

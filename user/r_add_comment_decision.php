@@ -216,9 +216,7 @@ if (mysqli_query($baglanti,$mQuery)){
     
    // }
     
-    $message.='<br /> Sincerely,<br /> Editor<br /><br /><br /><br /><br /><br /><br />
-<p>_______________________________________________________________________</p>
-<p><strong>'.$journalName.'</strong><br />(<a href="http://'.$journalDomain.'">'.$journalDomain.'</a>)</p>';    
+    $message .= mail_sablonu("editor_imza", ($journalName ?? "") . "||" . ($journalDomain ?? ""));    
      
      
      

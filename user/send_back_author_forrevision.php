@@ -12,57 +12,31 @@ include("../system.php");
 session_start();
 ob_start();
 
-$s_user = $_SESSION["user"];
+$s_user = $_SESSION["user"] ?? "";
 
-$paper_id=$_GET["paper_id"];
+$paper_id = $_GET["paper_id"] ?? "";
 
-  //MesajGoster("Please Wait..... ");
- 
-//$state=$_GET["state"];
- 
- 
- 
+$ptQuery = mysqli_query($baglanti,"select * from submission_list where id='$paper_id'");
+$paper_prop = mysqli_fetch_object($ptQuery);
 
-$ptQuery=mysqli_query($baglanti,"select * from submission_list where id='$paper_id'");
-$paper_prop=mysqli_fetch_object($ptQuery);
+$paper_title = $paper_prop ? $paper_prop->title : "";
+$pID = $paper_prop ? $paper_prop->paperID : "";
+$to = $paper_prop ? $paper_prop->user_name : "";
+$editorDecision = $paper_prop ? $paper_prop->editorDecision : "";
+$decision_value = $paper_prop ? $paper_prop->accept_status : "";
 
-$accepted_paper_type=$editorDecision;
- 
+$accepted_paper_type = $editorDecision;
 
-$paper_title=$paper_prop->title;
-$pID=$paper_prop->paperID;
-$to=$paper_prop->user_name;
-$editorDecision=$paper_prop->editorDecision;
-$decision_value=$paper_prop->accept_status;
- 
- 
-$edQuery=mysqli_query($baglanti,"select * from review_decision where `value`='$decision_value'");
-$editor_decision=mysqli_fetch_object($edQuery)->decision;
+$edQuery = mysqli_query($baglanti,"select * from review_decision where `value`='$decision_value'");
+$edObj = mysqli_fetch_object($edQuery);
+$editor_decision = $edObj ? $edObj->decision : "";
 
-$mailQuery="select * from users where user_name='$to'";
-$author_mail=mysqli_fetch_object(mysqli_query($baglanti,$mailQuery))->email;
+$mailQuery = "select * from users where user_name='$to'";
+$authorObj = mysqli_fetch_object(mysqli_query($baglanti,$mailQuery));
+$author_mail = $authorObj ? $authorObj->email : "";
 
-/*
-  <div class="radio">
-<input type="radio" class="flat" checked name="iCheck"
-                                       value="1-accepted"> accepted   
-<input type="radio" class="flat" checked name="iCheck"
-                                       value="2-accepted after minor revisions"> accepted after minor revisions 
-<input type="radio" class="flat" checked name="iCheck"
-                                       value="4-accepted after major revisions"> accepted after major revisions           
-<input type="radio" class="flat" checked name="iCheck"
-                                       value="0-rejected"> rejected 
-  </div>
-*/
-
-
-
- 
- 
-//$editorDecision=$_POST["editor_decision"]; % tablodaki editor_decision
-$accepted_paper_type=$editorDecision;
-
-$message = mysqli_fetch_object(mysqli_query($baglanti,"SELECT * FROM `mailTable` WHERE `label` = 'editor_desicion_revision'"))->text; 
+$mailObj = mysqli_fetch_object(mysqli_query($baglanti,"SELECT * FROM `mailTable` WHERE `label` = 'editor_desicion_revision'"));
+$message = $mailObj ? $mailObj->text : "";
 
 
 $message=replace_mail_content($message);
@@ -84,9 +58,7 @@ $date=date('Y-m-d');
 
  
  
-     $message.='<br /> Sincerely,<br /> Editor<br /><br /><br /><br /><br /><br /><br />
-<p>_______________________________________________________________________</p>
-<p><strong>'.$journalName.'</strong><br />(<a href="http://'.$journalDomain.'">'.$journalDomain.'</a>)</p>';    
+     $message .= mail_sablonu("editor_imza", ($journalName ?? "") . "||" . ($journalDomain ?? ""));    
      
     
 

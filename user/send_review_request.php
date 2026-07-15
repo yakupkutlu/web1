@@ -12,37 +12,41 @@ if (session_status() === PHP_SESSION_NONE) {
 	ob_start();
 }
 
-$s_user = $_SESSION["user"];
+$s_user = $_SESSION["user"] ?? null;
 if(!isset($s_user)){
-	  echo $_POST["s_user"];
+	  echo $_POST["s_user"] ?? "";
 	  MesajGoster("Error.  please contact Management Editor of Journal .");
 	  exit();
 	 
 }
   
-$s_user = $_SESSION["user"];
+$s_user = $_SESSION["user"] ?? "";
 
 echo "<br>";
-$reviewer = $_POST["text_selected"];
-$editor = $_POST["editor"];
-$sub_id = $_POST["id"];
+$reviewer = $_POST["text_selected"] ?? "";
+$editor = $_POST["editor"] ?? "";
+$sub_id = $_POST["id"] ?? "";
 $date = date("Y-m-d");
 
-$raw_text = mysqli_fetch_array(mysqli_query($baglanti,"SELECT `text` FROM mailTable WHERE `label`='review'"));
+$raw_text_obj = mysqli_fetch_array(mysqli_query($baglanti,"SELECT `text` FROM mailTable WHERE `label`='review'"));
+$raw_text = $raw_text_obj["text"] ?? "";
 
+$paper = mysqli_fetch_array(mysqli_query($baglanti,"SELECT * FROM submission_list WHERE id='$sub_id'"));
+if (!$paper) {
+    echo "Paper not found!";
+    exit();
+}
 
-
-$paper = mysqli_fetch_array(mysqli_query($baglanti,"SELECT * FROM submission_list WHERE id=$sub_id"));
-$msno = "MS No: " . strtoupper($paper["paperID"]) . "<br>";
-$subject = $journalShortName."invitation to review artical " . strtoupper($paper["paperID"]);
-$title = "Title: " . $paper["title"] . "<br><br>";
-$abstract = $paper["abstract"];
+$msno = "MS No: " . strtoupper($paper["paperID"] ?? "") . "<br>";
+$subject = ($journalShortName ?? "")."invitation to review artical " . strtoupper($paper["paperID"] ?? "");
+$title = "Title: " . ($paper["title"] ?? "") . "<br><br>";
+$abstract = $paper["abstract"] ?? "";
 $tmp = str_replace("[abstract]", $abstract, $raw_text);
 $text = str_replace("[editor]", $editor, $tmp);
 
- $text = str_replace("[[journalName]]",$journalName,$text );
- $text = str_replace("[[journalDomain]]",$journalDomain,$text ); 
-$m_id = $_GET["m_id"];
+ $text = str_replace("[[journalName]]",$journalName ?? "",$text );
+ $text = str_replace("[[journalDomain]]",$journalDomain ?? "",$text ); 
+$m_id = $_GET["m_id"] ?? "";
 
 
 //------------------
@@ -102,14 +106,7 @@ if ($reviewer != "")
 	
 			
             $tmpText1 = str_replace("[reviewer]", $rName, $text);
-            $acceptance_link = '<br><a href="http://'.$journalDomain.'/index.php?page=login">Click to indicate an answer for reviewing this paper</a><br>';
-            $acceptance_link .= "<br> Attention: If the link is not working please copy the below address and paste to the browsers adress bar in order to access the page";
-            $acceptance_link .= '<br>https://'.$journalDomain.'/index.php?page=login';
-            $acceptance_link .= "<br><br><font color=\'red\'>Your Username: ".$reviewer_user_name."</font>";
-            $acceptance_link .= "<br>If you forget or don't know your password you can use the Reset Password form.</br>";
-            $acceptance_link .= '<br><a href="https://'.$journalDomain.'/index.php?page=reset_pass">Click to access the Reset Password form</a><br>';
-            $acceptance_link .= '<br> Attention: If the link is not working please copy the below address and paste to the browsers adress bar in order to access the page';
-            $acceptance_link .= '<br>https://'.$journalDomain.'/index.php?page=reset_pass';
+            $acceptance_link = mail_sablonu("hakem_kabul_linki", $journalDomain . "||" . $reviewer_user_name);
 
 
     
