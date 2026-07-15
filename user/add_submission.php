@@ -20,9 +20,9 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-//include("../app/connect.php");
-//include("../system.php");
-//include("function.php");
+include("../app/connect.php");
+include("../system.php");
+include("function.php");
 
 // PHP 8 Uyumluluğu: Session kontrolü
 $s_user = $_SESSION["user"] ?? null;
