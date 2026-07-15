@@ -19,8 +19,8 @@
 <body class="nav-md">
 <?php
 include("../app/connect.php");
-$id = $_GET['id'];
-if (isset($_GET['process'])) $process=$_GET['process'];
+$id = $_GET['id'] ?? "";
+if (isset($_GET['process'])) $process=$_GET['process'] ?? "";
 else $process="";
 ?>
 <!-- page content -->
@@ -234,7 +234,7 @@ else $process="";
 
 <!-- review content -->
 <?php if (isset($_GET["page"])) {
-    if ($_GET["page"] == "review") { ?>
+    if (($_GET["page"] ?? "") == "review") { ?>
         <div class="x_panel" style="min-height: 726px; margin-bottom: 0px; display: block;">
             <br class="x_content">
 

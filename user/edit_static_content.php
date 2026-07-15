@@ -57,7 +57,7 @@ if (yetki_kontrol($role_number, "edit_menu")) {
     <!-- Textarea gets replaced with TinyMCE, remember HTML in a textarea should be encoded -->
     <?php
 
-    $edit_page = $_GET["edit_page"];
+    $edit_page = $_GET["edit_page"] ?? "";
     if ($edit_page == "content") {
         echo "<center><a class='btn btn-round btn-warning inbox-title'>Edit CONTENT</a></center>
         <table id=\"datatable\" class=\"table table-striped table-bordered\">
@@ -105,7 +105,7 @@ if (yetki_kontrol($role_number, "edit_menu")) {
     }
     //END content sayfası
     if ($edit_page == "content_edit") {
-        $p_id = $_GET["p_id"];
+        $p_id = $_GET["p_id"] ?? "";
         $pQuery = "Select * from submission_list where id=$p_id";
         $paperProp = mysqli_fetch_object(mysqli_query($baglanti,$pQuery));
         $paperTitle = $paperProp->title;
@@ -259,7 +259,7 @@ if (yetki_kontrol($role_number, "edit_menu")) {
 
 
 
-$edit_mail = $_GET["edit_mail"];
+$edit_mail = $_GET["edit_mail"] ?? "";
 
 
 

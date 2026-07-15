@@ -2,8 +2,8 @@
 
 function editorial_correction(){
     include("../app/connect.php");
-    $m_id=$_GET["m_id"];
-    $sub_id=$_GET["id"];
+    $m_id=$_GET["m_id"] ?? "";
+    $sub_id=$_GET["id"] ?? "";
     $pQuery="Select * from submission_list where id=$sub_id";
     $paperProp=mysqli_fetch_object(mysqli_query($baglanti,$pQuery));
     $paperCode=$paperProp->paperID;
@@ -87,12 +87,12 @@ function new_paper(){
     include ("../app/connect.php");
     include ("function.php");
     include ("../system.php");
-    $paperCode=$_POST["paperCode"];
-    $paperTitle=$_POST["paperTitle"];
-    $authors=$_POST["authors"];
-    $keywords=$_POST["keywords"];
-    $abstract=tirnak_replace($_POST["abstract"]);
-    $message=tirnak_replace($_POST["message"]);
+    $paperCode=$_POST["paperCode"] ?? "";
+    $paperTitle=$_POST["paperTitle"] ?? "";
+    $authors=$_POST["authors"] ?? "";
+    $keywords=$_POST["keywords"] ?? "";
+    $abstract=tirnak_replace($_POST["abstract"] ?? "");
+    $message=tirnak_replace($_POST["message"] ?? "");
     $upload_date=date("Y-m-d");
 
     $rnQuery="select * from submission_list where paperID='$paperCode'";
@@ -108,9 +108,9 @@ function new_paper(){
     $new_name = "";
     
    
-    if (isset($_FILES['my_file']) && $_FILES['my_file']['error'] == 0) {
+    if (isset($_FILES['my_file']) && ($_FILES['my_file']['error'] ?? "") == 0) {
 
-        $extension = pathinfo($_FILES['my_file']['name'], PATHINFO_EXTENSION);
+        $extension = pathinfo($_FILES['my_file']['name'] ?? "", PATHINFO_EXTENSION);
 
         if (!in_array(strtolower($extension), $allowed)) {
             echo '{"Error":"541"}';
@@ -118,13 +118,13 @@ function new_paper(){
         }
 
         $new_name = '../uploadfiles/'.$journalShortName.'_' . $paperCode. '.' . $extension;
-        if (move_uploaded_file($_FILES["my_file"]["tmp_name"], $new_name)) {
+        if (move_uploaded_file($_FILES["my_file"]["tmp_name"] ?? "", $new_name)) {
             //echo '{"status":"success"}';
 
         }
     }
     else {
-        echo $_FILES['my_file']['error'];
+        echo $_FILES['my_file']['error'] ?? "";
         header("Refresh:2;  URL = index.php?page=editorial_correction&m_id=21&rnb=4");
     }
 
@@ -149,14 +149,14 @@ paperfile1='$new_name',paperID='$paperCode',`date`='$upload_date',accept_status=
     else
     {
         echo "Veritabanı Hatası";
-        $log_state="HATA ->".$paperCode." Nolu Makaleyi YENİDEN YÜKLEYEMEDİ ->".mysqli_error();
+        $log_state="HATA ->".$paperCode." Nolu Makaleyi YENİDEN YÜKLEYEMEDİ ->".mysqli_error($baglanti);
         log_all($name_surname,$log_state);
     }
 
 
 }
 
-$process = @$_GET['process'];
+$process = $_GET['process'] ?? "";
 switch ($process) {
 
     case "editorial_correction":

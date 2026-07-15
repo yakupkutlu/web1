@@ -27,7 +27,7 @@ Editor in Chief ";*/
         Yonlendirme("index.php?page=accepted_paper&m_id=10&rnb=2");
   /*  }
     else {
-        $log_state="HATA ->".$p_paper_id." ID li makale YAZARA PROOF EDİLEMEDİ , MAİL HATASI --".mysqli_error();
+        $log_state="HATA ->".$p_paper_id." ID li makale YAZARA PROOF EDİLEMEDİ , MAİL HATASI --".mysqli_error($baglanti);
         log_all($s_user_name,$log_state);
         MesajGoster("Mail ERROR !!!");
         Yonlendirme("index.php?page=accepted_paper&m_id=10&rnb=2");
@@ -35,7 +35,7 @@ Editor in Chief ";*/
 
 }
 else {
-    $log_state="HATA ->".$p_paper_id." ID li makale YAZARA PROOF EDİLEMEDİ --".mysqli_error();
+    $log_state="HATA ->".$p_paper_id." ID li makale YAZARA PROOF EDİLEMEDİ --".mysqli_error($baglanti);
     log_all($s_user_name,$log_state);
     MesajGoster("Database ERROR !!!");
     Yonlendirme("index.php?page=accepted_paper&m_id=10&rnb=2");

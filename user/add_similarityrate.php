@@ -4,17 +4,17 @@ include("function.php");
 include("../system.php");
 session_start();
 ob_start();
-$role_number=$_GET["rnb"];
+$role_number=$_GET["rnb"] ?? "";
 if (yetki_kontrol($role_number, "sentBackToAuthor")) {
-    $s_user = $_SESSION["user"];
+    $s_user = $_SESSION["user"] ?? "";
 
-    $rate = $_POST["Similarityrate"];
-    //$editor_message=$_POST["editor_message"]."</br></br>".$editor."</br>Editor";
+    $rate = $_POST["Similarityrate"] ?? "";
+    //$editor_message=$_POST["editor_message"] ?? ""."</br></br>".$editor."</br>Editor";
     //$editor_message=tirnak_replace($editor_message);
-    $sub_id = $_POST["id"];
+    $sub_id = $_POST["id"] ?? "";
     $date = date("Y-m-d");
 
-    $m_id = $_GET["m_id"];//menu id
+    $m_id = $_GET["m_id"] ?? "";//menu id
 
     $sql = "select * from submission_list where id='$sub_id'";
     $paper = mysqli_fetch_array(mysqli_query($baglanti,$sql));

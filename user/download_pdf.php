@@ -1,5 +1,5 @@
 <?php
-$file = $_GET["file"];
+$file = $_GET["file"] ?? "";
 /*
 header("Content-type:application/pdf");
 

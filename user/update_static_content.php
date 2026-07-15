@@ -1,17 +1,17 @@
 <?php
 include("../system.php");
 include "function.php";
-$role_number=$_GET["rnb"];
+$role_number=$_GET["rnb"] ?? "";
 
-$edit_mail = $_GET["edit_mail"];
+$edit_mail = $_GET["edit_mail"] ?? "";
 
 if (yetki_kontrol($role_number, "edit_menu")) {
     echo "<br>";
 
   if (isset($_POST["page"]) and isset($_POST["postContent"]) && $edit_mail != "edit_page") {
         include("../app/connect.php");
-        $content = str_replace("\r\n", "",  $_POST["postContent"]);
-        $page = $_POST["page"];
+        $content = str_replace("\r\n", "",  $_POST["postContent"] ?? "");
+        $page = $_POST["page"] ?? "";
 
 
         if (mysqli_query($baglanti,"UPDATE static_content SET content= '$content' WHERE page_name= '$page' AND state=1")) {
@@ -29,8 +29,8 @@ if (yetki_kontrol($role_number, "edit_menu")) {
     
    elseif (isset($_POST["page"]) and isset($_POST["postContent"]) ) {
         include("../app/connect.php");
-        $content = str_replace("\r\n", "", $_POST["postContent"]);
-        $page = $_POST["page"];
+        $content = str_replace("\r\n", "", $_POST["postContent"] ?? "");
+        $page = $_POST["page"] ?? "";
         
 
   $sorgu="UPDATE mailTable SET text= '".$content."'  WHERE id= '".$page."'";

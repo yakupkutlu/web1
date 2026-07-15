@@ -19,7 +19,7 @@
 <body class="nav-md">
 <?php
 include("../app/connect.php");
-$id = $_GET['id']; ?>
+$id = $_GET['id'] ?? ""; ?>
     <div class="x_panel" style="min-height: 726px; margin-bottom: 0px; display: block;">
         <br class="x_content">
 

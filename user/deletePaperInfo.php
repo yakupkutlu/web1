@@ -37,7 +37,7 @@ if (yetki_kontrol($role_number, "reviewer")) {
     ?>
     <center><a class='btn btn-round btn-warning inbox-title'>Delete Paper Info</a></center>
     <?php
-    $id = $_GET['paperID'];
+    $id = $_GET['paperID'] ?? "";
     $query = mysqli_query($baglanti,"select * from submission_list where id='$id' ");
     $paper = mysqli_fetch_object($query);
     $paperID = $paper->paperID;

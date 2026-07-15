@@ -10,7 +10,7 @@ if (yetki_kontrol($role_number, "edit_role")) {
         //ROLE 2 EDİTÖR
         //ROLE 3 HAKEM
         //ROLE 4 YAZAR
-        $m_id = $_GET["m_id"];
+        $m_id = $_GET["m_id"] ?? "";
 
         echo "<div class='clearfix'>";
         echo "<h4><strong>AUTHORIZATİON SETTINGS</strong></h4>";
@@ -51,7 +51,7 @@ if (yetki_kontrol($role_number, "edit_role")) {
 
     function editor_form()
     {
-        $rnb = $_GET["rnb"];
+        $rnb = $_GET["rnb"] ?? "";
         if ($rnb == 1) $m_id = 3;
         if ($rnb == 2) $m_id = 12;
 
@@ -147,11 +147,11 @@ if (yetki_kontrol($role_number, "edit_role")) {
     function add_editor()
     {
         include("../app/connect.php");
-        $name = $_POST["name"];
-        $email = $_POST["email"];
-        $user_name = $_POST["user_name"];
+        $name = $_POST["name"] ?? "";
+        $email = $_POST["email"] ?? "";
+        $user_name = $_POST["user_name"] ?? "";
         $pass = md5(md5($user_name));
-        $instition = $_POST["instition"];
+        $instition = $_POST["instition"] ?? "";
         if (mysqli_query($baglanti,"insert into users (user_name,name_surname,pass,email,role,instition) VALUES ('$user_name','$name','$pass','$email','2','$instition')")) {
             echo "Yeni editör başarılı bir şekilde eklendi";
             header("Refresh:1;  URL = index.php?page=edit_role&rnb=1 ");
@@ -165,7 +165,7 @@ if (yetki_kontrol($role_number, "edit_role")) {
     function add_editor_inAuthors()
     {
         include("../app/connect.php");
-        $id = $_GET['id'];
+        $id = $_GET['id'] ?? "";
 
         if (mysqli_query($baglanti,"update users set role=2 where id='$id'")) {
             echo "Yeni hakem başarılı bir şekilde eklendi<br>";
@@ -177,7 +177,7 @@ if (yetki_kontrol($role_number, "edit_role")) {
     {
         include("../app/connect.php");
         //include("../system.php");
-        $rnb = $_GET["rnb"];
+        $rnb = $_GET["rnb"] ?? "";
         if ($rnb == 1) $m_id = 3;
         if ($rnb == 2) $m_id = 12;
 
@@ -219,12 +219,12 @@ if (yetki_kontrol($role_number, "edit_role")) {
 
     function edit_editor()
     {
-        $rnb = $_GET["rnb"];
+        $rnb = $_GET["rnb"] ?? "";
         if ($rnb == 1) $m_id = 3;
         if ($rnb == 2) $m_id = 12;
 
         include("../app/connect.php");
-        $id = $_GET['id'];
+        $id = $_GET['id'] ?? "";
 
         if ($query = mysqli_query($baglanti,"select * from users where id='$id';")) {
             while ($data = mysqli_fetch_array($query)) {
@@ -294,11 +294,11 @@ if (yetki_kontrol($role_number, "edit_role")) {
     function update_editor()
     {
         include("../app/connect.php");
-        $user_name = $_POST["user_name"];
-        $name_surname = $_POST["name_surname"];
-        $email = $_POST["email"];
-        $state = $_POST["state"];
-        $id = $_GET["id"];
+        $user_name = $_POST["user_name"] ?? "";
+        $name_surname = $_POST["name_surname"] ?? "";
+        $email = $_POST["email"] ?? "";
+        $state = $_POST["state"] ?? "";
+        $id = $_GET["id"] ?? "";
         if (mysqli_query($baglanti,"update users set user_name='$user_name',name_surname='$name_surname',email='$email',state='$state' where id='$id'")) {
             echo "Editör güncellemesi başarılı bir şekilde yapıldı.<br><br>";
         } else echo "Editör bilgileri güncellenirken bir hata ile karşılaşıldı<br><br>";
@@ -309,7 +309,7 @@ if (yetki_kontrol($role_number, "edit_role")) {
     function reviewers_list()
     {
         include("../app/connect.php");
-        $rnb = $_GET["rnb"];
+        $rnb = $_GET["rnb"] ?? "";
         if ($rnb == 1) $m_id = 3;
         if ($rnb == 2) $m_id = 12;
 
@@ -354,8 +354,8 @@ if (yetki_kontrol($role_number, "edit_role")) {
     function edit_reviewer()
     {
         include("../app/connect.php");
-        $id = $_GET["id"];
-        $rnb = $_GET["rnb"];
+        $id = $_GET["id"] ?? "";
+        $rnb = $_GET["rnb"] ?? "";
         if ($rnb == 1) $m_id = 3;
         if ($rnb == 2) $m_id = 12;
 
@@ -428,13 +428,13 @@ if (yetki_kontrol($role_number, "edit_role")) {
     function update_reviewer()
     {
         include("../app/connect.php");
-        $user_name = $_POST["user_name"];
-        $name_surname = $_POST["name_surname"];
-        $email = $_POST["email"];
-        $state = $_POST["state"];
+        $user_name = $_POST["user_name"] ?? "";
+        $name_surname = $_POST["name_surname"] ?? "";
+        $email = $_POST["email"] ?? "";
+        $state = $_POST["state"] ?? "";
         if ($state == 1) $role = 3;
         else $role = 4;
-        $id = $_GET["id"];
+        $id = $_GET["id"] ?? "";
         if (mysqli_query($baglanti,"update users set user_name='$user_name',name_surname='$name_surname',email='$email',role='$role' where id='$id'")) {
             echo "Hakem güncellemesi başarılı bir şekilde yapıldı.<br><br>";
         } else echo "Hakem bilgileri güncellenirken bir hata ile karşılaşıldı<br><br>";
@@ -444,7 +444,7 @@ if (yetki_kontrol($role_number, "edit_role")) {
 
     function reviewers_form()
     {
-        $rnb = $_GET["rnb"];
+        $rnb = $_GET["rnb"] ?? "";
         if ($rnb == 1) $m_id = 3;
         if ($rnb == 2) $m_id = 12;
         echo "<style>
@@ -539,11 +539,11 @@ if (yetki_kontrol($role_number, "edit_role")) {
     function add_reviewer()
     {
         include("../app/connect.php");
-        $name = $_POST["name"];
-        $email = $_POST["email"];
-        $user_name = $_POST["email"];
-        $work_area = $_POST["work_area"];
-        $instition = $_POST["instition"];
+        $name = $_POST["name"] ?? "";
+        $email = $_POST["email"] ?? "";
+        $user_name = $_POST["email"] ?? "";
+        $work_area = $_POST["work_area"] ?? "";
+        $instition = $_POST["instition"] ?? "";
         $pass = md5(md5($user_name));
         $sorgu = "select * from users where email='$email'";
         $sorgu2 = "select * from users where user_name='$user_name'";
@@ -562,7 +562,7 @@ if (yetki_kontrol($role_number, "edit_role")) {
     function add_reviewer_inAuthors()
     {
         include("../app/connect.php");
-        $id = $_GET['id'];
+        $id = $_GET['id'] ?? "";
 
         if (mysqli_query($baglanti,"update users set role=3 where id='$id'")) {
             echo "New Reviewer was added successfully.<br>";
@@ -571,7 +571,7 @@ if (yetki_kontrol($role_number, "edit_role")) {
 
     function authors_list()
     {
-        $rnb = $_GET["rnb"];
+        $rnb = $_GET["rnb"] ?? "";
         if ($rnb == 1) $m_id = 3;
         if ($rnb == 2) $m_id = 12;
 
@@ -628,8 +628,8 @@ if (yetki_kontrol($role_number, "edit_role")) {
     function edit_authors()
     {
         include("../app/connect.php");
-        $id = $_GET["id"];
-        $rnb = $_GET["rnb"];
+        $id = $_GET["id"] ?? "";
+        $rnb = $_GET["rnb"] ?? "";
         if ($rnb == 1) $m_id = 3;
         if ($rnb == 2) $m_id = 12;
 
@@ -702,13 +702,13 @@ if (yetki_kontrol($role_number, "edit_role")) {
     function update_authors()
     {
         include("../app/connect.php");
-        $user_name = $_POST["user_name"];
-        $name_surname = $_POST["name_surname"];
-        $email = $_POST["email"];
-        $state = $_POST["state"];
+        $user_name = $_POST["user_name"] ?? "";
+        $name_surname = $_POST["name_surname"] ?? "";
+        $email = $_POST["email"] ?? "";
+        $state = $_POST["state"] ?? "";
         if ($state == 1) $role = 3;
         else $role = 4;
-        $id = $_GET["id"];
+        $id = $_GET["id"] ?? "";
         if (mysqli_query($baglanti,"update users set user_name='$user_name',name_surname='$name_surname',email='$email',state='$state' where id='$id'")) {
             echo "Yazar güncellemesi başarılı bir şekilde yapıldı.<br><br>";
         } else echo "Yazar bilgileri güncellenirken bir hata ile karşılaşıldı<br><br>";
@@ -717,7 +717,7 @@ if (yetki_kontrol($role_number, "edit_role")) {
     } // END: update_authors
 
 
-    switch ($_GET["process"]) {
+    switch ($_GET["process"] ?? "") {
 
         case "editor_form":
             editor_form();

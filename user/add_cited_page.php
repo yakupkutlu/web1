@@ -2,10 +2,10 @@
 if (!isset($_GET["process"])) {
     $process = "";
 } else {
-    $process = $_GET["process"];
+    $process = $_GET["process"] ?? "";
 }
 if ($process == "") {
-    $sub_id = $_GET["id"];
+    $sub_id = $_GET["id"] ?? "";
     $s_query = mysqli_query($baglanti,"select * from submission_list where id='$sub_id'");
     $info = mysqli_fetch_object($s_query);
     $title = $info->title;
@@ -80,10 +80,10 @@ if ($process == "add_cited") {
     include("../system.php");
     include("function.php");
 
-    $user_name = $_SESSION["user"];
-    $sub_id = $_GET["id"];
-    $paper_info = tirnak_replace($_POST["paper_info"]);
-    $paper_link =tirnak_replace($_POST["paper_link"]);
+    $user_name = $_SESSION["user"] ?? "";
+    $sub_id = $_GET["id"] ?? "";
+    $paper_info = tirnak_replace($_POST["paper_info"] ?? "");
+    $paper_link =tirnak_replace($_POST["paper_link"] ?? "");
     $sql = "insert into cited_table (sub_id,paper_info,paper_link) VALUES ('$sub_id','$paper_info','$paper_link')";
     if (mysqli_query($baglanti,$sql)) {
         MesajGoster("Completed Succesfully....[OK]");
@@ -93,7 +93,7 @@ if ($process == "add_cited") {
         Yonlendirme($url);
     } else {
         MesajGoster("Completed UNSUCCESSFUL !!!");
-        $log_state = "HATA ->" . $sub_id . " id li makaleye cited EKLENEMEDİ ->VERİ TABANI HATASI ->" . mysqli_error();
+        $log_state = "HATA ->" . $sub_id . " id li makaleye cited EKLENEMEDİ ->VERİ TABANI HATASI ->" . mysqli_error($baglanti);
         log_all($user_name, $log_state);
         $url = "index.php?page=add_cited_page&m_id=30&rnb=&id=" . $sub_id;
         Yonlendirme($url);
@@ -109,8 +109,8 @@ if ($process == "delete_cited") {
     include("../system.php");
     include("function.php");
 
-    $user_name = $_SESSION["user"];
-    $id = $_GET["id"];
+    $user_name = $_SESSION["user"] ?? "";
+    $id = $_GET["id"] ?? "";
     $sql = "DELETE FROM `cited_table` WHERE id='$id'";
     if (mysqli_query($baglanti,$sql)) {
         MesajGoster("Completed Succesfully....[OK]");
@@ -120,7 +120,7 @@ if ($process == "delete_cited") {
         Yonlendirme($url);
     } else {
         MesajGoster("Completed UNSUCCESSFUL !!!");
-        $log_state = "HATA ->" . $sub_id . " id li makalede cited SİLİNEMEDİ ->VERİ TABANI HATASI ->" . mysqli_error();
+        $log_state = "HATA ->" . $sub_id . " id li makalede cited SİLİNEMEDİ ->VERİ TABANI HATASI ->" . mysqli_error($baglanti);
         log_all($user_name, $log_state);
         $url = "index.php?page=add_cited_page&m_id=30&rnb=&id=" . $sub_id;
         Yonlendirme($url);
@@ -132,7 +132,7 @@ if ($process == "delete_cited") {
 if ($process == "edit_cited") {
     session_start();
     ob_start();
-    $sub_id = $_GET["id"];
+    $sub_id = $_GET["id"] ?? "";
     $s_query = mysqli_query($baglanti,"select * from submission_list where id='$sub_id'");
     $info = mysqli_fetch_object($s_query);
     $title = $info->title;
@@ -189,11 +189,11 @@ if ($process == "add_edit_cited") {
     include("../system.php");
     include("function.php");
 
-    $user_name = $_SESSION["user"];
-    $sub_id = $_GET["id"];
-    $paper_id=$_GET["p_id"];
-    $paper_info = tirnak_replace($_POST["paper_info"]);
-    $paper_link =tirnak_replace($_POST["paper_link"]);
+    $user_name = $_SESSION["user"] ?? "";
+    $sub_id = $_GET["id"] ?? "";
+    $paper_id=$_GET["p_id"] ?? "";
+    $paper_info = tirnak_replace($_POST["paper_info"] ?? "");
+    $paper_link =tirnak_replace($_POST["paper_link"] ?? "");
     $sql = "insert into cited_table (sub_id,paper_info,paper_link) VALUES ('$sub_id','$paper_info','$paper_link')";
     $sql = "update cited_table set paper_info='$paper_info',paper_link='$paper_link' WHERE id='$sub_id'";
     if (mysqli_query($baglanti,$sql)) {
@@ -204,7 +204,7 @@ if ($process == "add_edit_cited") {
         Yonlendirme($url);
     } else {
         MesajGoster("Completed UNSUCCESSFUL !!!");
-        $log_state = "HATA ->" . $sub_id . " id li makaleye cited EKLENEMEDİ ->VERİ TABANI HATASI ->" . mysqli_error();
+        $log_state = "HATA ->" . $sub_id . " id li makaleye cited EKLENEMEDİ ->VERİ TABANI HATASI ->" . mysqli_error($baglanti);
         log_all($user_name, $log_state);
         $url = "index.php?page=add_cited_page&m_id=30&rnb=&id=" . $paper_id;
         Yonlendirme($url);

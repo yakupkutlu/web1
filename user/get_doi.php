@@ -3,7 +3,7 @@
 <?php
     session_start();
     ob_start();
-    $new_name = $_SESSION["user"];
+    $new_name = $_SESSION["user"] ?? "";
 
     
   

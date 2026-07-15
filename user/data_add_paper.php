@@ -3,20 +3,20 @@
 include("../app/connect.php");
 include("../system.php");
 include("function.php");
-$s_user = $_SESSION["user"];
+$s_user = $_SESSION["user"] ?? "";
 $name_surname = mysqli_fetch_object(mysqli_query($baglanti,"SELECT * FROM users where user_name='$s_user' "))->name_surname;
 $email = mysqli_fetch_object(mysqli_query($baglanti,"SELECT * FROM users where user_name='$s_user' "))->email;
-$title = $_POST["title"];
+$title = $_POST["title"] ?? "";
 
-$name_author = $_POST["all_authors"];
+$name_author = $_POST["all_authors"] ?? "";
 
-$key_words = $_POST["key_words"];
-$abstract = $_POST["abstract"];
-$message = $_POST["message"];
-$all_authors_email = $_POST["all_authors_email"];
+$key_words = $_POST["key_words"] ?? "";
+$abstract = $_POST["abstract"] ?? "";
+$message = $_POST["message"] ?? "";
+$all_authors_email = $_POST["all_authors_email"] ?? "";
 $date_time = date('Y-m-d H:i:s');
 if (isset($_POST["all_authors"])) 
-	$type=$_POST["all_authors"];
+	$type=$_POST["all_authors"] ?? "";
 else 
 	$type=$name_surname;
 
@@ -28,23 +28,23 @@ $message=tirnak_replace($message);
 
 
 
-//$ncp_id = $_GET['ncp_id'];
+//$ncp_id = $_GET['ncp_id'] ?? "";
  
-$s_user = $_SESSION["user"];
+$s_user = $_SESSION["user"] ?? "";
 $name_surname = mysqli_fetch_object(mysqli_query($baglanti,"SELECT * FROM users where user_name='$s_user' "))->name_surname;
 $email = mysqli_fetch_object(mysqli_query($baglanti,"SELECT * FROM users where user_name='$s_user' "))->email;
 
-$title = $_POST["title"];
+$title = $_POST["title"] ?? "";
 
-$name_author = $_POST["all_authors"];
-$key_words = $_POST["key_words"];
-$abstract = $_POST["abstract"];
-$message = $_POST["message"];
-$all_authors_email = $_POST["all_authors_email"];
+$name_author = $_POST["all_authors"] ?? "";
+$key_words = $_POST["key_words"] ?? "";
+$abstract = $_POST["abstract"] ?? "";
+$message = $_POST["message"] ?? "";
+$all_authors_email = $_POST["all_authors_email"] ?? "";
 $date_time = date('Y-m-d H:i:s');
 
 if (isset($_POST["all_authors"])) 
-	$type=$_POST["all_authors"];
+	$type=$_POST["all_authors"] ?? "";
 else 
 	$type=null;
 	
@@ -57,24 +57,24 @@ $message=tirnak_replace($message);
 
 
 
-$reviewMail1 = $_POST['reviewMail1'];
-$reviewName1 = $_POST['reviewName1'];
-$instition1 = $_POST['affiliation1'];
+$reviewMail1 = $_POST['reviewMail1'] ?? "";
+$reviewName1 = $_POST['reviewName1'] ?? "";
+$instition1 = $_POST['affiliation1'] ?? "";
 
-$reviewMail2=$_POST['reviewMail2'];
-$reviewName2=$_POST['reviewName2'];
-$instition2=$_POST['affiliation2'];
+$reviewMail2=$_POST['reviewMail2'] ?? "";
+$reviewName2=$_POST['reviewName2'] ?? "";
+$instition2=$_POST['affiliation2'] ?? "";
 
-$reviewMail3=$_POST['reviewMail3'];
-$reviewName3=$_POST['reviewName3'];
-$instition3=$_POST['affiliation3'];
-$myfile=$_FILES['my_file']['name'];
+$reviewMail3=$_POST['reviewMail3'] ?? "";
+$reviewName3=$_POST['reviewName3'] ?? "";
+$instition3=$_POST['affiliation3'] ?? "";
+$myfile=$_FILES['my_file']['name'] ?? "";
 
 
 /// yazarları getir  
-$corname = $_POST["cur_author"]; 
-$name1 = $_POST["name_author"];
-$name2 = $_POST["author_email_tmp"];
+$corname = $_POST["cur_author"] ?? ""; 
+$name1 = $_POST["name_author"] ?? "";
+$name2 = $_POST["author_email_tmp"] ?? "";
 
 ?>
 <html>

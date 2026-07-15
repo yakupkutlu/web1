@@ -35,7 +35,7 @@
 
 
 
-$process = @$_GET['process'];
+$process = $_GET['process'] ?? "";
 switch ($process) {
 
     case "delete_not_comp":
@@ -91,7 +91,7 @@ function delete_not_comp()
     include("../system.php");
     include("function.php");
     
-    $id = $_GET["id"];
+    $id = $_GET["id"] ?? "";
     $sql = "delete from submission_list_temp where id='$id'";
     if (mysqli_query($baglanti,$sql)) {
         MesajGoster(" Submission  Deleted ");
@@ -104,8 +104,8 @@ function send_review()
     include("../app/connect.php");
     
     
-    $id = $_GET["id"];
-    $m_id = $_GET["m_id"];
+    $id = $_GET["id"] ?? "";
+    $m_id = $_GET["m_id"] ?? "";
     $pQuery = mysqli_query($baglanti,"SELECT * FROM submission_list WHERE id='$id'");
     $pQuery_obj = mysqli_fetch_object($pQuery);
     $title = $pQuery_obj->title;
@@ -113,7 +113,7 @@ function send_review()
     /*$a = rand(1, 10);
     $b = rand(1, 100);
     $answer = $a + $b;*/
-    $s_user = $_SESSION["user"];
+    $s_user = $_SESSION["user"] ?? "";
     $editor_name = mysqli_fetch_object(mysqli_query($baglanti,"select name_surname from users where user_name='$s_user'"))->name_surname;
     $tQuery = mysqli_query($baglanti,"SELECT text FROM mail_text WHERE type='review'");
     $rText = mysqli_fetch_object($tQuery)->text;
@@ -355,11 +355,11 @@ function send_review()
 function send_back_author()
 {
 
-    $s_user = $_SESSION["user"];
+    $s_user = $_SESSION["user"] ?? "";
     include("../app/connect.php");
   
-    $id = $_GET["id"];
-    $m_id = $_GET["m_id"];
+    $id = $_GET["id"] ?? "";
+    $m_id = $_GET["m_id"] ?? "";
 
     $pSql = mysqli_query($baglanti,"SELECT * FROM submission_list WHERE id='$id'");
     $pQuery = mysqli_fetch_object($pSql);
@@ -516,11 +516,11 @@ function send_back_author()
 function send_back_author_in_revised()
 {
 
-    $s_user = $_SESSION["user"];
+    $s_user = $_SESSION["user"] ?? "";
     include("../app/connect.php");
   
-    $id = $_GET["id"];
-    $m_id = $_GET["m_id"];
+    $id = $_GET["id"] ?? "";
+    $m_id = $_GET["m_id"] ?? "";
 
     $pSql = mysqli_query($baglanti,"SELECT * FROM submission_list WHERE id='$id'");
     $pQuery = mysqli_fetch_object($pSql);
@@ -662,11 +662,11 @@ function send_back_author_in_revised()
 function  add_similarityrate()
 {
 
-    $s_user = $_SESSION["user"];
+    $s_user = $_SESSION["user"] ?? "";
     include("../app/connect.php");
   
-    $id = $_GET["id"];
-    $m_id = $_GET["m_id"];
+    $id = $_GET["id"] ?? "";
+    $m_id = $_GET["m_id"] ?? "";
 
     $pSql = mysqli_query($baglanti,"SELECT * FROM submission_list WHERE id='$id'");
     $pQuery = mysqli_fetch_object($pSql);
@@ -776,15 +776,15 @@ function  add_similarityrate()
 
 function send_review_request_revision_page()
 {
-    $s_user = $_SESSION["user"];
+    $s_user = $_SESSION["user"] ?? "";
     include("../app/connect.php");
     
     
-    $id = $_GET["id"];
+    $id = $_GET["id"] ?? "";
     $editor_name = mysqli_fetch_object(mysqli_query($baglanti,"Select name_surname from users where user_name='$s_user'"))->name_surname;
     $url_back = "index.php?page=process-process=send_review-rnb=2-m_id=9-id=" . $id;
-    $r_name = $_GET['r_name'];
-    $request_id = $_GET['request_id'];
+    $r_name = $_GET['r_name'] ?? "";
+    $request_id = $_GET['request_id'] ?? "";
     echo '<div class="x_panel">
     <div style="width: 80%;  margin-left: auto; margin-right: auto">
         <form method="post" action="send_review_request_revision.php?&request_id=' . $request_id . '&r_name=' . $r_name . '&id=' . $id . '&url_back=' . $url_back . '" id="contactForm">

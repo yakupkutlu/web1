@@ -99,7 +99,7 @@
 
 <?php
 include("../app/connect.php");
-$user_name=$_SESSION["user"];
+$user_name=$_SESSION["user"] ?? "";
 
 
 
@@ -110,14 +110,14 @@ $user_name=$_SESSION["user"];
 
 
 
-if ($_GET['newuser'] == 1) {
+if (($_GET['newuser'] ?? "") == 1) {
     // Formdan gelen verileri al
-    $name_lastname = $_POST['name_lastname'];
-    $affiliation = $_POST['affiliation'];
-    $country = $_POST['country'];
-    $mail = $_POST['mail'];
-    $role = $_POST['role'];
-    $date = $_POST['date'];
+    $name_lastname = $_POST['name_lastname'] ?? "";
+    $affiliation = $_POST['affiliation'] ?? "";
+    $country = $_POST['country'] ?? "";
+    $mail = $_POST['mail'] ?? "";
+    $role = $_POST['role'] ?? "";
+    $date = $_POST['date'] ?? "";
 
     // Veritabanına kaydet
     $sql = "INSERT INTO `Editor_list`( `name_lastname`, `affilation`, `country`, `mail`, `role`, `goster`, `date`)  VALUES ('".$name_lastname."','". $affiliation."','". $country."','". $mail."','". $role."',0 ,'". $date."')";
@@ -139,8 +139,8 @@ if ($_GET['newuser'] == 1) {
 
 if(isset($_GET['indexid'])){
         // GET metodu ile gelen veriler
-        $indexid = $_GET['indexid'];
-        $durum = $_GET['durum'];
+        $indexid = $_GET['indexid'] ?? "";
+        $durum = $_GET['durum'] ?? "";
         
         // `indexid` ile eşleşen kaydın `goster` sütununu güncelle
        

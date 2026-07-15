@@ -20,9 +20,9 @@ function isim_parcalama_jgate($gelen)
     return $tmp;
 }
 
-$event_id = $_GET["e_id"];
+$event_id = $_GET["e_id"] ?? "";
 echo $event_id;
-if (isset($_GET["process"])) $process = $_GET["process"];
+if (isset($_GET["process"])) $process = $_GET["process"] ?? "";
 else $process = "";
 $pQuery = "Select * from supplementary_events where id='$event_id'";
 $paperProp = mysqli_fetch_object(mysqli_query($baglanti,$pQuery));

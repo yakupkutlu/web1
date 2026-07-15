@@ -2,7 +2,7 @@
 if (yetki_kontrol($role_number, "editorial_correction")) {
     include("../app/connect.php");
 //include("../system.php");
-    $user_name = $_SESSION["user"];
+    $user_name = $_SESSION["user"] ?? "";
 
     echo "<center><a class='btn btn-round btn-warning inbox-title'>EDITORIAL CORRECTION REQUESTED</a></center>
         <table id=\"datatable\" class=\"table table-striped table-bordered\">

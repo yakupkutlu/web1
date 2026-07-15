@@ -16,7 +16,7 @@ function MesajGoster($message)
 function delete_not_comp()
 {
     include "../app/connect.php";
-    $id = $_GET["id"];
+    $id = $_GET["id"] ?? "";
     $sql = "delete from submission_list_temp where id='$id'";
     if (mysqli_query($baglanti,$sql)) {
         MesajGoster("Kaydınız Silindi ");
@@ -28,7 +28,7 @@ function send_review()
 {
 
     include("../app/connect.php");
-    $id = $_GET["id"];
+    $id = $_GET["id"] ?? "";
     $pQuery = mysqli_query($baglanti,"SELECT title FROM submission_list WHERE id='$id'");
     $title = mysqli_fetch_object($pQuery)->title;
     $a = rand(1, 10);
@@ -136,7 +136,7 @@ function send_review()
 }
 
 
-$process = @$_GET['process'];
+$process = $_GET['process'] ?? "";
 switch ($process) {
 
     case "delete_not_comp":

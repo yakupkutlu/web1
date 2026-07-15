@@ -21,7 +21,7 @@ if (!isset($_SESSION["user"])) {
 }
 
 if (!isset($_GET['edit_page'])) $edit_page = "";
-else $edit_page = $_GET['edit_page'];
+else $edit_page = $_GET['edit_page'] ?? "";
 ?>
 
 <!DOCTYPE html>
@@ -113,8 +113,8 @@ else $edit_page = $_GET['edit_page'];
 </head>
 <?php
 
-$session_user = $_SESSION["user"];
-$session_pass = $_SESSION["pass"];
+$session_user = $_SESSION["user"] ?? "";
+$session_pass = $_SESSION["pass"] ?? "";
 $sql = "SELECT * FROM users WHERE user_name= '$session_user' AND pass= '$session_pass'";
 $tmp_user = mysqli_fetch_object(mysqli_query($baglanti,$sql));
 $user_name = $tmp_user->user_name;
@@ -124,18 +124,18 @@ $role_number_real = $tmp_user->role;
 if (!isset($_GET['m_id'])) {
     $m_id = 0;
 } else {
-    $m_id = $_GET['m_id'];
+    $m_id = $_GET['m_id'] ?? "";
 }
 
 if (!isset($_GET['rnb'])) {
     $role_number = $tmp_user->role;
     $role = mysqli_fetch_object(mysqli_query($baglanti,"SELECT * FROM role WHERE id= '$role_number'"))->role_name;
 } else {
-    $role_number = $_GET['rnb'];
+    $role_number = $_GET['rnb'] ?? "";
     $role = mysqli_fetch_object(mysqli_query($baglanti,"SELECT * FROM role WHERE id= '$role_number'"))->role_name;
 }
 if (isset($_POST['user_role_name'])) {
-    $role = $_POST['user_role_name'];
+    $role = $_POST['user_role_name'] ?? "";
     $role_number = mysqli_fetch_object(mysqli_query($baglanti,"SELECT * FROM role WHERE role_name= '$role'"))->id;
 }
 
@@ -143,7 +143,7 @@ if (!isset($_GET['page'])) {
     $sql_menu_color = mysqli_fetch_object(mysqli_query($baglanti,"SELECT * FROM menus WHERE id= (SELECT min(id) FROM menus WHERE yetki= '$role_number')"));
     $page = $sql_menu_color->page;
     $m_id = $sql_menu_color->id;
-} else $page = $_GET['page'];
+} else $page = $_GET['page'] ?? "";
 ?>
 
 <body class="nav-md">
@@ -167,7 +167,7 @@ if (!isset($_GET['page'])) {
                     <div class="profile_info">
                         <span>   Welcome ,</span>
                         <h2><?php echo $name_surname; ?></h2>
-                        <span  id="session_user_name"><?php echo $_SESSION["user"]; ?></span>
+                        <span  id="session_user_name"><?php echo $_SESSION["user"] ?? ""; ?></span>
                     </div>
                 </div>
                 <!-- /menu profile quick info -->
@@ -245,7 +245,7 @@ if (!isset($_GET['page'])) {
                                <!--
                                 <img src="images/<?php find_image($user_name); ?>" alt="">
 <span
-                                        id="session_user_name"><?php echo $_SESSION["user"]; ?></span>
+                                        id="session_user_name"><?php echo $_SESSION["user"] ?? ""; ?></span>
                                                                
                                 -->
                                 <i class="fa fa-cog" aria-hidden="true">  <span

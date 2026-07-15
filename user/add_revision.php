@@ -8,13 +8,13 @@ include("../system.php");
  MesajGoster("Please Wait.....");
  
  
-$s_user = $_SESSION["user"];
-$paperCode = $_POST["paperCode"];
-$paperTitle = $_POST["paperTitle"];
-$authors = $_POST["authors"];
-$keywords = $_POST["keywords"];
-$abstract = $_POST["abstract"];
-$message = $_POST["message"];
+$s_user = $_SESSION["user"] ?? "";
+$paperCode = $_POST["paperCode"] ?? "";
+$paperTitle = $_POST["paperTitle"] ?? "";
+$authors = $_POST["authors"] ?? "";
+$keywords = $_POST["keywords"] ?? "";
+$abstract = $_POST["abstract"] ?? "";
+$message = $_POST["message"] ?? "";
 
 $abstract = tirnak_replace($abstract);
 $paperTitle = tirnak_replace($paperTitle);
@@ -40,9 +40,9 @@ $upload_date = date("Y-m-d");
 // C:\xampp\php\php.ini ayarları düzenle
 $allowed = array('zip', 'rtf', 'doc',  'docx', 'pdf');
 $new_name = "";
-if (isset($_FILES['my_file']) && $_FILES['my_file']['error'] == 0) {
+if (isset($_FILES['my_file']) && ($_FILES['my_file']['error'] ?? "") == 0) {
 
-    $extension = pathinfo($_FILES['my_file']['name'], PATHINFO_EXTENSION);
+    $extension = pathinfo($_FILES['my_file']['name'] ?? "", PATHINFO_EXTENSION);
 
     if (!in_array(strtolower($extension), $allowed)) {
         echo '{"Error":"551"}';
@@ -54,15 +54,15 @@ header("Refresh:2;  URL = index.php?page=author_revision&m_id=24&rnb=4 ");
 
 
 $new_name = '../uploadfiles/'.$journalShortName.'_' . $paperID_first . '-R' . $new_rNumber . '.' . $extension;
-    if (move_uploaded_file($_FILES["my_file"]["tmp_name"], $new_name)) {
+    if (move_uploaded_file($_FILES["my_file"]["tmp_name"] ?? "", $new_name)) {
         //echo '{"status":"success"}';
         $log_state = "Selected Paper File..";
         log_all($s_user, $log_state);
 
     }
 } else {
-    echo $_FILES['my_file']['error'];
-    $log_state = "Error  -> Paper File nor upload in system->" . $_FILES['my_file']['error'];
+    echo $_FILES['my_file']['error'] ?? "";
+    $log_state = "Error  -> Paper File nor upload in system->" . $_FILES['my_file']['error'] ?? "";
     log_all($s_user, $log_state);
     MesajGoster("Error while Uploading File 1 !!! Please contact Editor"); 
     header("Refresh:2;  URL = index.php?page=author_revision&rnb=4&m_id=24 ");
@@ -74,9 +74,9 @@ exit;
 
 
 $new_name_2 = "";
-if (isset($_FILES['my_file_reviewer']) && $_FILES['my_file_reviewer']['error'] == 0) {
+if (isset($_FILES['my_file_reviewer']) && ($_FILES['my_file_reviewer']['error'] ?? "") == 0) {
 
-    $extension_2 = pathinfo($_FILES['my_file_reviewer']['name'], PATHINFO_EXTENSION);
+    $extension_2 = pathinfo($_FILES['my_file_reviewer']['name'] ?? "", PATHINFO_EXTENSION);
 
     if (!in_array(strtolower($extension_2), $allowed)) {
         echo '{"Error":"541"}';
@@ -87,17 +87,17 @@ if (isset($_FILES['my_file_reviewer']) && $_FILES['my_file_reviewer']['error'] =
     }
 
     $new_name_2 = '../reviewerCommentFile/'.$journalShortName.'_' . $paperID_first . '-R' . $new_rNumber . '.' . $extension_2;
-    if (move_uploaded_file($_FILES["my_file_reviewer"]["tmp_name"], $new_name_2)) {
+    if (move_uploaded_file($_FILES["my_file_reviewer"]["tmp_name"] ?? "", $new_name_2)) {
         //echo '{"status":"success"}';
         $log_state = "Reviewer comment file uploaded";
         log_all($s_user, $log_state);
 
-    } else echo "hata" . $_FILES['my_file_reviewer']['error'];
+    } else echo "hata" . $_FILES['my_file_reviewer']['error'] ?? "";
 }
 
 else {
-    echo $_FILES['my_file_reviewer']['error'];
-    $log_state = "Error  -> Reviewer file did not upload->" . $_FILES['my_file_reviewer']['error'];
+    echo $_FILES['my_file_reviewer']['error'] ?? "";
+    $log_state = "Error  -> Reviewer file did not upload->" . $_FILES['my_file_reviewer']['error'] ?? "";
     log_all($s_user, $log_state);
        MesajGoster("Error while Uploading File 2 !!! Please contact Editor");
   
@@ -107,9 +107,9 @@ exit;
 
 
 $new_name3 = "";
-if (isset($_FILES['my_file_COPYRIGHT']) && $_FILES['my_file_COPYRIGHT']['error'] == 0) {
+if (isset($_FILES['my_file_COPYRIGHT']) && ($_FILES['my_file_COPYRIGHT']['error'] ?? "") == 0) {
 
-    $extension = pathinfo($_FILES['my_file_COPYRIGHT']['name'], PATHINFO_EXTENSION);
+    $extension = pathinfo($_FILES['my_file_COPYRIGHT']['name'] ?? "", PATHINFO_EXTENSION);
 
     if (!in_array(strtolower($extension), $allowed)) {
         echo '{"Error":"551"}';
@@ -120,15 +120,15 @@ header("Refresh:2;  URL = index.php?page=author_revision&m_id=24&rnb=4 ");
     }
 
     $new_name3 = '../uploadfiles/COPYRIGHT_' . $paperID_first . '-R' . $new_rNumber . '.' . $extension;
-    if (move_uploaded_file($_FILES["my_file_COPYRIGHT"]["tmp_name"], $new_name3)) {
+    if (move_uploaded_file($_FILES["my_file_COPYRIGHT"]["tmp_name"] ?? "", $new_name3)) {
         //echo '{"status":"success"}';
         $log_state = "Makale COPYRIGHT_ Dosyası Seçildi";
         log_all($s_user, $log_state);
 
     }
 } else {
-    echo $_FILES['my_file_COPYRIGHT']['error'];
-    $log_state = "HATA -> Makale COPYRIGHT_ Dosyası Sisteme Tanıtılmadı->" . $_FILES['my_file_COPYRIGHT']['error'];
+    echo $_FILES['my_file_COPYRIGHT']['error'] ?? "";
+    $log_state = "HATA -> Makale COPYRIGHT_ Dosyası Sisteme Tanıtılmadı->" . $_FILES['my_file_COPYRIGHT']['error'] ?? "";
     log_all($s_user, $log_state);
     MesajGoster("Error while Uploading COPYRIGHT_File !!! Please contact Editor"); 
     header("Refresh:2;  URL = index.php?page=author_revision&rnb=4&m_id=24 ");
@@ -143,14 +143,14 @@ exit;
 
 // graphic abstract
 
-$file_graph = $_POST["my_Approval"];
+$file_graph = $_POST["my_Approval"] ?? "";
  
 if($file_graph=="YES"){
 $allowed = array('jpeg', 'ppt', 'pptx', 'jpg', 'png', 'pdf');
 $new_name_4 = "";
-if (isset($_FILES['my_file_graph']) && $_FILES['my_file_graph']['error'] == 0) {
+if (isset($_FILES['my_file_graph']) && ($_FILES['my_file_graph']['error'] ?? "") == 0) {
 
-    $extension_2 = pathinfo($_FILES['my_file_graph']['name'], PATHINFO_EXTENSION);
+    $extension_2 = pathinfo($_FILES['my_file_graph']['name'] ?? "", PATHINFO_EXTENSION);
 
     if (!in_array(strtolower($extension_2), $allowed)) {
         echo '{"Error":"541"}';
@@ -164,17 +164,17 @@ if (isset($_FILES['my_file_graph']) && $_FILES['my_file_graph']['error'] == 0) {
 
     $new_name_4 = '../paperimages/image_'.$paperID_first. '-R' . $new_rNumber . '.' . $extension_2;
     
-    if (move_uploaded_file($_FILES["my_file_graph"]["tmp_name"], $new_name_4)) {
+    if (move_uploaded_file($_FILES["my_file_graph"]["tmp_name"] ?? "", $new_name_4)) {
         //echo '{"status":"success"}';
         $log_state = "Reviewer comment file uploaded";
         log_all($s_user, $log_state);
 
-    } else echo "hata" . $_FILES['my_file_graph']['error'];
+    } else echo "hata" . $_FILES['my_file_graph']['error'] ?? "";
 }
 
 else {
-    echo $_FILES['my_file_graph']['error'];
-    $log_state = "Error  -> Reviewer file did not upload->" . $_FILES['my_file_graph']['error'];
+    echo $_FILES['my_file_graph']['error'] ?? "";
+    $log_state = "Error  -> Reviewer file did not upload->" . $_FILES['my_file_graph']['error'] ?? "";
     log_all($s_user, $log_state);
        MesajGoster("Error while Uploading File 4 2 !!! Please contact Editor");
   

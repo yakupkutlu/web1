@@ -200,7 +200,7 @@ pattern=".{3,1000}" title="Please enter valid Title"  required>
 
 
 
-                           <input type="hidden"   name="s_user" id="s_user"  value="<?php echo $_SESSION["user"]; ?>"   >
+                           <input type="hidden"   name="s_user" id="s_user"  value="<?php echo $_SESSION["user"] ?? ""; ?>"   >
                                            
                             <span class="anahtar">*required</span> <br>
 						 
@@ -339,7 +339,7 @@ pattern=".{3,1000}" title="Please enter valid Title"  required>
                                             <tr>
                                                 <?php
                                                 include("../app/connect.php");
-                                                $user_name = $_SESSION["user"];
+                                                $user_name = $_SESSION["user"] ?? "";
                                                 $sql = "SELECT * FROM users WHERE user_name='$user_name'";
                                                 $name_surname = mysqli_fetch_object(mysqli_query($baglanti,$sql))->name_surname;
                                                 ?>
@@ -995,16 +995,16 @@ function myFunction3(){
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['kapat'])) {
         // Javascript'ten gelen JSON verilerini $_SESSION'a kaydet
-        $_SESSION['authors'] = json_decode($_POST['authors'], true);
+        $_SESSION['authors'] ?? "" = json_decode($_POST['authors'] ?? "", true);
         
         echo "<script>alert('Veriler $_SESSION global değişkenine kaydedildi.');</script>";
     }
 }
 
 // Yazarları $_SESSION'dan oku
-$authors = isset($_SESSION['authors']) ? $_SESSION['authors'] : [];
+$authors = isset($_SESSION['authors']) ? $_SESSION['authors'] ?? "" : [];
 
-print_r($_SESSION['authors']);
+print_r($_SESSION['authors'] ?? "");
 
 // Yazarları yazdır
 echo "<h2>Kayıtlı Yazarlar</h2>";

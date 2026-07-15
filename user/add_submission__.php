@@ -71,8 +71,8 @@ $all_authors_arcid2 = is_array($all_authors_orcid) ? implode(",", $all_authors_o
 $allowed = array('doc', 'docx','odt','pdf');
 $new_name = "-";
 
-if (isset($_FILES['my_file']) && $_FILES['my_file']['error'] == 0) {
-    $extension = pathinfo($_FILES['my_file']['name'], PATHINFO_EXTENSION);
+if (isset($_FILES['my_file']) && ($_FILES['my_file']['error'] ?? "") == 0) {
+    $extension = pathinfo($_FILES['my_file']['name'] ?? "", PATHINFO_EXTENSION);
 
     if (!in_array(strtolower($extension), $allowed)) {
         echo '{"Error......":"541"}';
@@ -82,20 +82,20 @@ if (isset($_FILES['my_file']) && $_FILES['my_file']['error'] == 0) {
 
     $new_name = '../uploadfiles/nesciences_' . son_kayit_ID_getir() . '_' . date("d_m_y") . '.' . $extension;
     
-    if (move_uploaded_file($_FILES["my_file"]["tmp_name"], $new_name)) {
+    if (move_uploaded_file($_FILES["my_file"]["tmp_name"] ?? "", $new_name)) {
         $log_state="Makale Dosyası Seçildi";
         log_all($s_user,$log_state);
     }
 } else {
-    $file_error = $_FILES['my_file']['error'] ?? "Bilinmeyen Hata";
+    $file_error = $_FILES['my_file']['error'] ?? "" ?? "Bilinmeyen Hata";
     $log_state="HATA -> Makale Dosyası Sisteme Tanıtılmadı----Add Submission--".$file_error;
     log_all($s_user,$log_state);
 }
 
 // comitee approval
 $new_name2 = "-";
-if (isset($_FILES['my_file_Approval']) && $_FILES['my_file_Approval']['error'] == 0) {
-    $extension = pathinfo($_FILES['my_file_Approval']['name'], PATHINFO_EXTENSION);
+if (isset($_FILES['my_file_Approval']) && ($_FILES['my_file_Approval']['error'] ?? "") == 0) {
+    $extension = pathinfo($_FILES['my_file_Approval']['name'] ?? "", PATHINFO_EXTENSION);
 
     if (!in_array(strtolower($extension), $allowed)) {
         echo '{"Error......":"541"}';
@@ -105,12 +105,12 @@ if (isset($_FILES['my_file_Approval']) && $_FILES['my_file_Approval']['error'] =
 
     $new_name2 = '../uploadfiles/Approval_' . son_kayit_ID_getir() . '_' . date("d_m_y") . '.' . $extension;
     
-    if (move_uploaded_file($_FILES["my_file_Approval"]["tmp_name"], $new_name2)) {
+    if (move_uploaded_file($_FILES["my_file_Approval"]["tmp_name"] ?? "", $new_name2)) {
         $log_state="Makale Approval Dosyası Seçildi";
         log_all($s_user,$log_state);
     }
 } else {
-    $file_approval_error = $_FILES['my_file_Approval']['error'] ?? "Bilinmeyen Hata";
+    $file_approval_error = $_FILES['my_file_Approval']['error'] ?? "" ?? "Bilinmeyen Hata";
     $log_state="HATA -> Makale Approval Dosyası Sisteme Tanıtılmadı - Add Submission -".$file_approval_error;
     log_all($s_user,$log_state);
 }

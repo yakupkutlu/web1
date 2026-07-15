@@ -50,7 +50,7 @@ $type = $_POST["type"] ?? null;
 $name_author = $_POST["all_authors"] ?? "";
 
 $all_authors_email = $_POST["all_authors_email"] ?? "";  
-$all_authors_namesurname = isset($_POST["name_author"]) && is_array($_POST["name_author"]) ? implode(",", $_POST["name_author"]) : "";  
+$all_authors_namesurname = isset($_POST["name_author"]) && is_array($_POST["name_author"] ?? "") ? implode(",", $_POST["name_author"] ?? "") : "";  
 $all_authors_orcid = $_POST["all_authors_orcid"] ?? ""; 
 $all_authors_institution = $_POST["all_authors_institution"] ?? "";  
 $all_authors_country = $_POST["all_authors_country"] ?? "";  
@@ -106,9 +106,9 @@ $new_name = "-";
 
 $generatedPaperId = generateNewID(son_kayit_ID_getir());
 
-if (isset($_FILES['my_file']) && $_FILES['my_file']['error'] == 0) {
+if (isset($_FILES['my_file']) && ($_FILES['my_file']['error'] ?? "") == 0) {
 
-    $extension = pathinfo($_FILES['my_file']['name'], PATHINFO_EXTENSION);
+    $extension = pathinfo($_FILES['my_file']['name'] ?? "", PATHINFO_EXTENSION);
 
     if (!in_array(strtolower($extension), $allowed)) {
         echo '{"Error......":"541"}';
@@ -118,7 +118,7 @@ if (isset($_FILES['my_file']) && $_FILES['my_file']['error'] == 0) {
 
     $new_name = '../uploadfiles/'.($journalShortName ?? 'journal').'_' . $generatedPaperId.'.'.$extension;
     
-    if (move_uploaded_file($_FILES["my_file"]["tmp_name"], $new_name)) {
+    if (move_uploaded_file($_FILES["my_file"]["tmp_name"] ?? "", $new_name)) {
         $log_state="Makale Dosyası Seçildi";
         echo '<script type="text/javascript">',
          'document.getElementsByClassName("message-info")[0].innerHTML =document.getElementsByClassName("message-info")[0].innerHTML+   "<br> > Manuscript file has been uploaded";',
@@ -126,7 +126,7 @@ if (isset($_FILES['my_file']) && $_FILES['my_file']['error'] == 0) {
         log_all($s_user,$log_state);
     }
 } else {
-    $file_err = $_FILES['my_file']['error'] ?? "Unknown";
+    $file_err = $_FILES['my_file']['error'] ?? "" ?? "Unknown";
     $log_state="HATA -> Makale Dosyası Sisteme Tanıtılmadı----Add Submission--".$file_err;
     log_all($s_user,$log_state);
     
@@ -140,9 +140,9 @@ if (isset($_FILES['my_file']) && $_FILES['my_file']['error'] == 0) {
 
 // comitee approval
 $new_name2 = "-";
-if (isset($_FILES['my_file_Approval']) && $_FILES['my_file_Approval']['error'] == 0) {
+if (isset($_FILES['my_file_Approval']) && ($_FILES['my_file_Approval']['error'] ?? "") == 0) {
 
-    $extension = pathinfo($_FILES['my_file_Approval']['name'], PATHINFO_EXTENSION);
+    $extension = pathinfo($_FILES['my_file_Approval']['name'] ?? "", PATHINFO_EXTENSION);
 
     if (!in_array(strtolower($extension), $allowed)) {
         echo '{"Error......":"541"}';
@@ -152,7 +152,7 @@ if (isset($_FILES['my_file_Approval']) && $_FILES['my_file_Approval']['error'] =
 
     $new_name2 = '../uploadfiles/Approval_'.$generatedPaperId.'.'.$extension;
     
-    if (move_uploaded_file($_FILES["my_file_Approval"]["tmp_name"], $new_name2)) {
+    if (move_uploaded_file($_FILES["my_file_Approval"]["tmp_name"] ?? "", $new_name2)) {
         $log_state="Makale Approval Dosyası Seçildi";
         log_all($s_user,$log_state);
         echo '<script type="text/javascript">',
@@ -161,7 +161,7 @@ if (isset($_FILES['my_file_Approval']) && $_FILES['my_file_Approval']['error'] =
     }
     
 } else {
-    $approval_err = $_FILES['my_file_Approval']['error'] ?? "Unknown";
+    $approval_err = $_FILES['my_file_Approval']['error'] ?? "" ?? "Unknown";
     $log_state="HATA -> Makale Approval Dosyası Sisteme Tanıtılmadı - Add Submission -".$approval_err;
     log_all($s_user,$log_state); 
     echo '<script type="text/javascript">',
@@ -173,9 +173,9 @@ if (isset($_FILES['my_file_Approval']) && $_FILES['my_file_Approval']['error'] =
 // abstract image upload  --------------------
 $allowed3 = array('jpg', 'jpeg','png','ppt','pptx','pdf');
 $new_name3 = "-";
-if (isset($_FILES['my_abstractimage']) && $_FILES['my_abstractimage']['error'] == 0) {
+if (isset($_FILES['my_abstractimage']) && ($_FILES['my_abstractimage']['error'] ?? "") == 0) {
 
-    $extension = pathinfo($_FILES['my_abstractimage']['name'], PATHINFO_EXTENSION);
+    $extension = pathinfo($_FILES['my_abstractimage']['name'] ?? "", PATHINFO_EXTENSION);
 
     if (!in_array(strtolower($extension), $allowed3)) {
         echo '{"Error......":"217"}';
@@ -185,7 +185,7 @@ if (isset($_FILES['my_abstractimage']) && $_FILES['my_abstractimage']['error'] =
      $_new_name3='image_'.$generatedPaperId.'.'.$extension;
     $new_name3 = '../paperimages/image_'.$generatedPaperId.'.'.$extension;
     
-    if (move_uploaded_file($_FILES["my_abstractimage"]["tmp_name"], $new_name3)) {
+    if (move_uploaded_file($_FILES["my_abstractimage"]["tmp_name"] ?? "", $new_name3)) {
         $log_state="abstract image dosyası yuklendi ";
         log_all($s_user,$log_state);
         echo '<script type="text/javascript">',
@@ -193,7 +193,7 @@ if (isset($_FILES['my_abstractimage']) && $_FILES['my_abstractimage']['error'] =
          '</script>';
     }
 } else {
-    $abstract_err = $_FILES['my_abstractimage']['error'] ?? "Unknown";
+    $abstract_err = $_FILES['my_abstractimage']['error'] ?? "" ?? "Unknown";
     $log_state="HATA -> Makale Abstract Image Sisteme Tanıtılmadı - Add Submission -".$abstract_err;
     log_all($s_user,$log_state);
     echo '<script type="text/javascript">',

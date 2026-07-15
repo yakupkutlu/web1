@@ -6,11 +6,11 @@
     <?php
     session_start();
     ob_start();
-    $new_name = $_SESSION["user"];
+    $new_name = $_SESSION["user"] ?? "";
 
-    $subID = $_GET["id"];
+    $subID = $_GET["id"] ?? "";
     if (isset($_GET["process"])) {
-        $process = $_GET["process"];
+        $process = $_GET["process"] ?? "";
     } else {
         $process = "";
     }
@@ -18,7 +18,7 @@
         include("../app/connect.php");
         include("function.php");
         include("../system.php");
-        $subID=$_GET["id"];
+        $subID=$_GET["id"] ?? "";
         //echo "makale id si".$subID;
 
         $upload_date = date("Y-m-d");
@@ -33,9 +33,9 @@
 // C:\xampp\php\php.ini ayarları düzenle
         $allowed = array('zip', 'rtf', 'doc', 'rar', 'docx', 'pdf', 'odt');
         $new_name = "";
-        if (isset($_FILES['my_file']) && $_FILES['my_file']['error'] == 0) {
+        if (isset($_FILES['my_file']) && ($_FILES['my_file']['error'] ?? "") == 0) {
 
-            $extension = pathinfo($_FILES['my_file']['name'], PATHINFO_EXTENSION);
+            $extension = pathinfo($_FILES['my_file']['name'] ?? "", PATHINFO_EXTENSION);
 
             if (!in_array(strtolower($extension), $allowed)) {
                 //echo '{"Error":"541"}';
@@ -43,13 +43,13 @@
             }
            
             $new_name = '../uploadfiles/'.$journalShortName.'_' . $paperCode . '.' . $extension;
-            if (move_uploaded_file($_FILES["my_file"]["tmp_name"], $new_name)) {
+            if (move_uploaded_file($_FILES["my_file"]["tmp_name"] ?? "", $new_name)) {
                 //echo '{"status":"success"}'.'</br>';
                 //echo $new_name;
 
             }
         } else {
-            $hata = $_FILES['my_file']['error'];
+            $hata = $_FILES['my_file']['error'] ?? "";
             MesajGoster($hata);
         }
 
@@ -66,7 +66,7 @@
 
         } else {
             echo "Veritabanı Hatası";
-            $log_state = "HATA ->" . $paperCode . " Nolu Makaleyi PUBLISH İCİN YÜKLEYEMEDİ ->" . mysqli_error();
+            $log_state = "HATA ->" . $paperCode . " Nolu Makaleyi PUBLISH İCİN YÜKLEYEMEDİ ->" . mysqli_error($baglanti);
             log_all($name_surname, $log_state);
         }
 
@@ -77,7 +77,7 @@
         include("function.php");
         include("../system.php");
 
-        $subID=$_GET["id"];
+        $subID=$_GET["id"] ?? "";
         //echo "makale id si".$subID;
 
         $upload_date = date("Y-m-d");
@@ -97,9 +97,9 @@
 // C:\xampp\php\php.ini ayarları düzenle
         $allowed = array('pdf');
         $new_name = "";
-        if (isset($_FILES['my_file']) && $_FILES['my_file']['error'] == 0) {
+        if (isset($_FILES['my_file']) && ($_FILES['my_file']['error'] ?? "") == 0) {
 
-            $extension = pathinfo($_FILES['my_file']['name'], PATHINFO_EXTENSION);
+            $extension = pathinfo($_FILES['my_file']['name'] ?? "", PATHINFO_EXTENSION);
 
             if (!in_array(strtolower($extension), $allowed)) {
                 //echo '{"Error":"541"}';
@@ -109,7 +109,7 @@
             }
         
             $new_name = '../uploadfiles/'.$journalShortName.'_' . $paperCode . '.' . $extension;
-            if (move_uploaded_file($_FILES["my_file"]["tmp_name"], $new_name)) {
+            if (move_uploaded_file($_FILES["my_file"]["tmp_name"] ?? "", $new_name)) {
                 //echo '{"status":"success"}'.'</br>';
                 //echo $new_name;
                 if ($pdf_state == 0) {
@@ -129,12 +129,12 @@
            echo '<center><input type="button"   onclick="CloseAndRefresh()" value="Close this window" />';
                 } else {
                     echo "Veritabanı Hatası";
-                    $log_state = "HATA ->" . $paperCode . " Nolu Makaleyi PDF FORMATI  PUBLISH İCİN YÜKLEYEMEDİ ->" . mysqli_error();
+                    $log_state = "HATA ->" . $paperCode . " Nolu Makaleyi PDF FORMATI  PUBLISH İCİN YÜKLEYEMEDİ ->" . mysqli_error($baglanti);
                     log_all($name_surname, $log_state);
                 }
             }
         } else {
-            $hata = $_FILES['my_file']['error'];
+            $hata = $_FILES['my_file']['error'] ?? "";
             MesajGoster($hata);
         }
 
@@ -152,7 +152,7 @@
         include("function.php");
         include("../system.php");
 
-        $subID=$_GET["id"];
+        $subID=$_GET["id"] ?? "";
         //echo "makale id si".$subID;
 
         $upload_date = date("Y-m-d");
@@ -171,9 +171,9 @@
             // C:\xampp\php\php.ini ayarları düzenle
         $allowed = array('jpg','png','jpeg','tiff');
         $new_name = "";
-        if (isset($_FILES['my_file']) && $_FILES['my_file']['error'] == 0) {
+        if (isset($_FILES['my_file']) && ($_FILES['my_file']['error'] ?? "") == 0) {
 
-            $extension = pathinfo($_FILES['my_file']['name'], PATHINFO_EXTENSION);
+            $extension = pathinfo($_FILES['my_file']['name'] ?? "", PATHINFO_EXTENSION);
 
             if (!in_array(strtolower($extension), $allowed)) {
                 //echo '{"Error":"541"}';
@@ -183,7 +183,7 @@
             }
         
             $new_name = '../paperimages/'.$journalShortName.'_' . $paperCode . '.' . $extension;
-            if (move_uploaded_file($_FILES["my_file"]["tmp_name"], $new_name)) {
+            if (move_uploaded_file($_FILES["my_file"]["tmp_name"] ?? "", $new_name)) {
                  $rQuery = "update submission_list set coverImage='$new_name'WHERE id='$subID'";
 
               
@@ -197,12 +197,12 @@
            echo '<center><input type="button"   onclick="CloseAndRefresh()" value="Close this window" />';
                 } else {
                     echo "Veritabanı Hatası";
-                    $log_state = "HATA ->" . $paperCode . " Abstract image is not uploaded ->" . mysqli_error();
+                    $log_state = "HATA ->" . $paperCode . " Abstract image is not uploaded ->" . mysqli_error($baglanti);
                     log_all($name_surname, $log_state);
                 }
             }
         } else {
-            $hata = $_FILES['my_file']['error'];
+            $hata = $_FILES['my_file']['error'] ?? "";
             MesajGoster($hata);
         }
 

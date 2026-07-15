@@ -7,12 +7,12 @@ include("../system.php");
 session_start();
 ob_start();
 
-$s_user = $_SESSION["user"];
+$s_user = $_SESSION["user"] ?? "";
 
 
-$volume = $_POST["volume"];
-$no = $_POST["number"];
-$yayin_yili = $_POST["year"];
+$volume = $_POST["volume"] ?? "";
+$no = $_POST["number"] ?? "";
+$yayin_yili = $_POST["year"] ?? "";
 
 
       //$pQuery ="INSERT INTO cover_files_path(year, volume, no, cover, front_matter, table_of_contents) VALUES ( '$yayin_yili' , '$volume','$no')";
@@ -28,7 +28,7 @@ $yayin_yili = $_POST["year"];
         //echo "Veritabanı Hatası";
         $log_state = "HATA -> ID li Makale CONTENT VERİTABANI HATASI";
         log_all($s_user, $log_state);
-        echo "hata" . mysqli_error();
+        echo "hata" . mysqli_error($baglanti);
     }
 
  

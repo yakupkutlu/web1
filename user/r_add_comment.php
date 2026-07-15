@@ -5,20 +5,20 @@ include("../app/connect.php");
 include("function.php");
 include("../system.php");
 
-$s_user = $_SESSION["user"];
-$decision = $_POST["iCheck"];
-$message = $_POST["message"];
-$editor_message = $_POST["editor_message"];
-$paperID = $_POST["paperid"];
-$requestID = $_POST["r_id"];
+$s_user = $_SESSION["user"] ?? "";
+$decision = $_POST["iCheck"] ?? "";
+$message = $_POST["message"] ?? "";
+$editor_message = $_POST["editor_message"] ?? "";
+$paperID = $_POST["paperid"] ?? "";
+$requestID = $_POST["r_id"] ?? "";
 $tarih = date("d F Y");
 
 $message=tirnak_replace($message);
 $editor_message=tirnak_replace($editor_message);
 
-$quality=$_POST["quality"];
-$newness=$_POST["newness"];
-$contribution=$_POST["contribution"];
+$quality=$_POST["quality"] ?? "";
+$newness=$_POST["newness"] ?? "";
+$contribution=$_POST["contribution"] ?? "";
 
 // A list of permitted file extensions
 // C:\xampp\php\php.ini ayarları düzenle
@@ -26,9 +26,9 @@ $contribution=$_POST["contribution"];
 $allowed = array('doc', 'docx','odt');
 $new_name = "NULL";
 
-if (isset($_FILES['my_file']) && $_FILES['my_file']['error'] == 0) {
+if (isset($_FILES['my_file']) && ($_FILES['my_file']['error'] ?? "") == 0) {
 
-    $extension = pathinfo($_FILES['my_file']['name'], PATHINFO_EXTENSION);
+    $extension = pathinfo($_FILES['my_file']['name'] ?? "", PATHINFO_EXTENSION);
 
     if (!in_array(strtolower($extension), $allowed)) {
         MesajGoster( "Please upload word file   !!!");        
@@ -39,7 +39,7 @@ if (isset($_FILES['my_file']) && $_FILES['my_file']['error'] == 0) {
 
     $new_name = '../reviewreports/' . $paperID . '-' . $requestID . '.' . $extension;
     
-    if (move_uploaded_file($_FILES["my_file"]["tmp_name"], $new_name)) {
+    if (move_uploaded_file($_FILES["my_file"]["tmp_name"] ?? "", $new_name)) {
         //echo '{"status":"success"}';
         $log_state = $paperID." İçin Yorum 1 Dosyası Seçildi";
         log_all($s_user, $log_state);
@@ -48,15 +48,15 @@ if (isset($_FILES['my_file']) && $_FILES['my_file']['error'] == 0) {
     
 } else {
    // echo "Please contact journal admin for Error  ==>  Error NO:211 ";
-    $log_state = "HATA -> ".$paperID." İçin Yorum 1 Dosyası Sisteme Tanıtılmadı" . $_FILES['my_file']['error'];
+    $log_state = "HATA -> ".$paperID." İçin Yorum 1 Dosyası Sisteme Tanıtılmadı" . $_FILES['my_file']['error'] ?? "";
     log_all($s_user, $log_state);
 }
 
 $new_name2 = "NULL";
 
-if (isset($_FILES['my_file_2']) && $_FILES['my_file_2']['error'] == 0) {
+if (isset($_FILES['my_file_2']) && ($_FILES['my_file_2']['error'] ?? "") == 0) {
 
-    $extension = pathinfo($_FILES['my_file_2']['name'], PATHINFO_EXTENSION);
+    $extension = pathinfo($_FILES['my_file_2']['name'] ?? "", PATHINFO_EXTENSION);
 
     if (!in_array(strtolower($extension), $allowed)) {
  MesajGoster( "Please upload word file   !!!");        
@@ -66,7 +66,7 @@ if (isset($_FILES['my_file_2']) && $_FILES['my_file_2']['error'] == 0) {
     }
     $new_name2 = '../reviewreports/' . $paperID . '-' . $requestID . '_2.' . $extension;
     
-    if (move_uploaded_file($_FILES["my_file_2"]["tmp_name"], $new_name2)) {
+    if (move_uploaded_file($_FILES["my_file_2"]["tmp_name"] ?? "", $new_name2)) {
        //echo '{"status":"success"}';
        $log_state = $paperID." İçin Yorum 2 Dosyası Seçildi";
        log_all($s_user, $log_state);
@@ -74,9 +74,9 @@ if (isset($_FILES['my_file_2']) && $_FILES['my_file_2']['error'] == 0) {
     
 } else {
 
-    //echo $_FILES['my_file']['error'];
+    //echo $_FILES['my_file']['error'] ?? "";
     //MesajGoster( "Please contact journal admin for Error ==> Error NO:212");
-    $log_state = "HATA -> ".$paperID." İçin Yorum 2 Dosyası Sisteme Tanıtılmadı" . $_FILES['my_file']['error'];
+    $log_state = "HATA -> ".$paperID." İçin Yorum 2 Dosyası Sisteme Tanıtılmadı" . $_FILES['my_file']['error'] ?? "";
     log_all($s_user, $log_state);
     
 }
@@ -133,7 +133,7 @@ if ($resulrquery) {
  
     $log_state = "HATA -> Veritabanı Bağlantı Hatası";
     log_all($s_user, $log_state);
-    $error_message="Database Error - >".mysqli_error();
+    $error_message="Database Error - >".mysqli_error($baglanti);
     MesajGoster($error_message);
 }
  

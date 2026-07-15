@@ -441,7 +441,7 @@ if (yetki_kontrol($role_number, "edit_role")) {
 
     /*******************************************************************************************/
 
-    $process = @$_GET['process'];
+    $process = $_GET['process'] ?? "";
     switch ($process) {
 
         case "editor_form":

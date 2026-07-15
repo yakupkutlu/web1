@@ -1,7 +1,7 @@
 
 <?php
 header("Access-Control-Allow-Origin: *");
-$ncp_id = $_GET["ncp_id"];
+$ncp_id = $_GET["ncp_id"] ?? "";
 ?>
 <style>
     .author_table {

@@ -3,7 +3,7 @@ include("../app/connect.php");
 include("../system.php");
 include("function.php");
 
-$id=$_GET['id'];
+$id=$_GET['id'] ?? "";
 $query1=mysqli_query($baglanti,"DELETE FROM author_review_requests WHERE paperID='$id'");
 $query2=mysqli_query($baglanti,"DELETE FROM cited_table WHERE sub_id='$id'");
 $query3=mysqli_query($baglanti,"DELETE FROM review_requests WHERE paperid='$id'");

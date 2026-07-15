@@ -24,7 +24,7 @@
 
         <?php
         include("../app/connect.php");
-        $id = $_GET['id'];
+        $id = $_GET['id'] ?? "";
         $query = mysqli_query($baglanti,"select * from submission_list where id='$id'");
         while ($data = mysqli_fetch_array($query)) {
             $name_surname = $data["name_surname"];

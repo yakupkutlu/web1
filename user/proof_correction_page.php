@@ -1,5 +1,5 @@
 <?php
-$paperID=$_GET["id"];
+$paperID=$_GET["id"] ?? "";
 $pQuery="Select * from submission_list where id=$paperID";
 $paperProp=mysqli_fetch_object(mysqli_query($baglanti,$pQuery));
 $paperTitle=$paperProp->title;

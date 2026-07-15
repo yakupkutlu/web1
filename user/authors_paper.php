@@ -1,7 +1,7 @@
 <?php
 if (yetki_kontrol($role_number, "authors_paper")) {
     include("../app/connect.php");
-    $user_name = $_SESSION["user"];
+    $user_name = $_SESSION["user"] ?? "";
 
     echo "<center><a class='btn btn-round btn-warning inbox-title'>PAPER LIST</a></center>
         <table id=\"datatable\" class=\"table table-striped table-bordered\">

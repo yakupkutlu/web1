@@ -2,7 +2,7 @@
 if (yetki_kontrol($role_number, "submission")) {
     include("../app/connect.php");
 //include("../system.php");
-$science=$_GET['science'];
+$science=$_GET['science'] ?? "";
  
 
 

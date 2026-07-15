@@ -2,8 +2,8 @@
 include("../app/connect.php");
 include ("../system.php");
 include "function.php";
-$paperCode=$_GET["id"];
-$message=tirnak_replace($_POST["message"]);
+$paperCode=$_GET["id"] ?? "";
+$message=tirnak_replace($_POST["message"] ?? "");
 
 $rnQuery="select * from submission_list where id='$paperCode'";
 $rnQuery_prop=mysqli_fetch_object(mysqli_query($baglanti,$rnQuery));
@@ -22,6 +22,6 @@ if (mysqli_query($baglanti,$rQuery)){
 else
 {
     echo "Veritabanı Hatası";
-    $log_state="HATA ->".$paperCode." Nolu Makaleyi ONAYLAYAMADI ->".mysqli_error();
+    $log_state="HATA ->".$paperCode." Nolu Makaleyi ONAYLAYAMADI ->".mysqli_error($baglanti);
     log_all($name_surname,$log_state);
 }

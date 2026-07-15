@@ -2,7 +2,7 @@
 <?php
 if (yetki_kontrol($role_number, "author_revision")) {
     include("../app/connect.php");
-    $user_name = $_SESSION["user"];
+    $user_name = $_SESSION["user"] ?? "";
 
     echo "<center><a class='btn btn-round btn-warning inbox-title'>PAPERS UNDER REVISION</a></center>
         <table id=\"datatable\" class=\"table table-striped table-bordered\">

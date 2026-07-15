@@ -20,8 +20,8 @@ function isim_parcalama_jgate($gelen)
     return $tmp;
 }
 
-$p_id = $_GET["p_id"];
-if (isset($_GET["process"])) $process = $_GET["process"];
+$p_id = $_GET["p_id"] ?? "";
+if (isset($_GET["process"])) $process = $_GET["process"] ?? "";
 else $process = "";
 $pQuery = "Select * from cover_files_path where id='$p_id'";
 $paperProp = mysqli_fetch_object(mysqli_query($baglanti,$pQuery));

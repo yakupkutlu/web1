@@ -210,7 +210,7 @@ pattern=".{3,1000}" title="Please enter valid Title"  required>
 
 
 
-                           <input type="hidden"   name="s_user" id="s_user"  value="<?php echo $_SESSION["user"]; ?>"   >
+                           <input type="hidden"   name="s_user" id="s_user"  value="<?php echo $_SESSION["user"] ?? ""; ?>"   >
                                            
                             <span class="anahtar">*required</span> <br>
 						 
@@ -346,7 +346,7 @@ pattern=".{3,1000}" title="Please enter valid Title"  required>
                                             <tr>
                                                 <?php
                                                 include("../app/connect.php");
-                                                $user_name = $_SESSION["user"];
+                                                $user_name = $_SESSION["user"] ?? "";
                                                 $sql = "SELECT * FROM users WHERE user_name='$user_name'";
                                                 $name_surname = mysqli_fetch_object(mysqli_query($baglanti,$sql))->name_surname;
                                                 ?>

@@ -2,7 +2,7 @@
 if (yetki_kontrol($role_number, "reviewer")) {
     include("../app/connect.php");
 //include("../system.php");
-$science=$_GET['science'];
+$science=$_GET['science'] ?? "";
 
     echo "<center><a class='btn btn-round btn-warning inbox-title'>Under Reviewer INBOX</a></center>
 <br><br><center>";

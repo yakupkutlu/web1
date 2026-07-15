@@ -27,12 +27,12 @@
     <?php
         include("../app/connect.php");
 
-        $rPaperID = $_GET['paperid'];
+        $rPaperID = $_GET['paperid'] ?? "";
         $rPaperQuery = mysqli_fetch_object(mysqli_query($baglanti, "select * from submission_list where id='$rPaperID'; "));
         $paperID = $rPaperQuery->paperID;
         $title = $rPaperQuery->title;
 
-        $requestID = $_GET['reviewerid'];
+        $requestID = $_GET['reviewerid'] ?? "";
         $reviewer = mysqli_fetch_object(mysqli_query($baglanti, "select * from users where id='$requestID'"))->name_surname;
 
         $tarih = mysqli_fetch_object(mysqli_query($baglanti, "Select * from review_requests WHERE reviewerid='$requestID' AND paperid='$rPaperID' "))->date;

@@ -1,6 +1,6 @@
 <?php
 include("../app/connect.php");
-$user_name=$_SESSION["user"];
+$user_name=$_SESSION["user"] ?? "";
 
 echo "<table id=\"datatable\" class=\"table table-striped table-bordered\">
             <thead>

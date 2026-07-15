@@ -24,9 +24,9 @@
 
         <?php
         include("../app/connect.php");
-        $id = $_GET['id'];
+        $id = $_GET['id'] ?? "";
         if (isset($_GET['process']))
-            $process = $_GET['process'];
+            $process = $_GET['process'] ?? "";
         else $process = "";
 
         $query = mysqli_query($baglanti,"select * from submission_list where id='$id'");

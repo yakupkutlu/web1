@@ -5,9 +5,9 @@ include("function.php");
 session_start();
 ob_start();
 
-$s_user = $_SESSION["user"];
-$id=$_GET['id'];
-$process=$_GET['process'];
+$s_user = $_SESSION["user"] ?? "";
+$id=$_GET['id'] ?? "";
+$process=$_GET['process'] ?? "";
 $paperID=mysqli_fetch_object(mysqli_query($baglanti,"select * from review_requests WHERE id='$id'"))->paperid;
 
 if ($process=="0"){

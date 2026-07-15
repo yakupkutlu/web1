@@ -13,9 +13,9 @@ if (isset($content) and $content == 1) {
     $no = $content_page["no"];
     $year = $content_page["year"];
 } else {
-    $volume = $_GET["volume"];
-    $no = $_GET["no"];
-    $year = $_GET["year"];
+    $volume = $_GET["volume"] ?? "";
+    $no = $_GET["no"] ?? "";
+    $year = $_GET["year"] ?? "";
 }
 
 ?>

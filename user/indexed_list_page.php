@@ -99,7 +99,7 @@
 
 <?php
 include("../app/connect.php");
-$user_name=$_SESSION["user"];
+$user_name=$_SESSION["user"] ?? "";
 
 
 
@@ -107,24 +107,24 @@ $user_name=$_SESSION["user"];
 
 
 
-if (isset($_GET['newindex']) && $_GET['newindex'] == 1) {
+if (isset($_GET['newindex']) && ($_GET['newindex'] ?? "") == 1) {
 
     // Formdan gelen verileri al
-    $name = $_POST['name'];
-    $link = $_POST['link'];
-    $goster = $_POST['goster'];
-    $sira = $_POST['sira'];
-    $aciklama = $_POST['aciklama'];
+    $name = $_POST['name'] ?? "";
+    $link = $_POST['link'] ?? "";
+    $goster = $_POST['goster'] ?? "";
+    $sira = $_POST['sira'] ?? "";
+    $aciklama = $_POST['aciklama'] ?? "";
 
     // Resim dosyasını işleme
     $target_dir = "../images/";
-    $filename = basename($_FILES["image"]["name"]);
+    $filename = basename($_FILES["image"]["name"] ?? "");
     $target_file = $target_dir . $filename;
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     $uploadOk = 1;
 
     // Check if the file is an actual image
-    $check = getimagesize($_FILES["image"]["tmp_name"]);
+    $check = getimagesize($_FILES["image"]["tmp_name"] ?? "");
     if ($check === false) {
         echo "File is not an image.";
         $uploadOk = 0;
@@ -137,15 +137,15 @@ if (isset($_GET['newindex']) && $_GET['newindex'] == 1) {
     }
 
     // Dosya boyutu kontrolü (örneğin 2MB sınırı)
-    if ($_FILES["image"]["size"] > 2000000) {
+    if (($_FILES["image"]["size"] ?? "") > 2000000) {
         echo "Sorry, your file is too large.";
         $uploadOk = 0;
     }
 
     // Eğer dosya geçerli ise yükle
     if ($uploadOk == 1) {
-        if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-            $image = basename($_FILES["image"]["name"]); // Dosya adını al ve veritabanına kaydet
+        if (move_uploaded_file($_FILES["image"]["tmp_name"] ?? "", $target_file)) {
+            $image = basename($_FILES["image"]["name"] ?? ""); // Dosya adını al ve veritabanına kaydet
         } else {
             echo "Sorry, there was an error uploading your file.";
             exit();
@@ -175,28 +175,28 @@ if (isset($_GET['newindex']) && $_GET['newindex'] == 1) {
 
 
 
-if (isset($_GET['newindex']) && $_GET['newindex'] == 2) {
+if (isset($_GET['newindex']) && ($_GET['newindex'] ?? "") == 2) {
 
     // Formdan gelen verileri al
-    $indexid = $_POST['indexid'];
-    $name = $_POST['name'];
-    $link = $_POST['link'];
-    $goster = $_POST['goster'];
-    $sira = $_POST['sira'];
-    $aciklama = $_POST['aciklama'];
+    $indexid = $_POST['indexid'] ?? "";
+    $name = $_POST['name'] ?? "";
+    $link = $_POST['link'] ?? "";
+    $goster = $_POST['goster'] ?? "";
+    $sira = $_POST['sira'] ?? "";
+    $aciklama = $_POST['aciklama'] ?? "";
 
     // Check if file upload is set and no error occurred
-    if (isset($_FILES["image2"]) && $_FILES["image2"]["error"] == 0) {
+    if (isset($_FILES["image2"]) && ($_FILES["image2"]["error"] ?? "") == 0) {
 
         // Resim dosyasını işleme
         $target_dir = "../images/";
-        $filename = basename($_FILES["image2"]["name"]);
+        $filename = basename($_FILES["image2"]["name"] ?? "");
         $target_file = $target_dir . $filename;
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
         $uploadOk = 1;
 
         // Check if the file is an actual image
-        $check = getimagesize($_FILES["image2"]["tmp_name"]);
+        $check = getimagesize($_FILES["image2"]["tmp_name"] ?? "");
         if ($check === false) {
             echo "File is not an image.";
             $uploadOk = 0;
@@ -209,15 +209,15 @@ if (isset($_GET['newindex']) && $_GET['newindex'] == 2) {
         }
 
         // Dosya boyutu kontrolü (örneğin 2MB sınırı)
-        if ($_FILES["image2"]["size"] > 2000000) {
+        if (($_FILES["image2"]["size"] ?? "") > 2000000) {
             echo "Sorry, your file is too large.";
             $uploadOk = 0;
         }
 
         // If all checks pass, try to upload the file
         if ($uploadOk == 1) {
-            if (move_uploaded_file($_FILES["image2"]["tmp_name"], $target_file)) {
-                $image = basename($_FILES["image2"]["name"]); // Dosya adını al ve veritabanına kaydet
+            if (move_uploaded_file($_FILES["image2"]["tmp_name"] ?? "", $target_file)) {
+                $image = basename($_FILES["image2"]["name"] ?? ""); // Dosya adını al ve veritabanına kaydet
             } else {
                 echo "Sorry, there was an error uploading your file.";
                 exit();
@@ -268,8 +268,8 @@ if (isset($_GET['newindex']) && $_GET['newindex'] == 2) {
 
 if(isset($_GET['indexid'])){
         // GET metodu ile gelen veriler
-        $indexid = $_GET['indexid'];
-        $durum = $_GET['durum'];
+        $indexid = $_GET['indexid'] ?? "";
+        $durum = $_GET['durum'] ?? "";
         
         // `indexid` ile eşleşen kaydın `goster` sütununu güncelle
        

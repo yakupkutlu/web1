@@ -97,7 +97,7 @@ if ($reviewer != "")
 					$log_state = $paper["paperID"] . ' ID li Makale Dosyası için ' . $selected_reviewer . '  hakemlik talebi gönderildi';
 					log_all($s_user, $log_state);
 				} else {
-					$log_state = 'HATA ->' . $paper["paperID"] . ' ID li Makale Dosyası için ' . $selected_reviewer . '  hakemlik talebi gönderilemedi,VERİTABANI HATASI' . mysqli_error();
+					$log_state = 'HATA ->' . $paper["paperID"] . ' ID li Makale Dosyası için ' . $selected_reviewer . '  hakemlik talebi gönderilemedi,VERİTABANI HATASI' . mysqli_error($baglanti);
 					log_all($s_user, $log_state);
 				}
             

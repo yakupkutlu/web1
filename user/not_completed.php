@@ -26,7 +26,7 @@
             </tr>
             </thead>
             <tbody>";
-        $s_user=$_SESSION["user"];
+        $s_user=$_SESSION["user"] ?? "";
         if ($query = mysqli_query($baglanti,"select * from submission_list_temp where user_name='$s_user' and state=1;")) {
             $sira = 1;
             while ($data = mysqli_fetch_array($query)) {

@@ -24,7 +24,7 @@
 
         <?php
         include("../app/connect.php");
-        $id = $_GET['id'];
+        $id = $_GET['id'] ?? "";
         $query = "select * from submission_list where id='$id'";
         $pQuery = mysqli_fetch_object(mysqli_query($baglanti,$query));
         $title = $pQuery->title;

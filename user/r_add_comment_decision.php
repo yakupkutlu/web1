@@ -8,16 +8,16 @@ ob_start();
 
    MesajGoster("Please Wait..... ");
 
-$s_user = $_SESSION["user"];
+$s_user = $_SESSION["user"] ?? "";
 if (isset($_POST["editor_decision"]))
-    $editorDecision=$_POST["editor_decision"];
+    $editorDecision=$_POST["editor_decision"] ?? "";
 else $editorDecision=0;
-$paper_id=$_GET["paper_id"];
-$decision_value_gelem=explode('-',$_POST["iCheck"]);
+$paper_id=$_GET["paper_id"] ?? "";
+$decision_value_gelem=explode('-',$_POST["iCheck"] ?? "");
 $decision_value=$decision_value_gelem[0];
-$state=$_GET["state"];
-$reviewers[]=$_POST["reviewers"];
-$message_editor=tirnak_replace($_POST["message"]);
+$state=$_GET["state"] ?? "";
+$reviewers[]=$_POST["reviewers"] ?? "";
+$message_editor=tirnak_replace($_POST["message"] ?? "");
 $edQuery=mysqli_query($baglanti,"select * from review_decision where `value`='$decision_value'");
 $editor_decision=mysqli_fetch_object($edQuery)->decision;
 $ptQuery=mysqli_query($baglanti,"select * from submission_list where id='$paper_id'");

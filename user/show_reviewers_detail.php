@@ -19,7 +19,7 @@
 <body class="nav-md">
 <?php
 include("../app/connect.php");
-$id = $_GET['id'];
+$id = $_GET['id'] ?? "";
 ?>
 <!-- page content -->
 

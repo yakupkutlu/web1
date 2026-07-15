@@ -4,7 +4,7 @@ function change_str($str){
     $change=array("u","g","i","s","c","o","U","G","I","S","C","O");
     return str_replace($find,$change,$str);
 }
-$user=$_GET['user'];
+$user=$_GET['user'] ?? "";
 include ("../app/connect.php");
 $data=array();
 

@@ -19,9 +19,9 @@
 <body class="nav-md">
 <?php
 include("../app/connect.php");
-$id = $_GET['id'];
+$id = $_GET['id'] ?? "";
 if (!isset($_GET['process'])) $process = "";
-else $process = $_GET['process'];
+else $process = $_GET['process'] ?? "";
 if (($process == "") || ($process == "detail")) { ?>
     <div class="x_panel" style="min-height: 726px; margin-bottom: 0px; display: block;">
         <br class="x_content">

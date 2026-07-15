@@ -1,6 +1,6 @@
 <?php
-$paper_id = $_GET["paper_id"];
-$state=$_GET["state"];
+$paper_id = $_GET["paper_id"] ?? "";
+$state=$_GET["state"] ?? "";
 $pQuery = mysqli_fetch_object(mysqli_query($baglanti,"select * from submission_list where id='$paper_id'"));
 $title = $pQuery->title;
 $author = $pQuery->authors;

@@ -3,11 +3,11 @@
     <?php
     session_start();
     ob_start();
-    $new_name = $_SESSION["user"];
+    $new_name = $_SESSION["user"] ?? "";
 
-    $subID = $_GET["id"];
+    $subID = $_GET["id"] ?? "";
     if (isset($_GET["process"])) {
-        $process = $_GET["process"];
+        $process = $_GET["process"] ?? "";
        // echo $process."<br>";
     } else {
         $process = "";
@@ -18,7 +18,7 @@
 		include("../app/connect.php");
         include("function.php");
         include("../system.php");
-        $subID=$_GET["id"];
+        $subID=$_GET["id"] ?? "";
         //echo "makale id si".$subID;
         
         //INSERT INTO `cover_files_path`(`id`, `year`, `volume`, `no`, `cover`, `front_matter`, `table_of_contents`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7])
@@ -59,7 +59,7 @@
 		
 		
     
-    if (isset($_FILES['my_file']) && $_FILES['my_file']['error'] == 0) { 
+    if (isset($_FILES['my_file']) && ($_FILES['my_file']['error'] ?? "") == 0) { 
 
 
 
@@ -70,7 +70,7 @@
        // $new_name = "";
         
 
-            $extension = pathinfo($_FILES['my_file']['name'], PATHINFO_EXTENSION);
+            $extension = pathinfo($_FILES['my_file']['name'] ?? "", PATHINFO_EXTENSION);
 
             if (!in_array(strtolower($extension), $allowed)) {
                 echo '{"Please upload pdf file :Error-541"}';
@@ -79,7 +79,7 @@
            
 		if ($new_name != "") { 
           //  $new_name = '../cover_files/'.$journalShortName.'_' . $paperCode . '.' . $extension;
-            if (move_uploaded_file($_FILES["my_file"]["tmp_name"], $new_name)) {
+            if (move_uploaded_file($_FILES["my_file"]["tmp_name"] ?? "", $new_name)) {
               //   echo '{"status":"success"}'.'</br>';
                MesajGoster($PageTitle. "File is uploaded ");
 
@@ -104,7 +104,7 @@
 
         } else {
             echo "Veritabanı Hatası";
-            $log_state = "HATA ->" . $new_name . " Nolu Makaleyi PUBLISH İCİN YÜKLEYEMEDİ ->" . mysqli_error();
+            $log_state = "HATA ->" . $new_name . " Nolu Makaleyi PUBLISH İCİN YÜKLEYEMEDİ ->" . mysqli_error($baglanti);
             log_all($new_name, $log_state);
         }
 

@@ -1,5 +1,5 @@
 <?php
-$id = $_GET['id'];
+$id = $_GET['id'] ?? "";
 include("../app/connect.php");
 $data = array();
 function change_str($str){

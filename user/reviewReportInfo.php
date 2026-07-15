@@ -2,7 +2,7 @@
 include("../app/connect.php");
 //include("../system.php");
 echo "<div class=\"x_panel\">";
-$paperID = $_GET["paperID"];
+$paperID = $_GET["paperID"] ?? "";
 $sql = "select * from review_requests where paperid='$paperID';";
 $title = mysqli_fetch_object(mysqli_query($baglanti,"select title from submission_list where id='$paperID'"))->title;
 

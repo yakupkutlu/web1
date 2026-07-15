@@ -11,7 +11,7 @@ session_start();
 $dogrulamakodu1 = rand(1000, 9999);
 
 //Dogrulama icin kullanicak kodumuzu acilan oturuma kaydediyoruz.
-$_SESSION["dogrulamakodu"] = $dogrulamakodu1;
+$_SESSION["dogrulamakodu"] ?? "" = $dogrulamakodu1;
 
 //Resim boyutlari belirleniyor
 $en = 75;
@@ -52,7 +52,7 @@ imagefilledrectangle($image, 3, 3, 72, 22, $renkmavi);
 
 
 //Olusturulan dogrulama kodunu resime yaziyoruz.
-ImageString($image, 6, ($konumx-6), 5, $_SESSION["dogrulamakodu"], $siyah);
+ImageString($image, 6, ($konumx-6), 5, $_SESSION["dogrulamakodu"] ?? "", $siyah);
 
 //Gorunumu biraz karistirmak icin cizgilerle gorunumu zorlastiriyoruz.
 //Dilerseniz imageline() satirlarini kaldirarak cizgileri yok edebilirsiniz.

@@ -1,5 +1,5 @@
 <?php
-$requestID = $_GET['id'];
+$requestID = $_GET['id'] ?? "";
 $paperID = mysqli_fetch_object(mysqli_query($baglanti,"Select * from review_requests WHERE id='$requestID'"))->paperid;
 $paper = mysqli_fetch_object(mysqli_query($baglanti,"Select * from submission_list WHERE id='$paperID'"));
 $paperTitle = $paper->title;

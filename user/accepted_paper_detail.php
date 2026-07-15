@@ -424,7 +424,7 @@ if ($process == "proof") {
         $sql = "update submission_list set publish_status=1,msg_proof_author='$message' WHERE id ='$p_id'";
         if (mysqli_query($baglanti,$sql)) {
             $log_state = $p_id . " id li makale PROOF A GÖNDERİLDİ";
-            log_all($_SESSION["user"], $log_state);
+            log_all($_SESSION["user"] ?? "", $log_state);
             
             // Mail şablonunu dinamik yapıya bağladık
             $subject = mail_sablonu("proof_correction_baslik");
@@ -435,7 +435,7 @@ if ($process == "proof") {
 
         } else {
             $log_state = "HATA ->" . $p_id . " id li makale PROOF A HATASI ->" . mysqli_error($baglanti);
-            log_all($_SESSION["user"], $log_state);
+            log_all($_SESSION["user"] ?? "", $log_state);
         }
     } else {
         MesajGoster("Please upload the paper pdf file");
