@@ -1,5 +1,5 @@
 <?php
- include $_SERVER['DOCUMENT_ROOT']."/app/connect.php";
+ include $_SERVER['DOCUMENT_ROOT']."/connect.php";
  //get_scholare_satatistics.php
 //
  
