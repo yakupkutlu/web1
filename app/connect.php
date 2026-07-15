@@ -7,7 +7,7 @@ $db = "yakupkut_nesciences22";
 */
 include("defination.php");
 
-$sunucu = "localhost";
+$sunucu = "127.0.0.1";
 $kullanici = "tethysjournal_jner";
 $sifre = "journal1ner*";
 
